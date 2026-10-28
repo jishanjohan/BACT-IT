@@ -5452,3 +5452,14 @@ textarea:focus-visible {
   font-weight: 800;
   letter-spacing: 0.1em;
 }
+
+/* Why Choose BACT IT: same vertical rhythm as other sections */
+.why-choose {
+  padding-block: 96px;
+}
+
+@media (max-width: 760px) {
+  .why-choose {
+    padding-block: 68px;
+  }
+}

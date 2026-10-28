@@ -160,8 +160,6 @@ export default function Home() {
         </div>
       </section>
 
-      <WhyChoose testId="home-why" />
-
       <section className="section-block industries-preview" data-testid="home-industries-section">
         <div className="page-container industries-preview-grid">
           <SectionHeading
@@ -180,6 +178,8 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      <WhyChoose testId="home-why" />
 
       <Testimonials testId="home-testimonials" />
 
