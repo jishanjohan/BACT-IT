@@ -160,18 +160,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section-block finder-section" data-testid="home-finder-section">
-        <div className="page-container finder-grid">
-          <SectionHeading
-            eyebrow="Service finder"
-            title="Not sure where to start?"
-            description="Answer two quick questions and we’ll point you to the right service, with an enquiry ready to go."
-            testId="home-finder-heading"
-          />
-          <ServiceFinder />
-        </div>
-      </section>
-
       <WhyChoose testId="home-why" />
 
       <section className="section-block industries-preview" data-testid="home-industries-section">
@@ -190,6 +178,18 @@ export default function Home() {
           <Link to="/industries" className="text-action" data-testid="home-industries-link">
             Explore industries <ArrowUpRight size={16} aria-hidden="true" />
           </Link>
+        </div>
+      </section>
+
+      <section className="section-block finder-section" data-testid="home-finder-section">
+        <div className="page-container finder-grid">
+          <SectionHeading
+            eyebrow="Service finder"
+            title="Not sure where to start?"
+            description="Answer two quick questions and we’ll point you to the right service, with an enquiry ready to go."
+            testId="home-finder-heading"
+          />
+          <ServiceFinder />
         </div>
       </section>
 
