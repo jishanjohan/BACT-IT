@@ -5463,3 +5463,62 @@ textarea:focus-visible {
     padding-block: 68px;
   }
 }
+
+/* Why Choose BACT IT: compact open list (no boxes) */
+.why-choose-grid {
+  gap: 26px 40px;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.why-choose-card {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  align-items: start;
+  column-gap: 14px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  backdrop-filter: none;
+}
+
+.why-choose-card:hover {
+  transform: none;
+  background: none;
+}
+
+.why-choose-card:hover .why-choose-icon {
+  background: var(--orange);
+  color: var(--navy);
+}
+
+.why-choose-icon {
+  grid-row: span 2;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.why-choose-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.why-choose-card h3 {
+  margin: 2px 0 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.why-choose-card p {
+  margin: 4px 0 0;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.why-choose-card {
+  align-content: start;
+}

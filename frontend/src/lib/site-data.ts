@@ -402,15 +402,15 @@ export const industries = [
 ];
 
 export const differentiators = [
-  { title: "Customized solutions", description: "Solutions aligned with your business requirements, workflows, roles and reporting needs, not one-size-fits-all software." },
-  { title: "Integrated capabilities", description: "Software, IT infrastructure, cybersecurity, cloud and AI from one technology partner, designed to work together." },
-  { title: "Business process automation", description: "Automate repetitive manual work such as approvals, notifications and reports, so your team can focus on what matters." },
-  { title: "Data-driven insights", description: "Dashboards, reports and analytics that turn your business data into clearer, better-informed decisions." },
-  { title: "Scalable by design", description: "Solutions planned to grow with your organization, from a single branch to multiple locations and more users." },
-  { title: "Integration with existing systems", description: "Connect new solutions with the software you already use through APIs, where technically feasible." },
-  { title: "Security-conscious development", description: "Role-based access control, secure authentication and protection of sensitive data built into how we develop." },
-  { title: "Implementation & ongoing support", description: "Professional implementation, technical guidance, user training and ongoing support options after go-live." },
-  { title: "For organizations of every kind", description: "Solutions for SMEs, enterprises, educational institutions, healthcare organizations and public-sector bodies, where appropriate." },
+  { title: "Customized solutions", description: "Built around your workflows and requirements." },
+  { title: "Integrated capabilities", description: "Software, infrastructure, security, cloud and AI in one place." },
+  { title: "Business process automation", description: "Less repetitive manual work for your team." },
+  { title: "Data-driven insights", description: "Clear dashboards for better decisions." },
+  { title: "Scalable by design", description: "Solutions that grow with your organization." },
+  { title: "Integration with existing systems", description: "Connects with your current software through APIs." },
+  { title: "Security-conscious development", description: "Access control and data protection built in." },
+  { title: "Implementation & ongoing support", description: "Guidance, training and support after go-live." },
+  { title: "For organizations of every kind", description: "SMEs, enterprises, education, healthcare and public sector." },
 ];
 
 export interface TrackCourse {
