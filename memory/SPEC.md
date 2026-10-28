@@ -54,6 +54,22 @@ Visitors browse a service, training track, or study-abroad option; follow a CTA
 to `/contact` (service interest preselected when available); submit the enquiry;
 then see an on-page confirmation and toast.
 
+## AI chat assistant
+
+Floating "Chat with us" button on every page (`components/ChatWidget.tsx`, mounted
+in SiteShell). EN / বাংলা toggle translates the scripted questions.
+1. Scripted questions (client-side validated): name → phone → email → purpose
+   (service chips or free text → "General enquiry").
+2. `POST /api/chat/sessions` {full_name, phone, email, service, purpose} → stores an
+   enquiry in `inquiries` (source "chat") + a `chat_sessions` doc → {session_id}.
+   Bot confirms "we'll get back to you shortly".
+3. `POST /api/chat/sessions/{id}/messages` {text} → SSE stream of `data: {"delta"}`
+   frames then `{"done": true}` (or `{"error"}`). Claude Opus 5.5 (`claude-opus-5-5`)
+   via Emergent LLM key (`EMERGENT_LLM_KEY` in backend/.env); system prompt in
+   `backend/lib/bact_knowledge.py` (answers only BACT IT topics, same language as
+   visitor, never invents prices/schedules/guarantees). History in `chat_messages`;
+   max 40 user messages per session (429); unknown session → 404.
+
 ## Roles and authentication
 
 The public brochure site and contact form do not require authentication. There is

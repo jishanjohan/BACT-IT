@@ -28,7 +28,7 @@ export default function App() {
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-      <Toaster richColors />
+      <Toaster richColors offset={{ bottom: 96, right: 24 }} mobileOffset={{ bottom: 88 }} />
     </SiteShell>
   );
 }

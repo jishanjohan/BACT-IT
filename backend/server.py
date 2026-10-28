@@ -11,6 +11,7 @@ from typing import List
 import uuid
 from datetime import datetime
 from routers.inquiries import router as inquiries_router
+from routers.chat import router as chat_router
 
 
 ROOT_DIR = Path(__file__).parent
@@ -34,6 +35,7 @@ app = FastAPI(lifespan=lifespan)
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
 api_router.include_router(inquiries_router)
+api_router.include_router(chat_router)
 
 
 # Define Models

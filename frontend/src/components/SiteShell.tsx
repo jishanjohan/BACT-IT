@@ -1,4 +1,5 @@
 import { useState, type ReactNode } from "react";
+import ChatWidget from "@/components/ChatWidget";
 import { Link, NavLink } from "react-router-dom";
 import { ArrowUpRight, Facebook, Instagram, Linkedin, Mail, MapPin, Menu, Phone, X } from "lucide-react";
 import { companyFullName, contactDetails, offices, services, socialLinks } from "@/lib/site-data";
@@ -176,6 +177,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <SiteHeader />
       <main>{children}</main>
       <SiteFooter />
+      <ChatWidget />
     </div>
   );
 }
