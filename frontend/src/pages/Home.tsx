@@ -1,4 +1,4 @@
-import { ArrowDownRight, ArrowUpRight, ShieldCheck, Sparkles, Workflow } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, ShieldCheck } from "lucide-react";
 import { Link } from "react-router-dom";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
@@ -41,14 +41,6 @@ export default function Home() {
               integration, professional IT training, study abroad guidance, and digital marketing
               solutions to help businesses grow.
             </p>
-            <div className="hero-actions" data-testid="home-hero-actions">
-              <Link to="/services" className="button button-primary" data-testid="home-explore-services-link">
-                Explore our services <ArrowUpRight size={17} aria-hidden="true" />
-              </Link>
-              <Link to="/contact" className="button button-quiet" data-testid="home-contact-team-link">
-                Talk to our team <ArrowUpRight size={16} aria-hidden="true" />
-              </Link>
-            </div>
             <div className="hero-proofline" data-testid="home-hero-proofline">
               <span data-testid="home-hero-proof-icon"><ShieldCheck size={17} /></span>
               <p data-testid="home-hero-proof-copy">One connected partner for your technology needs</p>
@@ -66,14 +58,6 @@ export default function Home() {
                 <span data-testid="home-hero-image-label-kicker">BACT IT</span>
                 <strong data-testid="home-hero-image-label-copy">Technology that moves you forward.</strong>
               </div>
-            </div>
-            <div className="floating-capability" data-testid="home-capability-note">
-              <span className="capability-icon" data-testid="home-capability-icon"><Workflow size={19} /></span>
-              <div>
-                <span data-testid="home-capability-label">Integrated by design</span>
-                <strong data-testid="home-capability-copy">Connect. Secure. Grow.</strong>
-              </div>
-              <Sparkles className="capability-spark" size={17} aria-hidden="true" />
             </div>
             <div className="hero-index" data-testid="home-hero-index">01 <span>/</span> 07</div>
           </div>
