@@ -5,14 +5,26 @@ import type { ServiceInfo } from "@/lib/site-data";
 export default function ServiceCard({ service, testId }: { service: ServiceInfo; testId: string }) {
   return (
     <article className="service-card" data-testid={testId}>
-      <div className="service-card-top" data-testid={`${testId}-topline`}>
-        <span className="service-glyph" aria-hidden="true" data-testid={`${testId}-icon`}>
-          {service.icon}
-        </span>
+      <Link
+        to={`/services/${service.slug}`}
+        className="service-card-media"
+        tabIndex={-1}
+        aria-hidden="true"
+        data-testid={`${testId}-image-link`}
+      >
+        <img
+          src={service.image}
+          alt={service.imageAlt}
+          loading="lazy"
+          decoding="async"
+          width={800}
+          height={450}
+          data-testid={`${testId}-image`}
+        />
         <span className="service-index" data-testid={`${testId}-index`}>
           {service.slug.slice(0, 2).toUpperCase()}
         </span>
-      </div>
+      </Link>
       <h3 data-testid={`${testId}-title`}>{service.title}</h3>
       <p data-testid={`${testId}-description`}>{service.short}</p>
       <Link

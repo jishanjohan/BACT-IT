@@ -96,3 +96,21 @@ Use supplied service categories, training areas, contact email, and website.
 Do not invent portfolio evidence, client claims, endorsements, schedules,
 syllabi, admissions details, or study-abroad guarantees. Flagship product content
 (BAIDA) is the user-supplied copy only.
+## SEO
+- `frontend/src/lib/seo.ts` holds per-route title/description/keywords (Bangladesh-first, then USA/Australia,
+  some Bangla phrases), canonical base `https://www.bactit.com`, Organization + Service JSON-LD.
+- `components/RouteSeo.tsx` (mounted in SiteShell) upserts title, meta description/keywords/robots, canonical,
+  Open Graph/Twitter tags and JSON-LD on each route change. Staff routes (/admin, /sign-in, /sign-up) are noindex.
+- `index.html` carries the Home defaults for crawlers that don't run JS; `public/robots.txt` and
+  `public/sitemap.xml` (16 URLs) are static — add new routes/service slugs to the sitemap by hand.
+
+## Training page (/courses)
+- `trainingTracks` in site-data.ts: 8 tracks, each with heading, courses, why, learn[], benefits[], careers[], keywords[].
+- Rendered as an accordion (first track open; several can be open): heading button → panel with
+  "Why learn", "What you will learn", "Benefits", "Career opportunities", course keyword chips and an enquiry button.
+  Panel content stays in the DOM (inert when collapsed) so search engines can read it.
+- `/services/it-training` keeps its short list and links to /courses for full details.
+
+## Service cards
+- Each service in `services` (site-data.ts) has `image` + `imageAlt` (Unsplash/Pexels photo); ServiceCard shows it as a
+  16:9 header with the 2-letter index chip overlaid. The old symbol `icon` field was removed.

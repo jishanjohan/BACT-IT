@@ -30,15 +30,16 @@ export default function Home() {
               YOUR TRUSTED TECHNOLOGY PARTNER
             </span>
             <p className="hero-fullname" data-testid="home-hero-fullname">
-              <strong>BACT IT</strong> — {companyFullName}
+              <strong>BACT IT</strong> — {companyFullName} · IT company in Dhaka, Bangladesh
             </p>
             <h1 data-testid="home-hero-title">
               Empowering business through <em>technology.</em>
             </h1>
             <p className="hero-description" data-testid="home-hero-description">
-              Empowering Businesses Through Technology, Security &amp; AI. We deliver intelligent
-              software, secure IT infrastructure, cybersecurity, AI integration, professional IT
-              training, study abroad guidance, and digital marketing solutions to help businesses grow.
+              Empowering Businesses Through Technology, Security &amp; AI. From Dhaka, New York and
+              Sydney, we deliver intelligent software, secure IT infrastructure, cybersecurity, AI
+              integration, professional IT training, study abroad guidance, and digital marketing
+              solutions to help businesses grow.
             </p>
             <div className="hero-actions" data-testid="home-hero-actions">
               <Link to="/services" className="button button-primary" data-testid="home-explore-services-link">

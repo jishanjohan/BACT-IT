@@ -14,7 +14,8 @@ export interface ServiceInfo {
   description: string;
   items: ServiceItem[];
   customization: string;
-  icon: string;
+  image: string;
+  imageAlt: string;
 }
 
 export const services: ServiceInfo[] = [
@@ -79,7 +80,8 @@ export const services: ServiceInfo[] = [
     ],
     customization:
       "Every system is configured around your workflows, user roles, branding and reporting needs. Any of them can be extended with AI features such as smart reports, chatbots and predictive analytics.",
-    icon: "⌘",
+    image: "https://images.pexels.com/photos/4955393/pexels-photo-4955393.jpeg?auto=compress&cs=tinysrgb&w=800",
+    imageAlt: "Programming code on a developer's screen",
   },
   {
     name: "ICT Infrastructure",
@@ -141,7 +143,8 @@ export const services: ServiceInfo[] = [
     ],
     customization:
       "Every infrastructure project starts with a site assessment, so the design, equipment and support plan match your premises, users and budget.",
-    icon: "⌁",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=75",
+    imageAlt: "Enterprise server racks in a data center",
   },
   {
     name: "Cybersecurity",
@@ -213,7 +216,8 @@ export const services: ServiceInfo[] = [
     ],
     customization:
       "Security measures are chosen based on your risk profile, industry requirements and existing systems, so protection fits the way your organization works.",
-    icon: "◈",
+    image: "https://images.unsplash.com/photo-1633265486064-086b219458ec?auto=format&fit=crop&w=800&q=75",
+    imageAlt: "Padlock on a computer keyboard representing cybersecurity",
   },
   {
     name: "AI Solutions",
@@ -275,7 +279,8 @@ export const services: ServiceInfo[] = [
     ],
     customization:
       "AI use cases are identified together with your team, then built around your data, systems, permissions and business rules.",
-    icon: "✳",
+    image: "https://images.pexels.com/photos/8386437/pexels-photo-8386437.jpeg?auto=compress&cs=tinysrgb&w=800",
+    imageAlt: "Robotic hand touching a digital AI network",
   },
   {
     name: "IT Training",
@@ -299,7 +304,8 @@ export const services: ServiceInfo[] = [
     ],
     customization:
       "Training is available for individuals and as programs for organizations that want to upskill their teams. Ask us for current schedules and course details.",
-    icon: "⌘",
+    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=75",
+    imageAlt: "Students attending a professional IT training class",
   },
   {
     name: "Study Abroad",
@@ -337,7 +343,8 @@ export const services: ServiceInfo[] = [
     ],
     customization:
       "Guidance is tailored to each student's academic background and goals. Admission and visa decisions are made by the relevant institutions and authorities.",
-    icon: "↗",
+    image: "https://images.unsplash.com/photo-1788436793629-d1d5abf44692?auto=format&fit=crop&w=800&q=75",
+    imageAlt: "Graduate walking through a university courtyard abroad",
   },
   {
     name: "Digital Marketing",
@@ -379,7 +386,8 @@ export const services: ServiceInfo[] = [
     ],
     customization:
       "Plans are built around your brand, audience, goals and budget, with reporting so you can see what's working.",
-    icon: "↗",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=75",
+    imageAlt: "Laptop showing digital marketing analytics dashboard",
   },
 ];
 
@@ -411,15 +419,178 @@ export const differentiators = [
   },
 ];
 
-export const trainingTracks = [
-  { title: "Networking", courses: "CompTIA A+ · CCNA · CCNP" },
-  { title: "Server administration", courses: "Windows Server · Linux" },
-  { title: "Cybersecurity", courses: "CEH · CHFI · SOC training" },
-  { title: "Advanced certifications", courses: "CISSP · CISA · CISM · Lead Auditor preparation" },
-  { title: "Data analytics", courses: "Power BI · Advanced Excel · VBA · Big Data" },
-  { title: "Programming", courses: "C · C++ · Python · Java" },
-  { title: "Database administration", courses: "Database Administration" },
-  { title: "Cloud", courses: "Azure · AWS · GCP" },
+export interface TrainingTrack {
+  title: string;
+  heading: string;
+  courses: string;
+  why: string;
+  learn: string[];
+  benefits: string[];
+  careers: string[];
+  keywords: string[];
+}
+
+export const trainingTracks: TrainingTrack[] = [
+  {
+    title: "Networking",
+    heading: "Networking Training — CompTIA A+, CCNA & CCNP",
+    courses: "CompTIA A+ · CCNA · CCNP",
+    why: "Every organization runs on a network. Networking skills are the foundation of an IT career and are in steady demand at banks, telecoms, ISPs and enterprises in Bangladesh and abroad.",
+    learn: [
+      "Computer hardware, operating systems and troubleshooting (CompTIA A+)",
+      "IP addressing, subnetting, switching and routing fundamentals",
+      "VLANs, OSPF, EIGRP, BGP and wireless networking",
+      "Network security basics, ACLs and VPNs",
+      "Hands-on labs with Cisco routers, switches and simulators",
+    ],
+    benefits: [
+      "Globally recognized vendor certifications",
+      "Practical lab-based learning from industry practitioners",
+      "A clear path from beginner to professional level",
+    ],
+    careers: ["Network Engineer", "IT Support Specialist", "System & Network Administrator", "NOC Engineer", "Network Consultant"],
+    keywords: ["CCNA training in Dhaka", "CCNP course Bangladesh", "CompTIA A+ course", "networking course Bangladesh", "Cisco certification training"],
+  },
+  {
+    title: "Server Administration",
+    heading: "Server Administration Training — Windows Server & Linux",
+    courses: "Windows Server · Linux",
+    why: "Servers host the email, files, applications and websites businesses depend on. Skilled administrators keep them secure, fast and available, which makes this a reliable, well-paid specialism.",
+    learn: [
+      "Installing and configuring Windows Server and Linux distributions",
+      "Active Directory, DNS, DHCP, Group Policy and file services",
+      "Linux command line, users, permissions and shell scripting",
+      "Web, mail and database server setup",
+      "Backup, monitoring, patching and virtualization basics",
+    ],
+    benefits: [
+      "Skills used daily in data centers and corporate IT",
+      "Preparation for Microsoft and Linux certifications",
+      "Hands-on practice on real server environments",
+    ],
+    careers: ["System Administrator", "Windows Server Administrator", "Linux Administrator", "Infrastructure Engineer", "Data Center Engineer"],
+    keywords: ["Windows Server training Bangladesh", "Linux course in Dhaka", "RHCSA preparation", "server administration course", "system admin training"],
+  },
+  {
+    title: "Cybersecurity",
+    heading: "Cybersecurity Training — CEH, CHFI & SOC Analyst",
+    courses: "CEH · CHFI · SOC training",
+    why: "Cyber attacks on banks, government and businesses are rising every year, and skilled security professionals are in short supply. Cybersecurity is one of the fastest-growing IT careers worldwide.",
+    learn: [
+      "Ethical hacking methods, reconnaissance and vulnerability assessment",
+      "Penetration testing of networks, web applications and systems",
+      "Digital forensics and incident investigation (CHFI)",
+      "Security Operations Center (SOC) monitoring with SIEM tools",
+      "Threat detection, incident response and security best practices",
+    ],
+    benefits: [
+      "Industry-recognized EC-Council certification preparation",
+      "Practical labs that simulate real attacks and defenses",
+      "Training aligned with the needs of banks and government agencies",
+    ],
+    careers: ["Ethical Hacker / Penetration Tester", "SOC Analyst", "Cybersecurity Analyst", "Digital Forensic Investigator", "Security Consultant"],
+    keywords: ["CEH course in Bangladesh", "ethical hacking training Dhaka", "cybersecurity course Bangladesh", "SOC analyst training", "CHFI certification"],
+  },
+  {
+    title: "Advanced Certifications",
+    heading: "Advanced Security & Audit Certifications — CISSP, CISA, CISM & Lead Auditor",
+    courses: "CISSP · CISA · CISM · Lead Auditor preparation",
+    why: "Senior security and audit credentials open the door to leadership roles. They are highly valued by banks, regulators, auditors and multinational companies, and command premium salaries.",
+    learn: [
+      "Security and risk management, governance and compliance",
+      "Information systems audit, control and assurance (CISA)",
+      "Information security program management (CISM)",
+      "Security architecture, asset security and operations (CISSP)",
+      "ISO 27001 Lead Auditor principles and audit practice",
+    ],
+    benefits: [
+      "Structured exam preparation with practice questions",
+      "Guidance from experienced security and audit professionals",
+      "Credentials recognized by employers worldwide",
+    ],
+    careers: ["Chief Information Security Officer (CISO)", "IT Auditor", "Information Security Manager", "Risk & Compliance Manager", "ISO 27001 Lead Auditor"],
+    keywords: ["CISSP training Bangladesh", "CISA course Dhaka", "CISM certification", "ISO 27001 Lead Auditor training", "IT audit course"],
+  },
+  {
+    title: "Data Analytics",
+    heading: "Data Analytics Training — Power BI, Advanced Excel, VBA & Big Data",
+    courses: "Power BI · Advanced Excel · VBA · Big Data",
+    why: "Businesses make better decisions with data. Analytics skills help professionals in any field, from finance and sales to HR, turn raw numbers into clear reports and insights.",
+    learn: [
+      "Advanced Excel formulas, pivot tables and data cleaning",
+      "Automating repetitive tasks with Excel VBA macros",
+      "Building interactive Power BI dashboards and reports",
+      "Data modeling, DAX and data visualization best practices",
+      "Introduction to Big Data concepts and tools",
+    ],
+    benefits: [
+      "Skills you can apply at work immediately",
+      "Useful for both IT and non-IT professionals",
+      "Project-based learning with real business datasets",
+    ],
+    careers: ["Data Analyst", "Business Intelligence (BI) Analyst", "MIS Executive", "Reporting Analyst", "Business Analyst"],
+    keywords: ["Power BI course in Bangladesh", "Advanced Excel training Dhaka", "Excel VBA course", "data analytics course Bangladesh", "Big Data training"],
+  },
+  {
+    title: "Programming",
+    heading: "Programming Courses — C, C++, Python & Java",
+    courses: "C · C++ · Python · Java",
+    why: "Programming is the core skill behind software, apps, automation and AI. Learning to code opens careers in software development, freelancing and technology startups.",
+    learn: [
+      "Programming fundamentals, logic and problem solving",
+      "Data structures, algorithms and object-oriented programming",
+      "Python for automation, data and AI foundations",
+      "Java for enterprise and application development",
+      "Writing, testing and debugging real projects",
+    ],
+    benefits: [
+      "Beginner-friendly with a step-by-step learning path",
+      "Hands-on coding exercises and mini projects",
+      "A strong base for software, AI and freelancing careers",
+    ],
+    careers: ["Software Developer", "Python Developer", "Java Developer", "Automation Engineer", "Freelance Programmer"],
+    keywords: ["Python course in Dhaka", "Java training Bangladesh", "C++ programming course", "programming course for beginners", "learn coding Bangladesh"],
+  },
+  {
+    title: "Database Administration",
+    heading: "Database Administration Training",
+    courses: "Database Administration",
+    why: "Every application stores its data in a database. Database administrators keep that data secure, available and fast, a critical role in banks, hospitals, telecoms and software companies.",
+    learn: [
+      "Relational database concepts and SQL",
+      "Installing, configuring and managing database servers",
+      "Users, roles, security and access control",
+      "Backup, recovery and high availability",
+      "Performance monitoring and query tuning",
+    ],
+    benefits: [
+      "Specialist skills with consistent employer demand",
+      "Practical labs on real database environments",
+      "Preparation for vendor database certifications",
+    ],
+    careers: ["Database Administrator (DBA)", "SQL Developer", "Database Engineer", "Data Engineer", "Application Support Engineer"],
+    keywords: ["database administration course Bangladesh", "SQL training Dhaka", "Oracle DBA training", "SQL Server course", "DBA course"],
+  },
+  {
+    title: "Cloud",
+    heading: "Cloud Computing Training — Microsoft Azure, AWS & Google Cloud",
+    courses: "Azure · AWS · GCP",
+    why: "Organizations are moving their systems to the cloud. Cloud skills are among the most in-demand and best-paid in IT, both locally and for remote work with international companies.",
+    learn: [
+      "Cloud computing concepts and service models (IaaS, PaaS, SaaS)",
+      "Compute, storage, networking and identity on Azure, AWS and GCP",
+      "Deploying and managing virtual machines and applications",
+      "Cloud security, cost management and best practices",
+      "Preparation for associate-level cloud certifications",
+    ],
+    benefits: [
+      "Training across the three leading cloud platforms",
+      "Hands-on labs in real cloud consoles",
+      "Skills suited to remote and international jobs",
+    ],
+    careers: ["Cloud Engineer", "Cloud Administrator", "DevOps Engineer", "Solutions Architect", "Cloud Support Engineer"],
+    keywords: ["AWS training in Bangladesh", "Azure certification course Dhaka", "Google Cloud training", "cloud computing course Bangladesh", "DevOps course"],
+  },
 ];
 
 export const contactDetails = {

@@ -4260,3 +4260,328 @@ textarea:focus-visible {
 #services {
   scroll-margin-top: 96px;
 }
+
+/* Expandable training tracks */
+.training-track {
+  display: block;
+  padding: 0;
+  transition: background-color 220ms ease;
+}
+
+.training-track.is-open {
+  background: linear-gradient(180deg, #fffaf5 0%, #ffffff 100%);
+}
+
+.training-track-heading {
+  margin: 0;
+  font: inherit;
+}
+
+.training-track-summary {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 52px 38px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 17px;
+  padding: 20px 12px 20px 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.training-track-summary:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+.training-track-summary:hover .training-track-icon,
+.training-track.is-open .training-track-icon {
+  background: #fff2e8;
+  color: #c44b00;
+}
+
+.training-track-icon {
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+.training-track-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--navy);
+}
+
+.training-track-courses {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted-ink);
+  font-size: 13px;
+}
+
+.training-track-chevron {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.training-track-chevron svg {
+  transition: transform 260ms ease;
+}
+
+.training-track.is-open .training-track-chevron svg {
+  transform: rotate(180deg);
+  color: #c44b00;
+}
+
+.training-track-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 320ms ease;
+}
+
+.training-track.is-open .training-track-panel {
+  grid-template-rows: 1fr;
+}
+
+.training-track-panel-inner {
+  min-height: 0;
+  overflow: hidden;
+  padding-left: 107px;
+  opacity: 0;
+  transition: opacity 240ms ease;
+}
+
+.training-track.is-open .training-track-panel-inner {
+  padding-bottom: 28px;
+  opacity: 1;
+}
+
+.training-track-why {
+  max-width: 760px;
+  padding: 16px 20px;
+  border-left: 3px solid var(--orange);
+  border-radius: 0 12px 12px 0;
+  background: #f8fafc;
+}
+
+.training-track-panel h4 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 10px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.training-track-panel h4 svg {
+  color: #c44b00;
+}
+
+.training-track-why p {
+  margin: 0;
+  color: #334155;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.training-track-columns {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.training-track-block {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: white;
+}
+
+.training-track-block ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.training-track-block li {
+  display: flex;
+  gap: 8px;
+  color: #334155;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.training-track-block li svg {
+  flex: 0 0 auto;
+  margin-top: 3px;
+  color: #c44b00;
+}
+
+.training-track-careers li {
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: var(--mist);
+  color: var(--navy);
+  font-weight: 500;
+}
+
+.training-track-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.training-track-keywords {
+  flex: 1 1 420px;
+}
+
+.training-track-keywords-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  color: var(--muted-ink);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.training-track-keywords ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.training-track-keywords li {
+  padding: 5px 10px;
+  border: 1px solid #fed7aa;
+  border-radius: 999px;
+  background: #fff7ed;
+  color: #9a3412;
+  font-size: 12px;
+}
+
+.training-track-enquire {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 900px) {
+  .training-track-panel-inner {
+    padding-left: 0;
+  }
+
+  .training-track-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .training-track-summary {
+    grid-template-columns: 41px 27px minmax(0, 1fr) auto;
+    gap: 10px;
+    padding-block: 16px;
+    padding-right: 4px;
+  }
+
+  .training-track-title {
+    font-size: 16px;
+  }
+
+  .training-track-courses {
+    font-size: 12px;
+  }
+
+  .training-track-chevron-label {
+    display: none;
+  }
+
+  .training-track-enquire {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .training-track-panel,
+  .training-track-panel-inner,
+  .training-track-chevron svg {
+    transition: none;
+  }
+}
+
+/* Service card photo header (replaces the old symbol glyph) */
+.service-card {
+  overflow: hidden;
+}
+
+.service-card-media {
+  position: relative;
+  display: block;
+  width: calc(100% + 50px);
+  margin: -24px -25px 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--mist);
+}
+
+.service-card-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 500ms ease;
+}
+
+.service-card-media::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 35, 69, 0) 45%, rgba(11, 35, 69, 0.45) 100%);
+  content: "";
+  pointer-events: none;
+}
+
+.service-card:hover .service-card-media img {
+  transform: scale(1.05);
+}
+
+.service-card-media .service-index {
+  position: absolute;
+  z-index: 1;
+  right: 14px;
+  bottom: 12px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--navy);
+  backdrop-filter: blur(6px);
+}
+
+.service-card-media + h3 {
+  margin-top: 20px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-card-media img {
+    transition: none;
+  }
+}

@@ -1,5 +1,6 @@
 import { useEffect, useState, type ReactNode } from "react";
 import ChatWidget from "@/components/ChatWidget";
+import RouteSeo from "@/components/RouteSeo";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { ArrowUpRight, Facebook, Instagram, Linkedin, Mail, MapPin, Menu, Phone, X } from "lucide-react";
 import { companyFullName, contactDetails, offices, services, socialLinks, whatsapp } from "@/lib/site-data";
@@ -212,6 +213,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
   const isStaffArea = ["/admin", "/sign-in", "/sign-up"].some((p) => pathname.startsWith(p));
   return (
     <div className="site-frame">
+      <RouteSeo />
       <SiteHeader />
       <main>{children}</main>
       <SiteFooter />

@@ -54,6 +54,11 @@ export default function ServiceDetail() {
             <h2 data-testid={`service-detail-heading-${service.slug}`}>
               Explore what we offer in {service.title.toLowerCase()}.
             </h2>
+            {service.slug === "it-training" && (
+              <Link to="/courses" className="text-action" data-testid="service-detail-full-courses-link">
+                See full course details, benefits and career paths <ArrowUpRight size={16} aria-hidden="true" />
+              </Link>
+            )}
           </div>
           <div className="detail-cards" data-testid={`service-detail-list-${service.slug}`}>
             {service.items.map((item, index) => (
