@@ -1,0 +1,214 @@
+{
+  "theme": "light",
+  "project_name": "BACT IT - Enterprise Technology Solutions & Professional Academy",
+  "framework": "farm-ts",
+  "archetype": "THE PERFORMANCE PRO & SWISS HYBRID",
+  "colors": {
+    "surfaces": [
+      {
+        "name": "page",
+        "kind": "solid",
+        "bg": "#F8FAFC",
+        "on_bg": "#0B2345",
+        "on_bg_muted": "#475569",
+        "roles": {
+          "link": "#0B2345",
+          "link_hover": "#E66D15",
+          "border": "#E2E8F0",
+          "error": "#DC2626",
+          "success": "#16A34A"
+        }
+      },
+      {
+        "name": "panel",
+        "kind": "solid",
+        "bg": "#FFFFFF",
+        "on_bg": "#0B2345",
+        "on_bg_muted": "#64748B",
+        "roles": {
+          "border": "#CBD5E1",
+          "subtle": "#F1F5F9"
+        }
+      },
+      {
+        "name": "inverse",
+        "kind": "solid",
+        "bg": "#0B2345",
+        "on_bg": "#FFFFFF",
+        "on_bg_muted": "#CBD5E1",
+        "roles": {
+          "border": "#1E3A8A",
+          "link": "#FF8A32",
+          "highlight": "#FFB27D",
+          "accent_badge": "#1E293B"
+        }
+      },
+      {
+        "name": "hero",
+        "kind": "gradient",
+        "contrast_against": "#0B2345",
+        "guarantee": "scrim: linear-gradient(135deg, rgba(11,35,69,0.95) 0%, rgba(15,23,42,0.92) 100%)",
+        "on_bg": "#FFFFFF",
+        "on_bg_muted": "#E2E8F0",
+        "roles": {
+          "link": "#FF8A32",
+          "badge_bg": "rgba(255,138,50,0.15)",
+          "badge_text": "#FFB27D"
+        }
+      },
+      {
+        "name": "brand_header",
+        "kind": "glass",
+        "contrast_against": "#FFFFFF",
+        "guarantee": "backdrop-blur-xl bg-white/90 border-b border-slate-200/80",
+        "on_bg": "#0B2345",
+        "on_bg_muted": "#64748B"
+      },
+      {
+        "name": "footer",
+        "kind": "solid",
+        "bg": "#07162C",
+        "on_bg": "#FFFFFF",
+        "on_bg_muted": "#94A3B8",
+        "roles": {
+          "border": "#1E293B",
+          "link": "#FF8A32"
+        }
+      },
+      {
+        "name": "accent_badge",
+        "kind": "solid",
+        "bg": "#FFF7ED",
+        "on_bg": "#9A3412",
+        "on_bg_muted": "#C2410C"
+      }
+    ],
+    "accent": "#FF8A32",
+    "on_accent": "#0B2345",
+    "accent_hover": "#E66D15",
+    "primary": "#0B2345",
+    "on_primary": "#FFFFFF"
+  },
+  "typography": {
+    "font_family_heading": "Outfit Variable, sans-serif",
+    "font_family_body": "DM Sans Variable, sans-serif",
+    "font_family_mono": "IBM Plex Mono, monospace",
+    "css_font_import": "@import \"@fontsource-variable/outfit\";\n@import \"@fontsource-variable/dm-sans\";",
+    "scale_px": {
+      "display": 60,
+      "h1": 48,
+      "h2": 36,
+      "h3": 24,
+      "h4": 20,
+      "body": 16,
+      "caption": 14
+    }
+  },
+  "entry_surfaces": {
+    "/": "split hero — brand value proposition + fast action CTAs left, live capabilities grid + server graphic right",
+    "/about": "editorial narrative — vision & mission manifesto left, operational metrics and global outreach offices right",
+    "/services": "category showcase — 7 structured service verticals with interactive filters and inquiry modal triggers",
+    "/services/software-solutions": "solution deep-dive — enterprise software & application engineering architecture",
+    "/services/ict-infrastructure": "infrastructure spec sheet — networking, server racks, virtualization & hardware solutions",
+    "/services/cybersecurity": "security framework — threat detection, audit protocols and defense architecture",
+    "/services/ai-solutions": "AI vertical — automation workflows, data intelligence and business modernization",
+    "/services/it-training": "academy catalog — professional tracks, certifications, hands-on lab environments",
+    "/services/study-abroad": "counseling pathway — university guidance, documentation roadmap, destination advisory (no false guarantees)",
+    "/services/digital-marketing": "growth engine — SEO, performance marketing, brand presence & ROI tracking",
+    "/industries": "industry matrix — banking & financial, healthcare, government, education, retail & supply chain",
+    "/courses": "course search directory — domain filters, duration, modality, prerequisites and direct enrollment enquiry",
+    "/study-abroad": "study abroad global center — destinations overview, counseling process steps, inquiry portal",
+    "/portfolio": "clean architecture case study framework — project domains, challenge/solution schema (strictly non-fabricated)",
+    "/contact": "tactical communication hub — multi-country offices (Panthapath Dhaka, USA, Australia) + service inquiry form"
+  },
+  "grids_and_layouts": {
+    "container": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+    "hero_grid": "grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center",
+    "services_grid": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8",
+    "bento_tetris": "grid grid-cols-1 md:grid-cols-8 lg:grid-cols-12 gap-6",
+    "stats_strip": "grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8",
+    "footer_grid": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12"
+  },
+  "motion": {
+    "page_transition": {
+      "initial": { "opacity": 0, "y": 8 },
+      "animate": { "opacity": 1, "y": 0 },
+      "transition": { "duration": 0.25, "ease": "easeOut" }
+    },
+    "card_hover": "transition-transform duration-200 ease-out hover:-translate-y-1 hover:shadow-xl",
+    "button_press": "active:scale-[0.98] transition-transform duration-100"
+  },
+  "accessibility": {
+    "wcag_level": "WCAG 2.2 AA compliant",
+    "contrast_standard": "Minimum 4.5:1 text contrast for all copy against background surfaces",
+    "data_testids": "Strict kebab-case role-based test IDs on all interactive buttons, links, inputs, selects, tabs, and alerts"
+  },
+  "image_urls": [
+    {
+      "category": "software_solutions",
+      "url": "https://images.unsplash.com/photo-1629904853893-c2c8981a1dc5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODd8MHwxfHNlYXJjaHwzfHxtb2Rlcm4lMjBzb2Z0d2FyZSUyMGRldmVsb3BtZW50JTIwdGVhbSUyMHRlY2glMjBvZmZpY2V8ZW58MHx8fHwxNzkzMTg5NjM3fDA&ixlib=rb-4.1.0&q=85",
+      "description": "Engineers collaborating on software code and modern cloud applications",
+      "intended_usage": "Software Solutions page hero and Home services preview"
+    },
+    {
+      "category": "ict_infrastructure",
+      "url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTF8MHwxfHNlYXJjaHwxfHxkYXRhY2VudGVyJTIwc2VydmVyJTIwcmFjayUyMG5ldHdvcmslMjBpbmZyYXN0cnVjdHVyZXxlbnwwfHx8fDE3OTMxODk2Mzd8MA&ixlib=rb-4.1.0&q=85",
+      "description": "High-density enterprise server racks and structured network cabling",
+      "intended_usage": "ICT Infrastructure service page and hero bento panel"
+    },
+    {
+      "category": "training_education",
+      "url": "https://images.unsplash.com/photo-1781092176313-8b8b1e9927c7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTN8MHwxfHNlYXJjaHwyfHxzdHVkZW50cyUyMGxlYXJuaW5nJTIwY29tcHV0ZXIlMjBjbGFzc3Jvb20lMjB1bml2ZXJzaXR5JTIwc2VtaW5hcnxlbnwwfHx8fDE3OTMxODk2Mzd8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Students and professional trainees attending modern tech seminar",
+      "intended_usage": "Training & Courses directory and Study Abroad counseling page"
+    },
+    {
+      "category": "office_collaboration",
+      "url": "https://images.unsplash.com/photo-1580894899378-92e56886cd4d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODd8MHwxfHNlYXJjaHw0fHxtb2Rlcm4lMjBzb2Z0d2FyZSUyMGRldmVsb3BtZW50JTIwdGVhbSUyMHRlY2glMjBvZmZpY2V8ZW58MHx8fHwxNzkzMTg5NjM3fDA&ixlib=rb-4.1.0&q=85",
+      "description": "Technology consulting team working on client digital roadmap",
+      "intended_usage": "About Us company profile and Industries served section"
+    },
+    {
+      "category": "datacenter_servers",
+      "url": "https://images.unsplash.com/photo-1584169417032-d34e8d805e8b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTF8MHwxfHNlYXJjaHwyfHxkYXRhY2VudGVyJTIwc2VydmVyJTIwcmFjayUyMG5ldHdvcmslMjBpbmZyYXN0cnVjdHVyZXxlbnwwfHx8fDE3OTMxODk2Mzd8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Server room aisle with secure hardware racks",
+      "intended_usage": "Cybersecurity & ICT Infrastructure service highlights"
+    }
+  ],
+  "contact_details": {
+    "company_full_name": "BACT IT (Business Application & Communication Technology)",
+    "established": "2022",
+    "headquarters": "Panthapath, Dhaka, Bangladesh",
+    "email": "info@bactit.com",
+    "phone_bd": "+8801990-937354",
+    "phone_us": "(917) 880 5320",
+    "phone_au": "+61 480 580 007",
+    "website": "bactit.com",
+    "linkedin": "linkedin.com/company/bact-it"
+  },
+  "component_path": {
+    "header": "frontend/src/components/Navbar.tsx",
+    "footer": "frontend/src/components/Footer.tsx",
+    "contact_form": "frontend/src/components/ContactForm.tsx",
+    "service_card": "frontend/src/components/ServiceCard.tsx",
+    "course_card": "frontend/src/components/CourseCard.tsx",
+    "portfolio_item": "frontend/src/components/PortfolioCard.tsx",
+    "inquiry_dialog": "frontend/src/components/InquiryDialog.tsx"
+  },
+  "instructions_to_main_agent": [
+    "Build a pristine multi-page React router application with responsive navigation across all required routes: Home, About, Services (all 7 service sub-pages), Industries, Courses/Training, Study Abroad, Projects/Portfolio, and Contact.",
+    "Strictly honor the user's color palette: Deep Blue (#0B2345) as dominant corporate anchor, Energy Orange (#FF8A32) as kinetic action trigger, and crisp light background (#F8FAFC, #FFFFFF) for high readability.",
+    "Do NOT fabricate client testimonials, specific unverified client case studies, guaranteed study abroad visa claims, or fake partner logos. Keep portfolio as a structured capabilities showcase framework.",
+    "Implement the Contact & Inquiry form capturing: Full Name, Organization/Institution, Email, Phone Number, Service of Interest (Select dropdown with the 7 verticals), and Message. Provide instant feedback using Sonner toasts and mock inquiry submission store.",
+    "Support quick Course Inquiry and Study Abroad Advisory modal dialogues with contextual pre-selection of courses/destinations.",
+    "Ensure every interactive element has kebab-case data-testid tags (e.g. data-testid='contact-form-submit-button', data-testid='nav-services-link', data-testid='service-card-cybersecurity').",
+    "Ensure perfect mobile navigation with a polished slide-over Sheet component and sticky desktop navigation with glassmorphism (backdrop-blur-xl bg-white/90)."
+  ],
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
+    "Avoid AI slop: do not create generic flat centered layouts or default purple gradients. Use bold typography hierarchy (Outfit for headings, DM Sans for text) and intentional asymmetrical bento grids.",
+    "Never use pure black #000000; use #0B2345 (Deep Blue) or #07162C (Dark Navy) with subtle 1px border strokes #E2E8F0.",
+    "Use generous padding (py-16, py-24, gap-8) to give every section breathing room.",
+    "Include high-contrast hover states (e.g. hover:bg-[#E66D15] on accent buttons, hover:text-[#FF8A32] on dark links).",
+    "Never center align the root application container. Maintain natural left-aligned reading rhythm."
+  ]
+}
