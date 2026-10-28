@@ -13,7 +13,7 @@ export default function ServiceCard({ service, testId }: { service: ServiceInfo;
           {service.slug.slice(0, 2).toUpperCase()}
         </span>
       </div>
-      <h3 data-testid={`${testId}-title`}>{service.name}</h3>
+      <h3 data-testid={`${testId}-title`}>{service.title}</h3>
       <p data-testid={`${testId}-description`}>{service.short}</p>
       <Link
         to={`/services/${service.slug}`}

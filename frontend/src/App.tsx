@@ -4,6 +4,7 @@ import { SiteShell } from "@/components/SiteShell";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import Courses from "@/pages/Courses";
+import FlagshipProduct from "@/pages/FlagshipProduct";
 import Industries from "@/pages/Industries";
 import Home from "@/pages/Home";
 import Portfolio from "@/pages/Portfolio";
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/services/:slug" element={<ServiceDetail />} />
+        <Route path="/flagship-product" element={<FlagshipProduct />} />
         <Route path="/industries" element={<Industries />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/study-abroad" element={<StudyAbroad />} />

@@ -9,6 +9,7 @@ import { services } from "@/lib/site-data";
 
 const interests: ServiceInterest[] = [
   ...services.map((service) => service.name),
+  "BAIDA Platform",
   "General enquiry",
 ];
 

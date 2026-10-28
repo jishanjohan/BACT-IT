@@ -13,6 +13,7 @@ ServiceInterest = Literal[
     "IT Training",
     "Study Abroad",
     "Digital Marketing",
+    "BAIDA Platform",
     "General enquiry",
 ]
 

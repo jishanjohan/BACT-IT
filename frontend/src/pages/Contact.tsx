@@ -1,7 +1,7 @@
-import { ArrowUpRight, Globe2, Mail } from "lucide-react";
+import { ArrowUpRight, Globe2, Mail, MapPin, Phone } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
 import PageIntro from "@/components/PageIntro";
-import { contactDetails } from "@/lib/site-data";
+import { contactDetails, offices } from "@/lib/site-data";
 
 export default function Contact() {
   return (
@@ -28,9 +28,18 @@ export default function Contact() {
               <span><small data-testid="contact-website-label">Visit our website</small><strong data-testid="contact-website-value">{contactDetails.website}</strong></span>
               <ArrowUpRight size={16} aria-hidden="true" />
             </a>
-            <div className="contact-aside-note" data-testid="contact-aside-note">
-              <span data-testid="contact-aside-note-mark">B</span>
-              <p data-testid="contact-aside-note-copy">Business Application &amp; Communication Technology</p>
+            <div className="contact-offices" data-testid="contact-offices">
+              {offices.map((office) => (
+                <div className="contact-office" key={office.country} data-testid={`contact-office-${office.country.toLowerCase()}`}>
+                  <h3 data-testid={`contact-office-${office.country.toLowerCase()}-country`}>
+                    <MapPin size={15} aria-hidden="true" /> {office.country}
+                  </h3>
+                  <p data-testid={`contact-office-${office.country.toLowerCase()}-address`}>{office.address}</p>
+                  <a href={`tel:${office.tel}`} data-testid={`contact-office-${office.country.toLowerCase()}-phone`}>
+                    <Phone size={13} aria-hidden="true" /> {office.phone}
+                  </a>
+                </div>
+              ))}
             </div>
           </aside>
           <div className="contact-form-panel" data-testid="contact-form-panel">

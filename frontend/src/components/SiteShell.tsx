@@ -1,11 +1,12 @@
 import { useState, type ReactNode } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { ArrowUpRight, Menu, X } from "lucide-react";
-import { contactDetails, services } from "@/lib/site-data";
+import { ArrowUpRight, Facebook, Instagram, Linkedin, Mail, MapPin, Menu, Phone, X } from "lucide-react";
+import { companyFullName, contactDetails, offices, services, socialLinks } from "@/lib/site-data";
 
 const navigation = [
   { label: "About", to: "/about", id: "nav-about-link" },
   { label: "Services", to: "/services", id: "nav-services-link" },
+  { label: "BAIDA", to: "/flagship-product", id: "nav-flagship-link" },
   { label: "Industries", to: "/industries", id: "nav-industries-link" },
   { label: "Training", to: "/courses", id: "nav-training-link" },
   { label: "Study abroad", to: "/study-abroad", id: "nav-study-abroad-link" },
@@ -24,8 +25,10 @@ export function SiteHeader() {
           data-testid="brand-home-link"
           onClick={() => setOpen(false)}
         >
-          <span className="brand-mark" data-testid="brand-mark">B</span>
-          <span className="brand-name" data-testid="brand-name">BACT<span>IT</span></span>
+          <img src="/logo-horizontal.png" alt="Bact IT" className="brand-logo" data-testid="brand-logo" />
+          <span className="brand-fullname" data-testid="brand-fullname">
+            Business Application &amp;<br />Communication Technology
+          </span>
         </Link>
         <nav className="desktop-nav" aria-label="Main navigation" data-testid="desktop-navigation">
           {navigation.map((item) => (
@@ -72,7 +75,7 @@ export function SiteHeader() {
               onClick={() => setOpen(false)}
               data-testid={`mobile-service-${service.slug}-link`}
             >
-              {service.name}
+              {service.title}
             </Link>
           ))}
           <Link to="/contact" onClick={() => setOpen(false)} data-testid="mobile-contact-link">
@@ -90,17 +93,29 @@ export function SiteFooter() {
       <div className="footer-top page-container">
         <div className="footer-brand-block" data-testid="footer-brand-block">
           <Link to="/" className="brand-lockup footer-brand" data-testid="footer-brand-home-link">
-            <span className="brand-mark" data-testid="footer-brand-mark">B</span>
-            <span className="brand-name" data-testid="footer-brand-name">BACT<span>IT</span></span>
+            <img src="/logo-horizontal.png" alt="Bact IT" className="brand-logo" data-testid="footer-brand-logo" />
           </Link>
+          <p className="footer-fullname" data-testid="footer-brand-fullname">{companyFullName}</p>
           <p data-testid="footer-brand-description">
             Technology that connects, automates and secures your business.
           </p>
+          <div className="footer-socials" data-testid="footer-social-links">
+            <a href={socialLinks.facebook} target="_blank" rel="noreferrer" aria-label="BACT IT on Facebook" data-testid="footer-facebook-link">
+              <Facebook size={18} />
+            </a>
+            <a href={socialLinks.instagram} target="_blank" rel="noreferrer" aria-label="BACT IT on Instagram" data-testid="footer-instagram-link">
+              <Instagram size={18} />
+            </a>
+            <a href={socialLinks.linkedin} target="_blank" rel="noreferrer" aria-label="BACT IT on LinkedIn" data-testid="footer-linkedin-link">
+              <Linkedin size={18} />
+            </a>
+          </div>
         </div>
         <div className="footer-column" data-testid="footer-explore-column">
           <h3 data-testid="footer-explore-heading">Explore</h3>
           <Link to="/about" data-testid="footer-about-link">About BACT IT</Link>
           <Link to="/services" data-testid="footer-services-link">Our services</Link>
+          <Link to="/flagship-product" data-testid="footer-flagship-link">BAIDA flagship product</Link>
           <Link to="/industries" data-testid="footer-industries-link">Industries</Link>
           <Link to="/portfolio" data-testid="footer-portfolio-link">Projects & portfolio</Link>
         </div>
@@ -121,6 +136,22 @@ export function SiteFooter() {
             Contact our team <ArrowUpRight size={15} aria-hidden="true" />
           </Link>
         </div>
+      </div>
+      <div className="footer-offices page-container" data-testid="footer-offices">
+        {offices.map((office) => (
+          <div className="footer-office" key={office.country} data-testid={`footer-office-${office.country.toLowerCase()}`}>
+            <h4 data-testid={`footer-office-${office.country.toLowerCase()}-country`}>
+              <MapPin size={15} aria-hidden="true" /> {office.country}
+            </h4>
+            <p data-testid={`footer-office-${office.country.toLowerCase()}-address`}>{office.address}</p>
+            <a href={`tel:${office.tel}`} data-testid={`footer-office-${office.country.toLowerCase()}-phone`}>
+              <Phone size={13} aria-hidden="true" /> {office.phone}
+            </a>
+            <a href={`mailto:${contactDetails.email}`} data-testid={`footer-office-${office.country.toLowerCase()}-email`}>
+              <Mail size={13} aria-hidden="true" /> {contactDetails.email}
+            </a>
+          </div>
+        ))}
       </div>
       <div className="footer-bottom page-container">
         <span data-testid="footer-legal-copy">

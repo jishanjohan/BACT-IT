@@ -1,10 +1,10 @@
-import { ArrowUpRight, Building2, GraduationCap, HeartPulse, Landmark, RadioTower, ShoppingBag } from "lucide-react";
+import { ArrowUpRight, Building2, GraduationCap, Landmark, RadioTower, Rocket, ShoppingBag } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageIntro from "@/components/PageIntro";
 import SectionHeading from "@/components/SectionHeading";
 import { industries } from "@/lib/site-data";
 
-const industryIcons = [Building2, Landmark, HeartPulse, GraduationCap, ShoppingBag, RadioTower, Building2];
+const industryIcons = [Landmark, Building2, GraduationCap, ShoppingBag, RadioTower, Rocket];
 
 export default function Industries() {
   return (
@@ -12,29 +12,30 @@ export default function Industries() {
       <PageIntro
         eyebrow="Industries we serve"
         title="Technology that fits your field."
-        description="We support organizations across public services, business, healthcare, education, retail, technology and more."
+        description="See how BACT IT can support organizations across the public sector, enterprise, healthcare, education, retail, telecom and growing businesses."
         testId="industries-page-intro"
       />
       <section className="section-block industry-matrix-section" data-testid="industries-matrix-section">
         <div className="page-container">
           <SectionHeading
-            eyebrow="Made for different needs"
+            eyebrow="How we support you"
             title="Your context matters."
-            description="Every organization has its own priorities. Start with the sector closest to your work and explore relevant capabilities."
+            description="Start with the sector closest to your work and explore the capabilities that matter most to it."
             testId="industries-matrix-heading"
           />
           <div className="industry-matrix" data-testid="industries-matrix">
             {industries.map((industry, index) => {
               const Icon = industryIcons[index];
               return (
-                <article className="industry-card" key={industry} data-testid={`industry-card-${index + 1}`}>
+                <article className="industry-card" key={industry.name} data-testid={`industry-card-${index + 1}`}>
                   <span className="industry-card-icon" data-testid={`industry-card-${index + 1}-icon`}><Icon size={22} /></span>
                   <span className="industry-card-number" data-testid={`industry-card-${index + 1}-number`}>0{index + 1}</span>
-                  <h3 data-testid={`industry-card-${index + 1}-title`}>{industry}</h3>
+                  <h3 data-testid={`industry-card-${index + 1}-title`}>{industry.name}</h3>
+                  <p data-testid={`industry-card-${index + 1}-description`}>{industry.description}</p>
                   <Link
                     to="/services"
                     className="industry-card-link"
-                    aria-label={`Explore BACT IT services for ${industry}`}
+                    aria-label={`Explore BACT IT services for ${industry.name}`}
                     data-testid={`industry-card-${index + 1}-services-link`}
                   >
                     <ArrowUpRight size={18} />

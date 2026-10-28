@@ -2,7 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageIntro from "@/components/PageIntro";
 import SectionHeading from "@/components/SectionHeading";
-import { differentiators } from "@/lib/site-data";
+import { differentiators, leadership } from "@/lib/site-data";
 
 const teamImage =
   "https://images.unsplash.com/photo-1580894899378-92e56886cd4d?auto=format&fit=crop&w=1300&q=85";
@@ -56,6 +56,56 @@ export default function About() {
                 <span data-testid={`about-principle-${index + 1}-number`}>0{index + 1}</span>
                 <h3 data-testid={`about-principle-${index + 1}-title`}>{item.title}</h3>
                 <p data-testid={`about-principle-${index + 1}-description`}>{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="section-block leadership-section" id="authority" data-testid="about-leadership-section">
+        <div className="page-container">
+          <SectionHeading
+            eyebrow="Authority"
+            title="The people leading BACT IT."
+            description="Meet the leadership team guiding our training, services and vision."
+            testId="about-leadership-heading"
+          />
+          <div className="leader-list" data-testid="about-leadership-list">
+            {leadership.map((leader, index) => (
+              <article className="leader-card" key={leader.name} data-testid={`about-leader-${index + 1}`}>
+                <div className="leader-profile">
+                  <span className="leader-avatar" aria-hidden="true">{leader.initials}</span>
+                  <div>
+                    <h3 data-testid={`about-leader-${index + 1}-name`}>{leader.name}</h3>
+                    <p data-testid={`about-leader-${index + 1}-role`}>{leader.role}</p>
+                    {leader.link && (
+                      <a
+                        href={leader.link.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-action"
+                        data-testid={`about-leader-${index + 1}-profile-link`}
+                      >
+                        {leader.link.label} <ArrowUpRight size={15} aria-hidden="true" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+                {(leader.bio.length > 0 || leader.message.length > 0) && (
+                  <div className="leader-copy">
+                    {leader.bio.map((paragraph, i) => (
+                      <p key={i} data-testid={`about-leader-${index + 1}-bio-${i + 1}`}>{paragraph}</p>
+                    ))}
+                    {leader.message.length > 0 && (
+                      <blockquote className="leader-message" data-testid={`about-leader-${index + 1}-message`}>
+                        <span className="leader-message-label">Message</span>
+                        {leader.message.map((paragraph, i) => (
+                          <p key={i}>{paragraph}</p>
+                        ))}
+                        <cite>— {leader.name}</cite>
+                      </blockquote>
+                    )}
+                  </div>
+                )}
               </article>
             ))}
           </div>

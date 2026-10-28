@@ -1,12 +1,13 @@
-import { ArrowUpRight, BookOpen, Cloud, Code2, Database, ShieldCheck, Wifi } from "lucide-react";
+import { ArrowUpRight, BookOpen, BriefcaseBusiness, Cloud, Code2, Database, HardDrive, Server, ShieldCheck, Wifi } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageIntro from "@/components/PageIntro";
 import SectionHeading from "@/components/SectionHeading";
-import { trainingTracks } from "@/lib/site-data";
+import Testimonials from "@/components/Testimonials";
+import { jobPlacement, trainingTracks } from "@/lib/site-data";
 
 const trainingImage =
   "https://images.unsplash.com/photo-1781092176313-8b8b1e9927c7?auto=format&fit=crop&w=1500&q=85";
-const trackIcons = [Wifi, Database, ShieldCheck, BookOpen, Database, Code2, Cloud];
+const trackIcons = [Wifi, Server, ShieldCheck, BookOpen, Database, Code2, HardDrive, Cloud];
 
 export default function Courses() {
   return (
@@ -56,6 +57,22 @@ export default function Courses() {
           </p>
         </div>
       </section>
+      <section className="section-block job-placement-section" data-testid="job-placement-section">
+        <div className="page-container job-placement-card">
+          <span className="job-placement-icon" aria-hidden="true">
+            <BriefcaseBusiness size={26} />
+          </span>
+          <div>
+            <span className="eyebrow" data-testid="job-placement-eyebrow">Career support</span>
+            <h2 data-testid="job-placement-title">{jobPlacement.title}</h2>
+            <p data-testid="job-placement-description">{jobPlacement.description}</p>
+          </div>
+          <Link to="/contact?service=IT%20Training" className="button button-primary" data-testid="job-placement-enquiry-link">
+            Ask about placement <ArrowUpRight size={17} aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
+      <Testimonials testId="courses-testimonials" />
       <section className="detail-cta" data-testid="courses-contact-cta">
         <div className="page-container detail-cta-inner">
           <div>

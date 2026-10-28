@@ -12,6 +12,8 @@ contact enquiry flow.
 - `/about` — BACT IT overview and supplied differentiators
 - `/services` — all seven service areas
 - `/services/:slug` — service detail and contextual enquiry link
+- `/flagship-product` — BAIDA (Business Automation & AI Integration For Data
+  Analytics) flagship product: description + six capabilities, enquiry CTA
 - `/industries` — industries served
 - `/courses` — professional training tracks with enquiry links
 - `/study-abroad` — Canada and Europe guidance information and enquiry links
@@ -20,6 +22,16 @@ contact enquiry flow.
 
 ## Data and backend
 
+All page content lives in `frontend/src/lib/site-data.ts`: services (each with
+`title` display name, sub-items with description + features, and a
+`customization` note shown on `/services/:slug`), industries (6, with
+descriptions), offices (Bangladesh / USA / Australia, shown in footer and
+Contact), socialLinks (Facebook, Instagram, LinkedIn in footer), clients
+("Working with" on Home) and partners (Microsoft, Dell, Dahua on Home; text tiles,
+no logo files supplied), testimonials (Home + `/courses`), jobPlacement
+(`/courses`), leadership ("Authority" section on `/about`). All of this copy was
+supplied by the user.
+
 - `InquiryCreate`: full_name, organization, email, phone, service, message.
 - `InquiryCreated`: id, received, created_at.
 - `POST /api/inquiries` validates and stores the enquiry in MongoDB. Submitted
@@ -27,6 +39,16 @@ contact enquiry flow.
 - Enquiry service values match the frontend `ServiceInterest` type.
 
 ## Key user flow
+
+Branding: official Bact IT logos live in `frontend/public/logo-horizontal.png`
+(header/footer) and `logo-stacked.png` (homepage brand intro). The full name
+"Business Application & Communication Technology" appears in the homepage hero,
+brand intro, header (wide screens) and footer.
+
+Homepage Service Finder (`components/ServiceFinder.tsx`, client-only, data in
+`lib/site-data.ts` `finderAudiences`): step 1 audience (organization / learner /
+student) → step 2 goal → step 3 recommendation with "Send an enquiry" link to
+`/contact?service=<ServiceInterest>` and an explore link.
 
 Visitors browse a service, training track, or study-abroad option; follow a CTA
 to `/contact` (service interest preselected when available); submit the enquiry;
@@ -41,5 +63,5 @@ no admin dashboard or portal in this phase.
 
 Use supplied service categories, training areas, contact email, and website.
 Do not invent portfolio evidence, client claims, endorsements, schedules,
-syllabi, admissions details, or study-abroad guarantees. Flagship product area
-is not populated because no product details were supplied.
+syllabi, admissions details, or study-abroad guarantees. Flagship product content
+(BAIDA) is the user-supplied copy only.
