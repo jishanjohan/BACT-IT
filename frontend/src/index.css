@@ -5444,3 +5444,11 @@ textarea:focus-visible {
     transition: none;
   }
 }
+
+/* Larger, bold eyebrow label (Home flagship section) */
+.eyebrow-strong {
+  font-family: var(--font-display);
+  font-size: clamp(15px, 1.6vw, 18px);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}

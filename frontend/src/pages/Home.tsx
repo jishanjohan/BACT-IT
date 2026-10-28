@@ -156,7 +156,7 @@ export default function Home() {
       <section className="home-flagship" data-testid="home-flagship-section">
         <div className="page-container home-flagship-grid">
           <div className="home-flagship-lead">
-            <span className="eyebrow eyebrow-light" data-testid="home-flagship-eyebrow">Our flagship product</span>
+            <span className="eyebrow eyebrow-light eyebrow-strong" data-testid="home-flagship-eyebrow">Our flagship product</span>
             <h2 data-testid="home-flagship-title">
               <em>{flagshipProduct.shortName}</em> {flagshipProduct.name}
             </h2>
