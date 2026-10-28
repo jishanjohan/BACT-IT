@@ -1,7 +1,7 @@
-import { ArrowLeft, ArrowUpRight, Check, SlidersHorizontal } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Check, Mail, SlidersHorizontal } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import PageIntro from "@/components/PageIntro";
-import { services } from "@/lib/site-data";
+import { contactDetails, services } from "@/lib/site-data";
 
 const infrastructureImage =
   "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1500&q=85";
@@ -76,9 +76,18 @@ export default function ServiceDetail() {
               <h3 data-testid={`service-detail-customization-title-${service.slug}`}>Customized for each client</h3>
               <p data-testid={`service-detail-customization-copy-${service.slug}`}>{service.customization}</p>
             </div>
-            <Link to={enquiryLink} className="text-action" data-testid={`service-detail-customization-link-${service.slug}`}>
-              Discuss your requirements <ArrowUpRight size={16} aria-hidden="true" />
-            </Link>
+            <div className="customization-actions">
+              <Link to={enquiryLink} className="text-action" data-testid={`service-detail-customization-link-${service.slug}`}>
+                Discuss your requirements <ArrowUpRight size={16} aria-hidden="true" />
+              </Link>
+              <a
+                href={`mailto:${contactDetails.email}?subject=${encodeURIComponent(`Requirements: ${service.title}`)}`}
+                className="customization-email"
+                data-testid={`service-detail-customization-email-${service.slug}`}
+              >
+                <Mail size={15} aria-hidden="true" /> {contactDetails.email}
+              </a>
+            </div>
           </div>
         </div>
       </section>

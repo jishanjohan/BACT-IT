@@ -2563,6 +2563,31 @@ textarea:focus-visible {
   color: #ffffff;
 }
 
+.customization-actions {
+  display: grid;
+  justify-items: start;
+  gap: 8px;
+}
+
+.customization-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease;
+}
+
+.customization-email:hover {
+  border-color: var(--orange);
+  background: var(--orange);
+  color: var(--navy);
+}
+
 .industry-card p {
   margin: 8px 0 0;
   padding-right: 34px;
