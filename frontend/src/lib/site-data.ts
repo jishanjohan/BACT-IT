@@ -754,8 +754,6 @@ export interface Leader {
   link?: { label: string; href: string };
   // Optional headshot (e.g. "/leadership/jishan.jpg" in frontend/public); initials are shown until one is added.
   photo?: string;
-  // Shown in the "Message from our Founder & CEO" feature instead of inside the leadership card.
-  featured?: boolean;
 }
 
 export const leadership: Leader[] = [
@@ -765,9 +763,7 @@ export const leadership: Leader[] = [
     initials: "ZA",
     bio: [],
     message: [
-      "At BACT IT of Bangladesh, we believe in building a smarter, more empowered future through technology. When we started this journey, our vision was simple—to make advanced IT education accessible to everyone, regardless of background or location.",
-      "Today, that vision drives us to deliver globally competitive training in programming, cybersecurity, data analytics, and beyond—blending practical skills with real-world solutions. Our mission is not just to train individuals but to ignite innovation, foster digital confidence, and create opportunities in every corner of Bangladesh.",
-      "Whether you are a student, a professional, or an organization—BACT IT is here to walk with you into the future of technology.",
+      "At BACT IT, we see technology as the engine of business growth. Our vision is to help organizations work smarter today while preparing Bangladesh’s new generation to lead the technology of tomorrow.",
     ],
   },
   {
@@ -779,8 +775,7 @@ export const leadership: Leader[] = [
       "Despite his professional commitments abroad, Mr. Rahman remains deeply committed to the development of Bangladesh’s tech talent. His involvement with BACT IT reflects his passion for bridging global expertise with local potential. Through his guidance, we continue to align our training standards with international benchmarks and expand our reach beyond borders.",
     ],
     message: [
-      "With my experience working in a globally recognized IT company in the United States, I have seen how rapidly the tech industry is evolving—and how crucial it is to build a workforce that is skilled, adaptable, and globally competitive. That is exactly what BACT IT stands for.",
-      "My role with BACT IT allows me to give back to the country by helping create opportunities, share global insights, and ensure that our training and services meet international standards. Together, we aim to empower individuals, strengthen our IT ecosystem, and make Bangladesh a strong name in the global tech arena.",
+      "From my experience in the global tech industry, I know that the future belongs to those who adapt quickly. BACT IT brings international standards to local businesses and gives young people the skills to compete anywhere in the world.",
     ],
   },
   {
@@ -792,8 +787,7 @@ export const leadership: Leader[] = [
       "Even while studying abroad, his heart remains connected to Bangladesh. As an emerging entrepreneur, he co-founded BACT IT with a mission to bridge the gap between global tech standards and local talent. His dedication, curiosity, and leadership continue to inspire our journey toward making world-class IT education accessible for all.",
     ],
     message: [
-      "At BACT IT, our vision is to provide industry-relevant, globally-aligned IT education and services that enable our students and clients to compete confidently on both local and international platforms. We are committed to building a learning environment that encourages innovation, practical skills, and lifelong learning.",
-      "I believe that with the right guidance, access, and mindset, anyone in Bangladesh can become a leader in the digital world—and BACT IT is here to make that vision a reality.",
+      "Our new generation is full of talent. It only needs the right direction. At BACT IT, we turn curiosity into career-ready skills in AI, cloud, cybersecurity and software, so young people can build the future, not just follow it.",
     ],
     link: { label: "Facebook profile", href: "https://www.facebook.com/jubayer.ahmed.hridoy.22397" },
   },
@@ -801,14 +795,11 @@ export const leadership: Leader[] = [
     name: "Toufiqur Rahaman Jishan",
     role: "Founder & CEO, BACT IT",
     initials: "TJ",
-    featured: true,
     bio: [
       "Toufiqur Rahaman Jishan is the Founder and Chief Executive Officer of BACT IT. He leads the company’s overall vision and strategy across technology services, professional IT training and study abroad guidance, with a focus on connecting global technology standards with local talent and businesses in Bangladesh.",
     ],
     message: [
-      "When we founded BACT IT, Business Application & Communication Technology, our goal was simple: to be a technology partner that organizations can genuinely rely on, and to help people build the skills the digital economy demands.",
-      "Today we bring software, ICT infrastructure, cybersecurity, AI, professional IT training, study abroad guidance and digital marketing together under one roof. Whether we are building a system for a business, securing an organization’s network or training the next generation of IT professionals, we focus on practical, reliable solutions built around real needs.",
-      "Technology should connect, automate and secure, and it should create opportunity. With our team in Bangladesh, the USA and Australia, we are committed to bringing international standards to local talent and local businesses. Thank you for considering BACT IT as your technology partner. We look forward to growing with you.",
+      "We built BACT IT to be a practical technology partner for business, delivering software, security and AI that solve real problems. Every solution we create and every learner we train is a step towards a smarter, future-ready Bangladesh.",
     ],
     link: { label: "LinkedIn profile", href: "https://www.linkedin.com/in/md-toufiqur-rahaman-jishan-125794ab/" },
   },

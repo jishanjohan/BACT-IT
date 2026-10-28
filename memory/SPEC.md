@@ -144,9 +144,7 @@ syllabi, admissions details, or study-abroad guarantees. Flagship product conten
 ## About page: founder message + leader photos
 - `Leader` has optional `photo` (path in frontend/public, e.g. /leadership/jishan.jpg) and `featured`.
   `components/LeaderAvatar.tsx` shows the photo or falls back to initials. No photos supplied yet.
-- Toufiqur Rahaman Jishan (featured) gets the "Message from our Founder & CEO" section (#founder-message) above
-  the leadership list; his card shows a bio plus a link to it. His bio + message are a DRAFT written from existing
-  company copy (the user skipped providing text), to be replaced with his own words.
+- The separate founder feature section was removed (user: it repeated). Each leader card shows a short message, in order Chairman → Vice-Chairman → Co-Founder → Founder & CEO; all four messages were rewritten short and distinct on request (business, new generation, future technology).
 - Clients: the "Banking sector" tile is unchanged; real bank names have not been provided.
 
 ## IT Training service page (/services/it-training)
