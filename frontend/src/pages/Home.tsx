@@ -4,10 +4,10 @@ import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
 import ServiceFinder from "@/components/ServiceFinder";
 import Testimonials from "@/components/Testimonials";
+import WhyChoose from "@/components/WhyChoose";
 import {
   clients,
   companyFullName,
-  differentiators,
   flagshipProduct,
   industries,
   partners,
@@ -188,33 +188,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="why-section" data-testid="home-why-section">
-        <div className="page-container why-grid">
-          <div className="why-lead">
-            <span className="eyebrow eyebrow-light" data-testid="home-why-eyebrow">Why BACT IT</span>
-            <h2 data-testid="home-why-title">Technology that connects, automates and secures your business.</h2>
-            <p data-testid="home-why-description">
-              A thoughtful, security-focused approach helps keep your technology aligned with the
-              needs of your organization today and as they change.
-            </p>
-            <Link to="/about" className="button button-outline-light" data-testid="home-about-link">
-              About BACT IT <ArrowUpRight size={16} aria-hidden="true" />
-            </Link>
-          </div>
-          <div className="differentiator-list" data-testid="home-differentiators-list">
-            {differentiators.map((item, index) => (
-              <article className="differentiator-item" key={item.title} data-testid={`home-differentiator-${index + 1}`}>
-                <span data-testid={`home-differentiator-${index + 1}-number`}>0{index + 1}</span>
-                <div>
-                  <h3 data-testid={`home-differentiator-${index + 1}-title`}>{item.title}</h3>
-                  <p data-testid={`home-differentiator-${index + 1}-description`}>{item.description}</p>
-                </div>
-                <ArrowUpRight size={18} aria-hidden="true" />
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <WhyChoose testId="home-why" />
 
       <section className="section-block industries-preview" data-testid="home-industries-section">
         <div className="page-container industries-preview-grid">

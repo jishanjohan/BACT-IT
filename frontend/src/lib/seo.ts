@@ -1,4 +1,5 @@
 import { contactDetails, offices, services, socialLinks, trainingTracks } from "@/lib/site-data";
+import { findSolution } from "@/lib/solutions-data";
 
 // Public production domain — used for canonical URLs, sitemap and social previews.
 export const SITE_URL = "https://www.bactit.com";
@@ -119,10 +120,10 @@ const pages: Record<string, PageSeo> = {
 };
 
 const serviceKeywords: Record<string, string[]> = {
-  "software-solutions": ["software development company Bangladesh", "ERP software Bangladesh", "HRM software Bangladesh", "hospital management system Bangladesh", "POS software Bangladesh", "custom software Dhaka", "সফটওয়্যার ডেভেলপমেন্ট"],
+  "software-solutions": ["ERP software Bangladesh", "CRM software Bangladesh", "HRM software Bangladesh", "inventory management software", "school management software", "business intelligence Bangladesh", "software development company Bangladesh", "ERP software Bangladesh", "HRM software Bangladesh", "hospital management system Bangladesh", "POS software Bangladesh", "custom software Dhaka", "সফটওয়্যার ডেভেলপমেন্ট"],
   "ict-infrastructure": ["ICT infrastructure Bangladesh", "network solutions Dhaka", "data center Bangladesh", "structured cabling Dhaka", "CCTV installation Dhaka", "server and storage solutions Bangladesh"],
   cybersecurity: ["cybersecurity company Bangladesh", "cyber security services Dhaka", "penetration testing Bangladesh", "SOC services Bangladesh", "VAPT Bangladesh", "সাইবার সিকিউরিটি"],
-  "ai-solutions": ["AI solutions Bangladesh", "AI integration services", "chatbot development Bangladesh", "machine learning company Dhaka", "AI automation for business"],
+  "ai-solutions": ["AI-powered business solutions", "RAG knowledge assistant", "AI agent development", "predictive analytics Bangladesh", "AI workflow automation", "AI solutions Bangladesh", "AI integration services", "chatbot development Bangladesh", "machine learning company Dhaka", "AI automation for business"],
   "it-training": ["IT training in Bangladesh", "CCNA training Dhaka", "CEH course Bangladesh", "cloud certification training", "আইটি ট্রেনিং"],
   "study-abroad": ["study abroad consultancy Bangladesh", "student visa consultant Dhaka", "study in Australia from Bangladesh", "study in USA from Bangladesh", "বিদেশে পড়াশোনা"],
   "digital-marketing": ["digital marketing agency Bangladesh", "SEO services Dhaka", "social media marketing Bangladesh", "website design Dhaka", "ডিজিটাল মার্কেটিং"],
@@ -140,6 +141,16 @@ const notFound: PageSeo = { ...pages["/services"], noindex: true };
 export function getPageSeo(pathname: string): PageSeo {
   const path = pathname.length > 1 ? pathname.replace(/\/+$/, "") : pathname;
   if (["/admin", "/sign-in", "/sign-up"].some((p) => path.startsWith(p))) return privatePage;
+  const solutionMatch = path.match(/^\/services\/([^/]+)\/([^/]+)$/);
+  if (solutionMatch) {
+    const found = findSolution(solutionMatch[1], solutionMatch[2]);
+    if (!found) return notFound;
+    return {
+      title: `${found.item.seoTitle} | BACT IT`,
+      description: `${found.item.short} ${found.item.what}`.slice(0, 300),
+      keywords: [...found.item.keywords, found.item.title, ...brandKeywords],
+    };
+  }
   const serviceMatch = path.match(/^\/services\/([^/]+)$/);
   if (serviceMatch) {
     const service = services.find((s) => s.slug === serviceMatch[1]);
@@ -150,7 +161,47 @@ export function getPageSeo(pathname: string): PageSeo {
       keywords: [...(serviceKeywords[service.slug] ?? []), service.name, ...brandKeywords],
     };
   }
+  const trackMatch = path.match(/^\/courses\/([^/]+)$/);
+  if (trackMatch) {
+    const track = trainingTracks.find((t) => t.slug === trackMatch[1]);
+    if (!track) return { ...pages["/courses"], noindex: true };
+    return {
+      title: `${track.seoTitle} | BACT IT`,
+      description: `${track.title} training in Dhaka, Bangladesh: ${track.courseList.map((c) => `${c.name} course (${c.hours} hours)`).join(", ")}. ${track.why}`.slice(0, 300),
+      keywords: [...track.keywords, ...track.courseList.map((c) => `${c.name} course in Dhaka`), `${track.title} training`, "IT training in Bangladesh", "IT training center Dhaka", ...brandKeywords],
+    };
+  }
   return pages[path] ?? { ...pages["/"], noindex: true };
+}
+
+export function courseJsonLd(pathname: string) {
+  const slug = pathname.match(/^\/courses\/([^/]+)\/?$/)?.[1];
+  const track = slug ? trainingTracks.find((t) => t.slug === slug) : undefined;
+  if (!track) return null;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    name: track.heading,
+    description: track.why,
+    url: canonicalUrl(pathname),
+    keywords: track.keywords.join(", "),
+    teaches: track.learn,
+    provider: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+    hasPart: track.courseList.map((course) => ({
+      "@type": "Course",
+      name: `${course.name} Training`,
+      description: course.description,
+      educationalLevel: course.level,
+      timeRequired: `PT${course.hours}H`,
+      provider: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+      hasCourseInstance: {
+        "@type": "CourseInstance",
+        courseMode: ["Onsite", "Online"],
+        courseWorkload: `PT${course.hours}H`,
+        location: "Dhaka, Bangladesh",
+      },
+    })),
+  };
 }
 
 export function canonicalUrl(pathname: string): string {
@@ -180,6 +231,22 @@ export const organizationJsonLd = {
 };
 
 export function serviceJsonLd(pathname: string) {
+  const nested = pathname.match(/^\/services\/([^/]+)\/([^/]+)\/?$/);
+  if (nested) {
+    const found = findSolution(nested[1], nested[2]);
+    if (!found) return null;
+    return {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: found.item.heading,
+      description: found.item.what,
+      serviceType: found.item.title,
+      url: canonicalUrl(pathname),
+      keywords: found.item.keywords.join(", "),
+      provider: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+      areaServed: ["Bangladesh", "United States", "Australia"],
+    };
+  }
   const slug = pathname.match(/^\/services\/([^/]+)\/?$/)?.[1];
   const service = slug ? services.find((s) => s.slug === slug) : undefined;
   if (!service) return null;

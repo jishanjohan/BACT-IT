@@ -114,3 +114,29 @@ syllabi, admissions details, or study-abroad guarantees. Flagship product conten
 ## Service cards
 - Each service in `services` (site-data.ts) has `image` + `imageAlt` (Unsplash/Pexels photo); ServiceCard shows it as a
   16:9 header with the 2-letter index chip overlaid. The old symbol `icon` field was removed.
+
+## Training track pages (/courses/:slug)
+- Each `trainingTracks` entry has `slug` (keyword-rich, e.g. `networking-ccna-ccnp-training`), `seoTitle`, and
+  `courseList` (24 courses total): name, hours, span (e.g. "8 weeks"), level, SEO description. Durations are
+  industry-standard guides, not confirmed client schedules.
+- `pages/TrainingTrackPage.tsx`: sticky "Back to Training" (→ `/courses#training-tracks`), PageIntro (h1 = heading),
+  shared `components/TrainingTrackDetails.tsx` (courses & duration cards, why, learn, benefits, careers, keywords,
+  enquiry), job placement card, links to the other 7 tracks. Unknown slug → not-found + noindex.
+- The /courses accordion renders the same TrainingTrackDetails (h4 headings) plus an "Open full course page" link.
+- SEO: per-track title/description/keywords in `lib/seo.ts` + Course JSON-LD with `hasPart` courses (timeRequired).
+  The sitemap lists all 8 track URLs (24 URLs total).
+
+## Software & AI solutions (lib/solutions-data.ts)
+- `softwareSolutions` (10 categories, all available now) and `aiSolutions` (12 features; `availability`
+  "Available now" | "Custom project": custom = document processing, predictive analytics, RAG assistants, AI agents).
+  Each item: slug, title, heading, seoTitle, short, what, why, features, advantages, problems/audiences (software)
+  or example (AI), keywords, icon. `solutionGroups` holds section copy + CTA ("Discuss Your Software Requirements" /
+  "Request a Consultation") + enquiry service value; `responsibleAi` holds 5 principles.
+- /services/software-solutions and /services/ai-solutions render `SolutionAccordion` (id="solutions") instead of the
+  generic item cards, then `WhyChoose`; AI page also renders `ResponsibleAi`.
+- `/services/:group/:slug` → `pages/SolutionPage.tsx` (Back to {group} → `/services/<group>#solutions`).
+  SEO title/description/keywords + Service JSON-LD in lib/seo.ts; all 22 URLs in the sitemap (46 total).
+- "Why Choose BACT IT?" = `components/WhyChoose.tsx` using the 9 `differentiators` in site-data (Home + both pages above).
+- Chat bot knowledge (backend/lib/bact_knowledge.py) lists all software categories, AI availability,
+  responsible AI and the Why Choose points.
+- Visual edit: "VBA" renamed to "VBA Excel" across training content.

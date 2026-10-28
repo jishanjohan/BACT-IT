@@ -1,0 +1,73 @@
+{
+  "iteration": 2,
+  "summary": "Verified the 8 training-track feature criteria (track pages, course/duration/description lists, SEO tags, accordion page-links, back/other-track navigation, sitemap, services regression, mobile layout). All 8 UI-facing criteria covered by 8 browser checks; no API endpoints are involved (all content is static site-data.ts and client-side SEO/sitemap), so no new backend pytest files were required. One check re-verified against the public preview URL.",
+  "passed": 8,
+  "failed": 0,
+  "bugs": [],
+  "action_items": [],
+  "retest_needed": false,
+  "checks": [
+    {
+      "criterion": "Each training track has its own page",
+      "name": "track-pages-load-with-heading",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "All 8 /courses/<slug> URLs loaded with exactly one <h1>, non-empty text, and the track-page-<slug> container visible; Networking page's h1 matched 'Networking Training — CompTIA A+, CCNA & CCNP' exactly. Re-ran successfully against public preview URL build-preview-291--4971mohu.preview.emergentagent.com."
+    },
+    {
+      "criterion": "Every course shows a standard duration, level and short description",
+      "name": "track-course-list-duration-and-description",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Networking track page showed CompTIA A+ (Beginner, 40 hours · 6 weeks), CCNA (Intermediate, 60 hours · 8 weeks), CCNP (Advanced, 80 hours · 10 weeks), each with a >20-char description. Summed course-name testids across all 8 tracks = 24 (3 Networking + counts from remaining 7 tracks), matching the expected total."
+    },
+    {
+      "criterion": "Track pages are SEO-ready",
+      "name": "track-page-seo-tags",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Networking page: document.title contains 'Dhaka'/'Bangladesh' and '| BACT IT'; meta description contains '40 hours'; meta keywords present; canonical = https://www.bactit.com/courses/networking-ccna-ccnp-training; meta robots = 'index, follow, max-image-preview:large'; #ld-course JSON-LD hasPart.length === 3 (matches course count). Cloud track page had a distinct title and its own canonical URL. /courses/xyz showed track-not-found-page/track-not-found-title with meta robots containing 'noindex'."
+    },
+    {
+      "criterion": "Training page accordion links to the track pages",
+      "name": "training-accordion-page-link",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "On /courses, training-track-1-toggle has aria-expanded=true by default and its course cards are visible without clicking. Opened track 3 (Cybersecurity), saw course-1 name/duration cards, clicked training-track-3-page-link -> navigated to track-page-cybersecurity-ceh-chfi-soc-training with window.scrollY < 20 (top of page)."
+    },
+    {
+      "criterion": "Navigation between tracks and back",
+      "name": "track-page-navigation-back-and-other-tracks",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "On /courses/networking-ccna-ccnp-training, track-back-to-training-button click navigated URL to '/courses#training-tracks' with training-tracks-section in viewport. From the Cybersecurity track page, other-track-link-cloud-aws-azure-gcp-training click opened the Cloud track page at scrollY < 20."
+    },
+    {
+      "criterion": "Sitemap includes track pages",
+      "name": "sitemap-includes-track-pages",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "GET /sitemap.xml returned 200 with exactly 24 <loc> entries, including all 8 https://www.bactit.com/courses/<slug> URLs for the 8 training tracks."
+    },
+    {
+      "criterion": "No regressions on services",
+      "name": "services-no-regression-photos-and-back-nav",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Home services grid cards all render non-empty <img> src (photos, no glyph fallback). Opened the first service detail page, clicked service-back-to-services-button -> URL '/#services' with home-services-section in viewport. nav-about-link click from a scrolled page landed with scrollY < 20."
+    },
+    {
+      "criterion": "Mobile layout",
+      "name": "mobile-layout-no-overflow",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "At 390x800, both the Networking track page and /courses accordion had document.documentElement.scrollWidth <= 395 (no horizontal overflow). Within the open accordion panel, course-1 and course-2 cards share the same x-position (stacked, single column) with course-2 below course-1."
+    }
+  ],
+  "notes": [
+    "No login required for these pages per briefing; no auth-gated checks needed.",
+    "No new API-bearing criteria in this matrix (training content is static site-data.ts, SEO tags are set client-side, sitemap.xml is a static frontend asset) so no new backend pytest files were created; all 8 criteria are UI/content/navigation behavior, fully covered by browser checks.",
+    "Matrix contained exactly 8 criteria; all 8 covered, none skipped.",
+    "All checks follow fixture discipline: pure read/navigation checks against static content, no data mutation."
+  ]
+}

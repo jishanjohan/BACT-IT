@@ -188,7 +188,7 @@ function useScrollOnNavigate() {
   const { pathname, hash } = useLocation();
   useEffect(() => {
     if (!hash) {
-      window.scrollTo({ top: 0, behavior: "auto" });
+      window.scrollTo({ top: 0, behavior: "instant" });
       return;
     }
     const id = hash.slice(1);

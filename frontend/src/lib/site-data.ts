@@ -297,7 +297,7 @@ export const services: ServiceInfo[] = [
         description: "Preparation for senior security and audit credentials.",
         features: ["CISSP", "CISA", "CISM", "Lead Auditor preparation"],
       },
-      { title: "Data Analytics", description: "Analyze and visualize business data.", features: ["Power BI", "Advanced Excel", "VBA", "Big Data"] },
+      { title: "Data Analytics", description: "Analyze and visualize business data.", features: ["Power BI", "Advanced Excel", "VBA Excel", "Big Data"] },
       { title: "Programming", description: "Write software in widely used languages.", features: ["C", "C++", "Python", "Java"] },
       { title: "Database Administration", description: "Learn to manage and maintain business databases.", features: [] },
       { title: "Cloud", description: "Work with the leading cloud platforms.", features: ["Azure", "AWS", "GCP"] },
@@ -401,28 +401,32 @@ export const industries = [
 ];
 
 export const differentiators = [
-  {
-    title: "Integrated technology services",
-    description: "Software, infrastructure, cybersecurity, AI and training under one technology partner.",
-  },
-  {
-    title: "Security-focused approach",
-    description: "Solutions designed with reliability, security and business continuity in mind.",
-  },
-  {
-    title: "Customized solutions",
-    description: "Technology selected and developed around each client's specific needs.",
-  },
-  {
-    title: "Scalable and future-ready",
-    description: "Flexible solutions that can evolve with your organization's requirements.",
-  },
+  { title: "Customized solutions", description: "Solutions aligned with your business requirements, workflows, roles and reporting needs, not one-size-fits-all software." },
+  { title: "Integrated capabilities", description: "Software, IT infrastructure, cybersecurity, cloud and AI from one technology partner, designed to work together." },
+  { title: "Business process automation", description: "Automate repetitive manual work such as approvals, notifications and reports, so your team can focus on what matters." },
+  { title: "Data-driven insights", description: "Dashboards, reports and analytics that turn your business data into clearer, better-informed decisions." },
+  { title: "Scalable by design", description: "Solutions planned to grow with your organization, from a single branch to multiple locations and more users." },
+  { title: "Integration with existing systems", description: "Connect new solutions with the software you already use through APIs, where technically feasible." },
+  { title: "Security-conscious development", description: "Role-based access control, secure authentication and protection of sensitive data built into how we develop." },
+  { title: "Implementation & ongoing support", description: "Professional implementation, technical guidance, user training and ongoing support options after go-live." },
+  { title: "For organizations of every kind", description: "Solutions for SMEs, enterprises, educational institutions, healthcare organizations and public-sector bodies, where appropriate." },
 ];
+
+export interface TrackCourse {
+  name: string;
+  hours: number;
+  span: string;
+  level: "Beginner" | "Intermediate" | "Advanced";
+  description: string;
+}
 
 export interface TrainingTrack {
   title: string;
+  slug: string;
+  seoTitle: string;
   heading: string;
   courses: string;
+  courseList: TrackCourse[];
   why: string;
   learn: string[];
   benefits: string[];
@@ -433,8 +437,15 @@ export interface TrainingTrack {
 export const trainingTracks: TrainingTrack[] = [
   {
     title: "Networking",
+    slug: "networking-ccna-ccnp-training",
+    seoTitle: "CCNA, CCNP & CompTIA A+ Networking Training in Dhaka, Bangladesh",
     heading: "Networking Training — CompTIA A+, CCNA & CCNP",
     courses: "CompTIA A+ · CCNA · CCNP",
+    courseList: [
+      { name: "CompTIA A+", hours: 40, span: "6 weeks", level: "Beginner", description: "CompTIA A+ training in Dhaka for beginners: computer hardware, Windows, mobile devices, networking basics and troubleshooting. The ideal first course for IT support and help desk jobs in Bangladesh." },
+      { name: "CCNA", hours: 60, span: "8 weeks", level: "Intermediate", description: "CCNA training in Dhaka with Cisco lab practice: IP addressing, subnetting, switching, routing, VLANs, wireless, network security and automation basics. Prepares you for the Cisco CCNA certification exam." },
+      { name: "CCNP", hours: 80, span: "10 weeks", level: "Advanced", description: "CCNP Enterprise course in Bangladesh for working network engineers: advanced routing (OSPF, EIGRP, BGP), enterprise switching, SD-WAN, QoS and network troubleshooting on real Cisco labs." },
+    ],
     why: "Every organization runs on a network. Networking skills are the foundation of an IT career and are in steady demand at banks, telecoms, ISPs and enterprises in Bangladesh and abroad.",
     learn: [
       "Computer hardware, operating systems and troubleshooting (CompTIA A+)",
@@ -453,8 +464,14 @@ export const trainingTracks: TrainingTrack[] = [
   },
   {
     title: "Server Administration",
+    slug: "server-administration-windows-linux-training",
+    seoTitle: "Windows Server & Linux Administration Training in Dhaka, Bangladesh",
     heading: "Server Administration Training — Windows Server & Linux",
     courses: "Windows Server · Linux",
+    courseList: [
+      { name: "Windows Server", hours: 48, span: "6 weeks", level: "Intermediate", description: "Windows Server administration training in Dhaka: installation, Active Directory, DNS, DHCP, Group Policy, file and print services, Hyper-V and backup. Hands-on Microsoft server labs for system admin careers." },
+      { name: "Linux", hours: 48, span: "6 weeks", level: "Intermediate", description: "Linux administration course in Bangladesh (RHCSA-aligned): command line, users and permissions, storage, networking, services, shell scripting and security on Red Hat and Ubuntu servers." },
+    ],
     why: "Servers host the email, files, applications and websites businesses depend on. Skilled administrators keep them secure, fast and available, which makes this a reliable, well-paid specialism.",
     learn: [
       "Installing and configuring Windows Server and Linux distributions",
@@ -473,8 +490,15 @@ export const trainingTracks: TrainingTrack[] = [
   },
   {
     title: "Cybersecurity",
+    slug: "cybersecurity-ceh-chfi-soc-training",
+    seoTitle: "CEH Ethical Hacking, CHFI & SOC Analyst Training in Dhaka, Bangladesh",
     heading: "Cybersecurity Training — CEH, CHFI & SOC Analyst",
     courses: "CEH · CHFI · SOC training",
+    courseList: [
+      { name: "CEH", hours: 40, span: "5 weeks", level: "Intermediate", description: "CEH ethical hacking course in Dhaka (EC-Council aligned): footprinting, scanning, system hacking, malware, web application attacks, wireless hacking and penetration testing in a safe lab." },
+      { name: "CHFI", hours: 40, span: "5 weeks", level: "Advanced", description: "CHFI computer hacking forensic investigator training in Bangladesh: digital evidence collection, disk and memory forensics, network and email investigation, and cybercrime reporting." },
+      { name: "SOC training", hours: 48, span: "6 weeks", level: "Intermediate", description: "SOC analyst training in Dhaka: security monitoring with SIEM tools, log analysis, threat detection, alert triage and incident response, preparing you for Security Operations Center jobs." },
+    ],
     why: "Cyber attacks on banks, government and businesses are rising every year, and skilled security professionals are in short supply. Cybersecurity is one of the fastest-growing IT careers worldwide.",
     learn: [
       "Ethical hacking methods, reconnaissance and vulnerability assessment",
@@ -493,8 +517,16 @@ export const trainingTracks: TrainingTrack[] = [
   },
   {
     title: "Advanced Certifications",
+    slug: "cissp-cisa-cism-lead-auditor-training",
+    seoTitle: "CISSP, CISA, CISM & ISO 27001 Lead Auditor Training in Bangladesh",
     heading: "Advanced Security & Audit Certifications — CISSP, CISA, CISM & Lead Auditor",
     courses: "CISSP · CISA · CISM · Lead Auditor preparation",
+    courseList: [
+      { name: "CISSP", hours: 40, span: "5 weeks", level: "Advanced", description: "CISSP certification training in Bangladesh covering all eight (ISC)² domains: security and risk management, asset security, architecture, network security, IAM, testing, operations and software security." },
+      { name: "CISA", hours: 32, span: "4 weeks", level: "Advanced", description: "CISA certification course in Dhaka (ISACA): information systems auditing, IT governance, systems acquisition and development, operations and protection of information assets, with exam practice." },
+      { name: "CISM", hours: 32, span: "4 weeks", level: "Advanced", description: "CISM certification training in Bangladesh (ISACA): information security governance, risk management, security program development and incident management for security managers." },
+      { name: "Lead Auditor preparation", hours: 40, span: "5 days", level: "Advanced", description: "ISO 27001 Lead Auditor training in Bangladesh: ISMS requirements, audit planning, conducting and reporting audits, and leading an audit team, with certification exam preparation." },
+    ],
     why: "Senior security and audit credentials open the door to leadership roles. They are highly valued by banks, regulators, auditors and multinational companies, and command premium salaries.",
     learn: [
       "Security and risk management, governance and compliance",
@@ -513,8 +545,16 @@ export const trainingTracks: TrainingTrack[] = [
   },
   {
     title: "Data Analytics",
-    heading: "Data Analytics Training — Power BI, Advanced Excel, VBA & Big Data",
-    courses: "Power BI · Advanced Excel · VBA · Big Data",
+    slug: "data-analytics-power-bi-excel-training",
+    seoTitle: "Power BI, Advanced Excel & Data Analytics Course in Dhaka, Bangladesh",
+    heading: "Data Analytics Training — Power BI, Advanced Excel, VBA Excel & Big Data",
+    courses: "Power BI · Advanced Excel · VBA Excel · Big Data",
+    courseList: [
+      { name: "Power BI", hours: 30, span: "4 weeks", level: "Beginner", description: "Power BI course in Dhaka: connect and clean data with Power Query, build data models, write DAX measures and design interactive business dashboards and reports." },
+      { name: "Advanced Excel", hours: 24, span: "3 weeks", level: "Beginner", description: "Advanced Excel training in Bangladesh: lookup functions (XLOOKUP, VLOOKUP), pivot tables, charts, conditional formatting, data validation and dashboards for office professionals." },
+      { name: "VBA Excel", hours: 24, span: "3 weeks", level: "Intermediate", description: "Excel VBA macro course in Dhaka: record and write macros, loops, user forms and automation of repetitive reports to save hours of manual work every week." },
+      { name: "Big Data", hours: 40, span: "5 weeks", level: "Advanced", description: "Big Data training in Bangladesh: Hadoop and Spark fundamentals, data pipelines, distributed processing and working with large datasets for analytics and data engineering roles." },
+    ],
     why: "Businesses make better decisions with data. Analytics skills help professionals in any field, from finance and sales to HR, turn raw numbers into clear reports and insights.",
     learn: [
       "Advanced Excel formulas, pivot tables and data cleaning",
@@ -533,8 +573,16 @@ export const trainingTracks: TrainingTrack[] = [
   },
   {
     title: "Programming",
+    slug: "programming-python-java-c-courses",
+    seoTitle: "Python, Java, C & C++ Programming Courses in Dhaka, Bangladesh",
     heading: "Programming Courses — C, C++, Python & Java",
     courses: "C · C++ · Python · Java",
+    courseList: [
+      { name: "C", hours: 36, span: "6 weeks", level: "Beginner", description: "C programming course in Dhaka for beginners: variables, control flow, functions, arrays, pointers and memory, building strong programming logic and problem-solving skills." },
+      { name: "C++", hours: 40, span: "6 weeks", level: "Intermediate", description: "C++ programming course in Bangladesh: object-oriented programming, classes, inheritance, templates and the STL, with practical exercises for software development and competitive programming." },
+      { name: "Python", hours: 48, span: "8 weeks", level: "Beginner", description: "Python course in Dhaka from basics to projects: syntax, data structures, functions, OOP, file handling, automation scripts and an introduction to data analysis and AI libraries." },
+      { name: "Java", hours: 60, span: "8 weeks", level: "Intermediate", description: "Java programming training in Bangladesh: core Java, OOP, collections, exception handling, JDBC and building desktop and backend applications for enterprise developer jobs." },
+    ],
     why: "Programming is the core skill behind software, apps, automation and AI. Learning to code opens careers in software development, freelancing and technology startups.",
     learn: [
       "Programming fundamentals, logic and problem solving",
@@ -553,8 +601,13 @@ export const trainingTracks: TrainingTrack[] = [
   },
   {
     title: "Database Administration",
+    slug: "database-administration-training",
+    seoTitle: "Database Administration (DBA) & SQL Training in Dhaka, Bangladesh",
     heading: "Database Administration Training",
     courses: "Database Administration",
+    courseList: [
+      { name: "Database Administration", hours: 48, span: "6 weeks", level: "Intermediate", description: "Database administration (DBA) course in Dhaka: SQL, installing and configuring SQL Server, Oracle and MySQL, user security, backup and recovery, and performance tuning." },
+    ],
     why: "Every application stores its data in a database. Database administrators keep that data secure, available and fast, a critical role in banks, hospitals, telecoms and software companies.",
     learn: [
       "Relational database concepts and SQL",
@@ -573,8 +626,15 @@ export const trainingTracks: TrainingTrack[] = [
   },
   {
     title: "Cloud",
+    slug: "cloud-aws-azure-gcp-training",
+    seoTitle: "AWS, Azure & Google Cloud Training in Dhaka, Bangladesh",
     heading: "Cloud Computing Training — Microsoft Azure, AWS & Google Cloud",
     courses: "Azure · AWS · GCP",
+    courseList: [
+      { name: "Azure", hours: 40, span: "5 weeks", level: "Intermediate", description: "Microsoft Azure administrator training in Dhaka (AZ-104 aligned): virtual machines, storage, virtual networks, identity with Entra ID, monitoring and cost management." },
+      { name: "AWS", hours: 40, span: "5 weeks", level: "Intermediate", description: "AWS Solutions Architect Associate training in Bangladesh: EC2, S3, VPC, IAM, RDS, load balancing and designing secure, scalable and cost-effective cloud architectures." },
+      { name: "GCP", hours: 36, span: "5 weeks", level: "Intermediate", description: "Google Cloud training in Bangladesh (Associate Cloud Engineer aligned): Compute Engine, Cloud Storage, VPC, IAM, GKE basics and deploying applications on GCP." },
+    ],
     why: "Organizations are moving their systems to the cloud. Cloud skills are among the most in-demand and best-paid in IT, both locally and for remote work with international companies.",
     learn: [
       "Cloud computing concepts and service models (IaaS, PaaS, SaaS)",
@@ -832,7 +892,7 @@ export const finderAudiences: FinderAudience[] = [
     goals: [
       { id: "networking", label: "Networking and server administration", result: trainingResult("Networking & servers", "CompTIA A+, CCNA, CCNP, Windows Server and Linux") },
       { id: "cyber", label: "Cybersecurity and advanced certifications", result: trainingResult("Cybersecurity", "CEH, CHFI, SOC training, CISSP, CISA, CISM and Lead Auditor preparation") },
-      { id: "analytics", label: "Data analytics", result: trainingResult("Data analytics", "Power BI, Advanced Excel, VBA and Big Data") },
+      { id: "analytics", label: "Data analytics", result: trainingResult("Data analytics", "Power BI, Advanced Excel, VBA Excel and Big Data") },
       { id: "programming", label: "Programming and databases", result: trainingResult("Programming", "C, C++, Python, Java and Database Administration") },
       { id: "cloud", label: "Cloud platforms", result: trainingResult("Cloud", "Azure, AWS and GCP") },
     ],

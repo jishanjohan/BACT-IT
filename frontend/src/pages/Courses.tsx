@@ -1,24 +1,21 @@
 import { useState } from "react";
 import {
   ArrowUpRight,
-  Award,
   BookOpen,
   BriefcaseBusiness,
-  Check,
   ChevronDown,
   Cloud,
   Code2,
   Database,
-  GraduationCap,
   HardDrive,
   Server,
   ShieldCheck,
-  Tag,
   Wifi,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageIntro from "@/components/PageIntro";
 import SectionHeading from "@/components/SectionHeading";
+import TrainingTrackDetails from "@/components/TrainingTrackDetails";
 import Testimonials from "@/components/Testimonials";
 import { jobPlacement, trainingTracks } from "@/lib/site-data";
 
@@ -43,7 +40,7 @@ export default function Courses() {
         actionLabel="Ask about training"
         actionTo="/contact?service=IT%20Training"
       />
-      <section className="section-block training-tracks-section" data-testid="training-tracks-section">
+      <section className="section-block training-tracks-section" id="training-tracks" data-testid="training-tracks-section">
         <div className="page-container">
           <SectionHeading
             eyebrow="Professional IT training"
@@ -60,7 +57,7 @@ export default function Courses() {
                 <article
                   className={`training-track${isOpen ? " is-open" : ""}`}
                   key={track.title}
-                  id={`track-${track.title.toLowerCase().replace(/[^a-z]+/g, "-")}`}
+                  id={`track-${track.slug}`}
                   data-testid={`training-track-${n}`}
                 >
                   <h3 className="training-track-heading">
@@ -93,53 +90,7 @@ export default function Courses() {
                     data-testid={`training-track-${n}-panel`}
                   >
                     <div className="training-track-panel-inner">
-                      <div className="training-track-why" data-testid={`training-track-${n}-why`}>
-                        <h4>Why learn {track.title.toLowerCase()}?</h4>
-                        <p>{track.why}</p>
-                      </div>
-                      <div className="training-track-columns">
-                        <div className="training-track-block" data-testid={`training-track-${n}-learn`}>
-                          <h4><GraduationCap size={16} aria-hidden="true" /> What you will learn</h4>
-                          <ul>
-                            {track.learn.map((item) => (
-                              <li key={item}><Check size={14} aria-hidden="true" />{item}</li>
-                            ))}
-                          </ul>
-                        </div>
-                        <div className="training-track-block" data-testid={`training-track-${n}-benefits`}>
-                          <h4><Award size={16} aria-hidden="true" /> Benefits</h4>
-                          <ul>
-                            {track.benefits.map((item) => (
-                              <li key={item}><Check size={14} aria-hidden="true" />{item}</li>
-                            ))}
-                          </ul>
-                        </div>
-                        <div className="training-track-block" data-testid={`training-track-${n}-careers`}>
-                          <h4><BriefcaseBusiness size={16} aria-hidden="true" /> Career opportunities</h4>
-                          <ul className="training-track-careers">
-                            {track.careers.map((item) => (
-                              <li key={item}>{item}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="training-track-footer">
-                        <div className="training-track-keywords" data-testid={`training-track-${n}-keywords`}>
-                          <span className="training-track-keywords-label"><Tag size={13} aria-hidden="true" /> Course keywords</span>
-                          <ul>
-                            {track.keywords.map((keyword) => (
-                              <li key={keyword}>{keyword}</li>
-                            ))}
-                          </ul>
-                        </div>
-                        <Link
-                          to={`/contact?service=${encodeURIComponent("IT Training")}`}
-                          className="button button-primary training-track-enquire"
-                          data-testid={`training-track-${n}-enquiry-link`}
-                        >
-                          Enquire about {track.title} <ArrowUpRight size={16} aria-hidden="true" />
-                        </Link>
-                      </div>
+                      <TrainingTrackDetails track={track} testId={`training-track-${n}`} headingLevel="h4" showPageLink />
                     </div>
                   </div>
                 </article>

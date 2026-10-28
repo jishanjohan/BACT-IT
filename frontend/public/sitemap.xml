@@ -9,7 +9,37 @@
   <url><loc>https://www.bactit.com/services/it-training</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.bactit.com/services/study-abroad</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.bactit.com/services/digital-marketing</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/services/software-solutions/erp-software</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/services/software-solutions/crm-software</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/services/software-solutions/hrm-hris-software</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/services/software-solutions/inventory-warehouse-management-software</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/services/software-solutions/ecommerce-website-development</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/services/software-solutions/pos-accounting-software</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/services/software-solutions/school-management-lms-software</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/services/software-solutions/hospital-management-software</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/services/software-solutions/custom-software-development</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/services/software-solutions/business-intelligence-data-analytics</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/services/ai-solutions/ai-chatbot-development</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/services/ai-solutions/ai-business-search</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/services/ai-solutions/intelligent-document-processing</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/services/ai-solutions/ai-reporting-summarization</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/services/ai-solutions/predictive-analytics-forecasting</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/services/ai-solutions/ai-business-insights</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/services/ai-solutions/ai-workflow-automation</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/services/ai-solutions/ai-erp-crm-hrm-integration</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/services/ai-solutions/rag-knowledge-assistant</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/services/ai-solutions/ai-agents-development</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/services/ai-solutions/ai-customer-support</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/services/ai-solutions/ai-data-analytics-visualization</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.bactit.com/courses</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.bactit.com/courses/networking-ccna-ccnp-training</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/courses/server-administration-windows-linux-training</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/courses/cybersecurity-ceh-chfi-soc-training</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/courses/cissp-cisa-cism-lead-auditor-training</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/courses/data-analytics-power-bi-excel-training</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/courses/programming-python-java-c-courses</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/courses/database-administration-training</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bactit.com/courses/cloud-aws-azure-gcp-training</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.bactit.com/study-abroad</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.bactit.com/flagship-product</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.bactit.com/industries</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>

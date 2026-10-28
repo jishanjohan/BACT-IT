@@ -2,6 +2,10 @@ import { ArrowLeft, ArrowUpRight, Check, Mail, Phone, SlidersHorizontal } from "
 import { SiWhatsapp } from "@icons-pack/react-simple-icons";
 import { Link, useParams } from "react-router-dom";
 import PageIntro from "@/components/PageIntro";
+import ResponsibleAi from "@/components/ResponsibleAi";
+import SolutionAccordion from "@/components/SolutionAccordion";
+import WhyChoose from "@/components/WhyChoose";
+import { solutionGroups, type SolutionGroupKey } from "@/lib/solutions-data";
 import { contactDetails, offices, services, whatsapp } from "@/lib/site-data";
 
 const infrastructureImage =
@@ -27,6 +31,7 @@ export default function ServiceDetail() {
 
   const enquiryLink = `/contact?service=${encodeURIComponent(service.name)}`;
   const isInfrastructure = service.slug === "ict-infrastructure";
+  const solutionGroup = solutionGroups[service.slug as SolutionGroupKey] as (typeof solutionGroups)[SolutionGroupKey] | undefined;
 
   return (
     <div data-testid={`service-detail-page-${service.slug}`}>
@@ -49,38 +54,51 @@ export default function ServiceDetail() {
       />
       <section className="section-block service-detail-body" data-testid={`service-detail-body-${service.slug}`}>
         <div className="page-container">
-          <div className="detail-head">
-            <span className="eyebrow" data-testid={`service-detail-eyebrow-${service.slug}`}>What’s included</span>
-            <h2 data-testid={`service-detail-heading-${service.slug}`}>
-              Explore what we offer in {service.title.toLowerCase()}.
-            </h2>
-            {service.slug === "it-training" && (
-              <Link to="/courses" className="text-action" data-testid="service-detail-full-courses-link">
-                See full course details, benefits and career paths <ArrowUpRight size={16} aria-hidden="true" />
-              </Link>
-            )}
-          </div>
-          <div className="detail-cards" data-testid={`service-detail-list-${service.slug}`}>
-            {service.items.map((item, index) => (
-              <article className="detail-card" key={item.title} data-testid={`service-detail-item-${service.slug}-${index + 1}`}>
-                <span className="detail-card-number" data-testid={`service-detail-item-number-${service.slug}-${index + 1}`}>
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <h3 data-testid={`service-detail-item-title-${service.slug}-${index + 1}`}>{item.title}</h3>
-                <p data-testid={`service-detail-item-copy-${service.slug}-${index + 1}`}>{item.description}</p>
-                {item.features.length > 0 && (
-                  <ul data-testid={`service-detail-item-features-${service.slug}-${index + 1}`}>
-                    {item.features.map((feature) => (
-                      <li key={feature}>
-                        <Check size={15} aria-hidden="true" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </article>
-            ))}
-          </div>
+          {solutionGroup ? (
+            <div id="solutions" className="solutions-anchor">
+              <div className="detail-head">
+                <span className="eyebrow" data-testid={`service-detail-eyebrow-${service.slug}`}>{solutionGroup.sectionEyebrow}</span>
+                <h2 data-testid={`service-detail-heading-${service.slug}`}>{solutionGroup.sectionTitle}</h2>
+                <p className="solutions-lead" data-testid={`service-detail-lead-${service.slug}`}>{solutionGroup.sectionDescription}</p>
+              </div>
+              <SolutionAccordion group={solutionGroup} />
+            </div>
+          ) : (
+            <>
+            <div className="detail-head">
+              <span className="eyebrow" data-testid={`service-detail-eyebrow-${service.slug}`}>What’s included</span>
+              <h2 data-testid={`service-detail-heading-${service.slug}`}>
+                Explore what we offer in {service.title.toLowerCase()}.
+              </h2>
+              {service.slug === "it-training" && (
+                <Link to="/courses" className="text-action" data-testid="service-detail-full-courses-link">
+                  See full course details, benefits and career paths <ArrowUpRight size={16} aria-hidden="true" />
+                </Link>
+              )}
+            </div>
+            <div className="detail-cards" data-testid={`service-detail-list-${service.slug}`}>
+              {service.items.map((item, index) => (
+                <article className="detail-card" key={item.title} data-testid={`service-detail-item-${service.slug}-${index + 1}`}>
+                  <span className="detail-card-number" data-testid={`service-detail-item-number-${service.slug}-${index + 1}`}>
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <h3 data-testid={`service-detail-item-title-${service.slug}-${index + 1}`}>{item.title}</h3>
+                  <p data-testid={`service-detail-item-copy-${service.slug}-${index + 1}`}>{item.description}</p>
+                  {item.features.length > 0 && (
+                    <ul data-testid={`service-detail-item-features-${service.slug}-${index + 1}`}>
+                      {item.features.map((feature) => (
+                        <li key={feature}>
+                          <Check size={15} aria-hidden="true" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </article>
+              ))}
+            </div>
+            </>
+          )}
           <div className="customization-note" data-testid={`service-detail-customization-${service.slug}`}>
             <span className="customization-icon" aria-hidden="true">
               <SlidersHorizontal size={20} />
@@ -126,6 +144,8 @@ export default function ServiceDetail() {
           </div>
         </div>
       </section>
+      {service.slug === "ai-solutions" && <ResponsibleAi />}
+      {solutionGroup && <WhyChoose testId={`service-detail-why-${service.slug}`} />}
       <section className="section-block other-services" data-testid="service-detail-other-services">
         <div className="page-container">
           <div className="other-services-head">

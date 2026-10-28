@@ -14,6 +14,8 @@ import Portfolio from "@/pages/Portfolio";
 import Services from "@/pages/Services";
 import ServiceDetail from "@/pages/ServiceDetail";
 import StudyAbroad from "@/pages/StudyAbroad";
+import SolutionPage from "@/pages/SolutionPage";
+import TrainingTrackPage from "@/pages/TrainingTrackPage";
 
 // One <Route> per page in src/pages; BrowserRouter already wraps this in main.tsx.
 export default function App() {
@@ -24,9 +26,11 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/services/:slug" element={<ServiceDetail />} />
+        <Route path="/services/:group/:slug" element={<SolutionPage />} />
         <Route path="/flagship-product" element={<FlagshipProduct />} />
         <Route path="/industries" element={<Industries />} />
         <Route path="/courses" element={<Courses />} />
+        <Route path="/courses/:slug" element={<TrainingTrackPage />} />
         <Route path="/study-abroad" element={<StudyAbroad />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/contact" element={<Contact />} />

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { OG_IMAGE, SITE_NAME, canonicalUrl, getPageSeo, organizationJsonLd, serviceJsonLd } from "@/lib/seo";
+import { OG_IMAGE, SITE_NAME, canonicalUrl, courseJsonLd, getPageSeo, organizationJsonLd, serviceJsonLd } from "@/lib/seo";
 
 function upsertMeta(attr: "name" | "property", key: string, content: string) {
   let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`);
@@ -46,7 +46,7 @@ export default function RouteSeo() {
     const url = canonicalUrl(pathname);
     document.title = seo.title;
     upsertMeta("name", "description", seo.description);
-    upsertMeta("name", "keywords", seo.keywords.join(", "));
+    upsertMeta("name", "keywords", [...new Set(seo.keywords)].join(", "));
     upsertMeta("name", "robots", seo.noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large");
     upsertLink("canonical", url);
     upsertMeta("property", "og:type", "website");
@@ -61,6 +61,7 @@ export default function RouteSeo() {
     upsertMeta("name", "twitter:image", OG_IMAGE);
     upsertJsonLd("ld-organization", organizationJsonLd);
     upsertJsonLd("ld-service", serviceJsonLd(pathname));
+    upsertJsonLd("ld-course", courseJsonLd(pathname));
   }, [pathname]);
 
   return null;
