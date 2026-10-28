@@ -120,7 +120,7 @@ const pages: Record<string, PageSeo> = {
 };
 
 const serviceKeywords: Record<string, string[]> = {
-  "software-solutions": ["ERP software Bangladesh", "CRM software Bangladesh", "HRM software Bangladesh", "inventory management software", "school management software", "business intelligence Bangladesh", "software development company Bangladesh", "ERP software Bangladesh", "HRM software Bangladesh", "hospital management system Bangladesh", "POS software Bangladesh", "custom software Dhaka", "সফটওয়্যার ডেভেলপমেন্ট"],
+  "software-solutions": ["ERP software Bangladesh", "CRM software Bangladesh", "HRM software Bangladesh", "inventory management software", "school management software", "LMS software Bangladesh", "business intelligence Bangladesh", "software development company Bangladesh", "ERP software Bangladesh", "HRM software Bangladesh", "hospital management system Bangladesh", "POS software Bangladesh", "custom software Dhaka", "সফটওয়্যার ডেভেলপমেন্ট"],
   "ict-infrastructure": ["ICT infrastructure Bangladesh", "network solutions Dhaka", "data center Bangladesh", "structured cabling Dhaka", "CCTV installation Dhaka", "server and storage solutions Bangladesh"],
   cybersecurity: ["cybersecurity company Bangladesh", "cyber security services Dhaka", "penetration testing Bangladesh", "SOC services Bangladesh", "VAPT Bangladesh", "সাইবার সিকিউরিটি"],
   "ai-solutions": ["AI-powered business solutions", "RAG knowledge assistant", "AI agent development", "predictive analytics Bangladesh", "AI workflow automation", "AI solutions Bangladesh", "AI integration services", "chatbot development Bangladesh", "machine learning company Dhaka", "AI automation for business"],

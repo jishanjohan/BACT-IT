@@ -127,7 +127,7 @@ syllabi, admissions details, or study-abroad guarantees. Flagship product conten
   The sitemap lists all 8 track URLs (24 URLs total).
 
 ## Software & AI solutions (lib/solutions-data.ts)
-- `softwareSolutions` (10 categories, all available now) and `aiSolutions` (12 features; `availability`
+- `softwareSolutions` (11 categories incl. dedicated Learning Management Software (LMS), all available now) and `aiSolutions` (12 features; `availability`
   "Available now" | "Custom project": custom = document processing, predictive analytics, RAG assistants, AI agents).
   Each item: slug, title, heading, seoTitle, short, what, why, features, advantages, problems/audiences (software)
   or example (AI), keywords, icon. `solutionGroups` holds section copy + CTA ("Discuss Your Software Requirements" /
@@ -135,7 +135,7 @@ syllabi, admissions details, or study-abroad guarantees. Flagship product conten
 - /services/software-solutions and /services/ai-solutions render `SolutionAccordion` (id="solutions") instead of the
   generic item cards, then `WhyChoose`; AI page also renders `ResponsibleAi`.
 - `/services/:group/:slug` → `pages/SolutionPage.tsx` (Back to {group} → `/services/<group>#solutions`).
-  SEO title/description/keywords + Service JSON-LD in lib/seo.ts; all 22 URLs in the sitemap (46 total).
+  SEO title/description/keywords + Service JSON-LD in lib/seo.ts; all 23 URLs in the sitemap (47 total).
 - "Why Choose BACT IT?" = `components/WhyChoose.tsx` using the 9 `differentiators` in site-data (Home + both pages above).
 - Chat bot knowledge (backend/lib/bact_knowledge.py) lists all software categories, AI availability,
   responsible AI and the Why Choose points.

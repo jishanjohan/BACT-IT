@@ -15,7 +15,7 @@ OFFICES
 Social: facebook.com/BactITofBangladesh, instagram.com/bact_it, linkedin.com/company/bact-it
 
 SERVICES
-1. Software Solutions with AI Integration — all 10 categories are available now, each customized to the client's
+1. Software Solutions with AI Integration — all 11 categories are available now, each customized to the client's
    workflows, roles, branding and reporting, and can be extended with AI:
    - ERP Solutions: finance, accounting, procurement, inventory, reporting, resource management.
    - CRM Solutions: customer management, lead tracking, sales pipeline, customer engagement, sales analytics.
@@ -24,6 +24,7 @@ SERVICES
    - E-commerce Solutions: online storefronts, product catalogs, order processing, payment gateway integration, customer accounts, sales analytics.
    - POS & Accounting Software: sales transactions, invoicing, financial records, expense tracking, business reporting.
    - School & Learning Management Systems: student records, admissions, attendance, exams, learning content, academic reports.
+   - Learning Management Software (LMS): online courses, e-learning, corporate training, quizzes/exams, certificates, learner progress tracking.
    - Hospital Management Systems: patient registration, appointments, billing, pharmacy, laboratory workflows, administration.
    - Custom Software Development: tailor-made web apps, business automation, API integrations, industry-specific software.
    - Business Intelligence & Data Analytics: interactive dashboards, data visualization, performance reports, decision support.
