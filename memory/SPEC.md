@@ -105,7 +105,7 @@ syllabi, admissions details, or study-abroad guarantees. Flagship product conten
   `public/sitemap.xml` (16 URLs) are static — add new routes/service slugs to the sitemap by hand.
 
 ## Training page (/courses)
-- `trainingTracks` in site-data.ts: 8 tracks, each with heading, courses, why, learn[], benefits[], careers[], keywords[].
+- `trainingTracks` in site-data.ts: 9 tracks (9th = Microsoft Office), each with heading, courses, why, learn[], benefits[], careers[], keywords[].
 - Rendered as an accordion (first track open; several can be open): heading button → panel with
   "Why learn", "What you will learn", "Benefits", "Career opportunities", course keyword chips and an enquiry button.
   Panel content stays in the DOM (inert when collapsed) so search engines can read it.
@@ -117,14 +117,14 @@ syllabi, admissions details, or study-abroad guarantees. Flagship product conten
 
 ## Training track pages (/courses/:slug)
 - Each `trainingTracks` entry has `slug` (keyword-rich, e.g. `networking-ccna-ccnp-training`), `seoTitle`, and
-  `courseList` (24 courses total): name, hours, span (e.g. "8 weeks"), level, SEO description. Durations are
+  `courseList` (28 courses total): name, hours, span (e.g. "8 weeks"), level, SEO description. Durations are
   industry-standard guides, not confirmed client schedules.
 - `pages/TrainingTrackPage.tsx`: sticky "Back to Training" (→ `/courses#training-tracks`), PageIntro (h1 = heading),
   shared `components/TrainingTrackDetails.tsx` (courses & duration cards, why, learn, benefits, careers, keywords,
   enquiry), job placement card, links to the other 7 tracks. Unknown slug → not-found + noindex.
 - The /courses accordion renders the same TrainingTrackDetails (h4 headings) plus an "Open full course page" link.
 - SEO: per-track title/description/keywords in `lib/seo.ts` + Course JSON-LD with `hasPart` courses (timeRequired).
-  The sitemap lists all 8 track URLs (24 URLs total).
+  The sitemap lists all 9 track URLs.
 
 ## Software & AI solutions (lib/solutions-data.ts)
 - `softwareSolutions` (11 categories incl. dedicated Learning Management Software (LMS), all available now) and `aiSolutions` (12 features; `availability`

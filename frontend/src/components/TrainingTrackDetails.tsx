@@ -15,7 +15,7 @@ export default function TrainingTrackDetails({ track, testId, headingLevel, show
   return (
     <>
       <div className="training-track-why" data-testid={`${testId}-why`}>
-        <H>Why learn {track.title.toLowerCase()}?</H>
+        <H>Why learn {track.title}?</H>
         <p>{track.why}</p>
       </div>
       <div className="track-course-list-block" data-testid={`${testId}-course-list`}>

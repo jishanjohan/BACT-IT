@@ -301,6 +301,7 @@ export const services: ServiceInfo[] = [
       { title: "Programming", description: "Write software in widely used languages.", features: ["C", "C++", "Python", "Java"] },
       { title: "Database Administration", description: "Learn to manage and maintain business databases.", features: [] },
       { title: "Cloud", description: "Work with the leading cloud platforms.", features: ["Azure", "AWS", "GCP"] },
+      { title: "Microsoft Office", description: "Essential office productivity skills.", features: ["Word", "Excel", "PowerPoint", "Outlook & Microsoft 365"] },
     ],
     customization:
       "Training is available for individuals and as programs for organizations that want to upskill their teams. Ask us for current schedules and course details.",
@@ -651,6 +652,34 @@ export const trainingTracks: TrainingTrack[] = [
     careers: ["Cloud Engineer", "Cloud Administrator", "DevOps Engineer", "Solutions Architect", "Cloud Support Engineer"],
     keywords: ["AWS training in Bangladesh", "Azure certification course Dhaka", "Google Cloud training", "cloud computing course Bangladesh", "DevOps course"],
   },
+  {
+    title: "Microsoft Office",
+    slug: "microsoft-office-training",
+    seoTitle: "Microsoft Office Course in Dhaka, Bangladesh | Word, Excel, PowerPoint & Outlook",
+    heading: "Microsoft Office Training — Word, Excel, PowerPoint & Outlook",
+    courses: "Word · Excel · PowerPoint · Outlook & Microsoft 365",
+    courseList: [
+      { name: "Microsoft Word", hours: 12, span: "2 weeks", level: "Beginner", description: "Microsoft Word course in Dhaka: professional documents, formatting, styles, tables, letters, CVs, mail merge and report layout for office and academic work." },
+      { name: "Microsoft Excel", hours: 16, span: "2 weeks", level: "Beginner", description: "Microsoft Excel basics course in Bangladesh: worksheets, formulas, functions (SUM, IF, COUNTIF), sorting, filtering and charts for everyday office tasks. Continue with Advanced Excel and VBA Excel." },
+      { name: "Microsoft PowerPoint", hours: 8, span: "1 week", level: "Beginner", description: "Microsoft PowerPoint training in Dhaka: design clear, professional presentations with layouts, images, charts, transitions and confident slide delivery." },
+      { name: "Outlook & Microsoft 365", hours: 8, span: "1 week", level: "Beginner", description: "Outlook and Microsoft 365 course in Bangladesh: professional email, calendar and meetings, plus Teams, OneDrive and SharePoint for online collaboration." },
+    ],
+    why: "Microsoft Office skills are expected in almost every office job, from banks and corporate offices to schools and NGOs. Confident use of Word, Excel, PowerPoint and Outlook makes you faster, more professional and more employable.",
+    learn: [
+      "Creating and formatting professional documents in Word",
+      "Excel formulas, functions, tables and charts",
+      "Designing and presenting slides in PowerPoint",
+      "Managing email, calendars and meetings in Outlook",
+      "Collaborating with Teams, OneDrive and SharePoint (Microsoft 365)",
+    ],
+    benefits: [
+      "Beginner-friendly, practical, hands-on lessons",
+      "Skills used daily in almost every office job",
+      "A strong base for Advanced Excel, Power BI and data analytics",
+    ],
+    careers: ["Office Executive", "Administrative Assistant", "Data Entry Operator", "Front Desk & Customer Service Officer", "Office Coordinator"],
+    keywords: ["Microsoft Office course in Dhaka", "MS Office training Bangladesh", "computer office application course", "MS Word Excel PowerPoint course", "Microsoft 365 training"],
+  },
 ];
 
 export const contactDetails = {
@@ -906,6 +935,7 @@ export const finderAudiences: FinderAudience[] = [
       { id: "analytics", label: "Data analytics", result: trainingResult("Data analytics", "Power BI, Advanced Excel, VBA Excel and Big Data") },
       { id: "programming", label: "Programming and databases", result: trainingResult("Programming", "C, C++, Python, Java and Database Administration") },
       { id: "cloud", label: "Cloud platforms", result: trainingResult("Cloud", "Azure, AWS and GCP") },
+      { id: "office", label: "Microsoft Office skills", result: trainingResult("Microsoft Office", "Word, Excel, PowerPoint, Outlook and Microsoft 365") },
     ],
   },
   {

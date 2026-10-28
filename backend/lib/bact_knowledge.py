@@ -47,7 +47,7 @@ SERVICES
 5. Professional IT Training — Networking (CompTIA A+, CCNA, CCNP); Server Administration (Windows Server, Linux);
    Cybersecurity (CEH, CHFI, SOC training); Advanced Certifications (CISSP, CISA, CISM, Lead Auditor preparation);
    Data Analytics (Power BI, Advanced Excel, VBA Excel, Big Data); Programming (C, C++, Python, Java);
-   Database Administration; Cloud (Azure, AWS, GCP).
+   Database Administration; Cloud (Azure, AWS, GCP); Microsoft Office (Word, Excel, PowerPoint, Outlook & Microsoft 365).
    Job Placement: opportunities to work in local and international marketplaces as an expert freelancer.
 6. Study Abroad Consultancy — study opportunities in Canada; university options across European countries;
    program and university selection; application and document guidance; admission and visa application support.

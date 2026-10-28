@@ -7,6 +7,7 @@ import {
   Cloud,
   Code2,
   Database,
+  FileSpreadsheet,
   HardDrive,
   Server,
   ShieldCheck,
@@ -21,7 +22,7 @@ import { jobPlacement, trainingTracks } from "@/lib/site-data";
 
 const trainingImage =
   "https://images.unsplash.com/photo-1781092176313-8b8b1e9927c7?auto=format&fit=crop&w=1500&q=85";
-const trackIcons = [Wifi, Server, ShieldCheck, BookOpen, Database, Code2, HardDrive, Cloud];
+const trackIcons = [Wifi, Server, ShieldCheck, BookOpen, Database, Code2, HardDrive, Cloud, FileSpreadsheet];
 
 export default function Courses() {
   const [openTracks, setOpenTracks] = useState<number[]>([0]);
