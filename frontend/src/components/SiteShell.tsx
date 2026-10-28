@@ -13,7 +13,6 @@ const navigation = [
   { label: "Industries", to: "/industries", id: "nav-industries-link" },
   { label: "Training", to: "/courses", id: "nav-training-link" },
   { label: "Study abroad", to: "/study-abroad", id: "nav-study-abroad-link" },
-  { label: "Portfolio", to: "/portfolio", id: "nav-portfolio-link" },
 ];
 
 export function SiteHeader() {
@@ -120,7 +119,6 @@ export function SiteFooter() {
           <Link to="/services" data-testid="footer-services-link">Our services</Link>
           <Link to="/flagship-product" data-testid="footer-flagship-link">BAIDA flagship product</Link>
           <Link to="/industries" data-testid="footer-industries-link">Industries</Link>
-          <Link to="/portfolio" data-testid="footer-portfolio-link">Projects & portfolio</Link>
           <Link to="/admin" data-testid="footer-team-login-link">Team login</Link>
         </div>
         <div className="footer-column" data-testid="footer-learning-column">

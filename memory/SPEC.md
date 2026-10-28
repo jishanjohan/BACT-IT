@@ -19,7 +19,6 @@ contact enquiry flow.
 - `/industries` — industries served
 - `/courses` — professional training tracks with enquiry links
 - `/study-abroad` — Canada and Europe guidance information and enquiry links
-- `/portfolio` — capabilities framework; no fabricated projects or testimonials
 - `/contact` — contact details and enquiry form
 
 ## Data and backend
@@ -154,3 +153,6 @@ syllabi, admissions details, or study-abroad guarantees. Flagship product conten
   is now SQL & Database Fundamentals, Oracle Database Administration and SQL Server Administration.
 - Track pages (/courses/:slug) use the same vertical CourseExplainer (`detailedCourses`); the /courses accordion keeps compact cards.
 - SEO: it-training keywords list every major course; its Service JSON-LD carries an OfferCatalog of all courses.
+
+## Removed
+- Portfolio page (/portfolio) removed on request: nav + footer links, route, page file, SEO entry and sitemap URL. /portfolio now falls through to no route.

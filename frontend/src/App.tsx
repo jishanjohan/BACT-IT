@@ -10,7 +10,6 @@ import Courses from "@/pages/Courses";
 import FlagshipProduct from "@/pages/FlagshipProduct";
 import Industries from "@/pages/Industries";
 import Home from "@/pages/Home";
-import Portfolio from "@/pages/Portfolio";
 import Services from "@/pages/Services";
 import ServiceDetail from "@/pages/ServiceDetail";
 import StudyAbroad from "@/pages/StudyAbroad";
@@ -32,7 +31,6 @@ export default function App() {
         <Route path="/courses" element={<Courses />} />
         <Route path="/courses/:slug" element={<TrainingTrackPage />} />
         <Route path="/study-abroad" element={<StudyAbroad />} />
-        <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin" element={<AdminInbox />} />
         <Route path="/sign-in/*" element={<AdminSignIn />} />

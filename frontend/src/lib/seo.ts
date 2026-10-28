@@ -105,12 +105,6 @@ const pages: Record<string, PageSeo> = {
       "স্টুডেন্ট ভিসা",
     ],
   },
-  "/portfolio": {
-    title: "Projects & Portfolio | IT Solutions Delivered by BACT IT",
-    description:
-      "See the capabilities and projects BACT IT delivers across software, ICT infrastructure, cybersecurity and AI for clients in Bangladesh and abroad.",
-    keywords: [...brandKeywords, "BACT IT projects", "IT projects Bangladesh", "software portfolio Bangladesh"],
-  },
   "/contact": {
     title: "Contact BACT IT | IT Company in Dhaka, New York & Sydney",
     description:
