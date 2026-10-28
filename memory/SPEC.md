@@ -62,7 +62,9 @@ in SiteShell). EN / বাংলা toggle translates the scripted questions.
    (service chips or free text → "General enquiry").
 2. `POST /api/chat/sessions` {full_name, phone, email, service, purpose} → stores an
    enquiry in `inquiries` (source "chat") + a `chat_sessions` doc → {session_id}.
-   Bot confirms "we'll get back to you shortly".
+   Bot confirms "we'll get back to you shortly". If a service/BAIDA chip was picked,
+   the bot then lists every option under it (training shows all courses) as
+   tap-to-ask buttons ("Tell me more about X").
 3. `POST /api/chat/sessions/{id}/messages` {text} → SSE stream of `data: {"delta"}`
    frames then `{"done": true}` (or `{"error"}`). Claude Opus 5.5 (`claude-opus-5-5`)
    via Emergent LLM key (`EMERGENT_LLM_KEY` in backend/.env); system prompt in

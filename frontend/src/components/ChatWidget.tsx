@@ -4,7 +4,7 @@ import { MessageCircle, SendHorizontal, X } from "lucide-react";
 import { apiPost, apiStream } from "@/lib/api";
 import type { ChatSessionCreate, ChatSessionCreated, ChatStreamEvent } from "@/lib/chat";
 import type { ServiceInterest } from "@/lib/inquiries";
-import { services } from "@/lib/site-data";
+import { flagshipProduct, services } from "@/lib/site-data";
 
 type Lang = "en" | "bn";
 type Step = "name" | "phone" | "email" | "purpose" | "submitting" | "chat";
@@ -19,8 +19,10 @@ const copy = {
     badName: "Please enter your name.",
     badPhone: "Please enter a valid phone number.",
     badEmail: "That email doesn’t look right. Please try again.",
-    submitError: "Sorry, we couldn’t send your details. Please try again or email info@bactit.com.",
-    aiError: "Sorry, I couldn’t answer just now. Please try again in a moment.",
+    submitError: "Sorry, we couldn’t send your details. Please try again or call +8801990-937354.",
+    aiError: "Sorry, I couldn’t answer just now. Please call us at +8801990-937354 or email info@bactit.com.",
+    offeringsIntro: "Here’s everything we offer in {service}. Tap any option to learn more:",
+    askAbout: "Tell me more about {item}",
     placeholder: "Type your message…",
     placeholderName: "Your name",
     placeholderPhone: "Phone number",
@@ -39,8 +41,10 @@ const copy = {
     badName: "অনুগ্রহ করে আপনার নাম লিখুন।",
     badPhone: "অনুগ্রহ করে একটি সঠিক ফোন নম্বর দিন।",
     badEmail: "ইমেইলটি সঠিক মনে হচ্ছে না। আবার চেষ্টা করুন।",
-    submitError: "দুঃখিত, তথ্য পাঠানো যায়নি। আবার চেষ্টা করুন অথবা info@bactit.com-এ ইমেইল করুন।",
-    aiError: "দুঃখিত, এই মুহূর্তে উত্তর দিতে পারছি না। একটু পরে আবার চেষ্টা করুন।",
+    submitError: "দুঃখিত, তথ্য পাঠানো যায়নি। আবার চেষ্টা করুন অথবা +8801990-937354 নম্বরে কল করুন।",
+    aiError: "দুঃখিত, এই মুহূর্তে উত্তর দিতে পারছি না। অনুগ্রহ করে +8801990-937354 নম্বরে কল করুন অথবা info@bactit.com-এ ইমেইল করুন।",
+    offeringsIntro: "{service}-এ আমরা যা যা অফার করি। বিস্তারিত জানতে যেকোনো অপশনে ট্যাপ করুন:",
+    askAbout: "{item} সম্পর্কে বিস্তারিত বলুন",
     placeholder: "আপনার বার্তা লিখুন…",
     placeholderName: "আপনার নাম",
     placeholderPhone: "ফোন নম্বর",
@@ -69,7 +73,29 @@ interface ChatLine {
   role: "bot" | "user";
   text?: string; // free text (visitor input or AI reply)
   key?: ScriptKey; // scripted bot line, translated live
+  offerings?: ServiceInterest; // bot line listing every option under a service
   pending?: boolean;
+}
+
+interface Offerings {
+  title: string;
+  items: { label: string; detail?: string }[];
+}
+
+// Everything offered under a service, taken from the website content.
+function getOfferings(service: ServiceInterest): Offerings | null {
+  if (service === "BAIDA Platform") {
+    return { title: "BAIDA", items: flagshipProduct.capabilities.map((c) => ({ label: c.title })) };
+  }
+  const match = services.find((s) => s.name === service);
+  if (!match) return null;
+  return {
+    title: match.title,
+    items: match.items.map((item) => ({
+      label: item.title,
+      detail: match.slug === "it-training" && item.features.length > 0 ? item.features.join(", ") : undefined,
+    })),
+  };
 }
 
 const purposeOptions: { label: string; service: ServiceInterest }[] = [
@@ -81,6 +107,41 @@ const PHONE_RE = /^\+?[\d\s()-]{7,20}$/;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 let nextId = 1;
+
+function OfferingsCard({
+  offerings,
+  intro,
+  disabled,
+  onAsk,
+}: {
+  offerings: Offerings | null;
+  intro: string;
+  disabled: boolean;
+  onAsk: (item: string) => void;
+}) {
+  if (!offerings) return null;
+  return (
+    <div className="chat-offerings" data-testid="chat-offerings">
+      <p className="chat-offerings-intro" data-testid="chat-offerings-intro">
+        {intro.replace("{service}", offerings.title)}
+      </p>
+      <div className="chat-offerings-list" data-testid="chat-offerings-list">
+        {offerings.items.map((item, i) => (
+          <button
+            key={item.label}
+            type="button"
+            disabled={disabled}
+            onClick={() => onAsk(item.label)}
+            data-testid={`chat-offering-${i + 1}-button`}
+          >
+            <strong>{item.label}</strong>
+            {item.detail && <span>{item.detail}</span>}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
@@ -103,10 +164,11 @@ export default function ChatWidget() {
 
   const createSession = useMutation({
     mutationFn: (payload: ChatSessionCreate) => apiPost<ChatSessionCreated>("/chat/sessions", payload),
-    onSuccess: (data) => {
+    onSuccess: (data, variables) => {
       setSessionId(data.session_id);
       setStep("chat");
       push({ role: "bot", key: "done" });
+      if (getOfferings(variables.service)) push({ role: "bot", offerings: variables.service });
     },
     onError: () => {
       setStep("purpose");
@@ -266,6 +328,13 @@ export default function ChatWidget() {
                     <i />
                     <i />
                   </span>
+                ) : line.offerings ? (
+                  <OfferingsCard
+                    offerings={getOfferings(line.offerings)}
+                    intro={t.offeringsIntro}
+                    disabled={streaming}
+                    onAsk={(item) => void askAssistant(t.askAbout.replace("{item}", item))}
+                  />
                 ) : (
                   <p>{renderText(line)}</p>
                 )}
@@ -287,7 +356,7 @@ export default function ChatWidget() {
               </div>
             )}
 
-            {step === "chat" && !hasAskedAssistant && !streaming && (
+            {step === "chat" && !hasAskedAssistant && !streaming && !lines.some((line) => line.offerings) && (
               <div className="chat-chips" data-testid="chat-suggestions">
                 {t.suggestions.map((question, i) => (
                   <button
