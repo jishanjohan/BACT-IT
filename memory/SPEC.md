@@ -11,7 +11,9 @@ contact enquiry flow.
 - `/` — homepage, service overview, differentiators, industries, and contact CTA
 - `/about` — BACT IT overview and supplied differentiators
 - `/services` — all seven service areas
-- `/services/:slug` — service detail and contextual enquiry link
+- `/services/:slug` — service detail and contextual enquiry link; a sticky "Back to Services"
+  button (only back control, no breadcrumbs/tab strip) links to `/#services`, and SiteShell's
+  scroll handler scrolls to the Home services section (plain route changes scroll to top)
 - `/flagship-product` — BAIDA (Business Automation & AI Integration For Data
   Analytics) flagship product: description + six capabilities, enquiry CTA
 - `/industries` — industries served
@@ -74,8 +76,19 @@ in SiteShell). EN / বাংলা toggle translates the scripted questions.
 
 ## Roles and authentication
 
-The public brochure site and contact form do not require authentication. There is
-no admin dashboard or portal in this phase.
+Public site and chat need no login. Staff inbox at `/admin` (footer "Team login")
+uses Emergent-managed auth (Clerk; email+password and Google; pages `/sign-in`,
+`/sign-up`; ClerkAuthProvider wraps only these three routes). Backend
+`routers/admin.py`: `require_user` (Clerk Bearer token) → `current_staff` caches the
+user's verified emails in `users` → admin iff an email is in `ADMIN_EMAIL`
+(checked every request). Endpoints (admin only, else 403; no token 401):
+GET /api/admin/me, GET /api/admin/inquiries, PATCH /api/admin/inquiries/{id}
+{status: new|contacted|closed}, GET /api/admin/chats/{session_id},
+GET /api/admin/inquiries.csv. Inbox: status filters with counts, table, detail
+sheet with chat transcript, spreadsheet download. Chat widget hidden on staff pages.
+
+Service pages: Call Bangladesh / USA / Australia buttons + WhatsApp
+(wa.me/8801990937354). Footer contact: WhatsApp logo + number.
 
 ## Content constraints
 

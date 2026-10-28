@@ -2,6 +2,9 @@ import { Routes, Route } from "react-router-dom";
 import { Toaster } from "@/components/ui/sonner";
 import { SiteShell } from "@/components/SiteShell";
 import About from "@/pages/About";
+import AdminInbox from "@/pages/AdminInbox";
+import AdminSignIn from "@/pages/AdminSignIn";
+import AdminSignUp from "@/pages/AdminSignUp";
 import Contact from "@/pages/Contact";
 import Courses from "@/pages/Courses";
 import FlagshipProduct from "@/pages/FlagshipProduct";
@@ -27,6 +30,9 @@ export default function App() {
         <Route path="/study-abroad" element={<StudyAbroad />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/admin" element={<AdminInbox />} />
+        <Route path="/sign-in/*" element={<AdminSignIn />} />
+        <Route path="/sign-up/*" element={<AdminSignUp />} />
       </Routes>
       <Toaster richColors offset={{ bottom: 96, right: 24 }} mobileOffset={{ bottom: 88 }} />
     </SiteShell>

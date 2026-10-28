@@ -1,8 +1,9 @@
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import ChatWidget from "@/components/ChatWidget";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { ArrowUpRight, Facebook, Instagram, Linkedin, Mail, MapPin, Menu, Phone, X } from "lucide-react";
-import { companyFullName, contactDetails, offices, services, socialLinks } from "@/lib/site-data";
+import { companyFullName, contactDetails, offices, services, socialLinks, whatsapp } from "@/lib/site-data";
+import { SiWhatsapp } from "@icons-pack/react-simple-icons";
 
 const navigation = [
   { label: "About", to: "/about", id: "nav-about-link" },
@@ -119,6 +120,7 @@ export function SiteFooter() {
           <Link to="/flagship-product" data-testid="footer-flagship-link">BAIDA flagship product</Link>
           <Link to="/industries" data-testid="footer-industries-link">Industries</Link>
           <Link to="/portfolio" data-testid="footer-portfolio-link">Projects & portfolio</Link>
+          <Link to="/admin" data-testid="footer-team-login-link">Team login</Link>
         </div>
         <div className="footer-column" data-testid="footer-learning-column">
           <h3 data-testid="footer-learning-heading">Learning & guidance</h3>
@@ -132,6 +134,15 @@ export function SiteFooter() {
           <h3 data-testid="footer-contact-heading">Get in touch</h3>
           <a href={`mailto:${contactDetails.email}`} data-testid="footer-email-link">
             {contactDetails.email}
+          </a>
+          <a
+            href={whatsapp.href}
+            target="_blank"
+            rel="noreferrer"
+            className="footer-whatsapp"
+            data-testid="footer-whatsapp-link"
+          >
+            <SiWhatsapp size={16} aria-hidden="true" /> WhatsApp {whatsapp.display}
           </a>
           <Link to="/contact" className="footer-contact-link" data-testid="footer-contact-link">
             Contact our team <ArrowUpRight size={15} aria-hidden="true" />
@@ -171,13 +182,40 @@ export function SiteFooter() {
   );
 }
 
+// Scroll to the #hash target after navigation (e.g. "/#services"), otherwise to the top of the new page.
+function useScrollOnNavigate() {
+  const { pathname, hash } = useLocation();
+  useEffect(() => {
+    if (!hash) {
+      window.scrollTo({ top: 0, behavior: "auto" });
+      return;
+    }
+    const id = hash.slice(1);
+    let tries = 0;
+    let frame = 0;
+    const attempt = () => {
+      const target = document.getElementById(id);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else if (tries++ < 30) {
+        frame = requestAnimationFrame(attempt);
+      }
+    };
+    frame = requestAnimationFrame(attempt);
+    return () => cancelAnimationFrame(frame);
+  }, [pathname, hash]);
+}
+
 export function SiteShell({ children }: { children: ReactNode }) {
+  const { pathname } = useLocation();
+  useScrollOnNavigate();
+  const isStaffArea = ["/admin", "/sign-in", "/sign-up"].some((p) => pathname.startsWith(p));
   return (
     <div className="site-frame">
       <SiteHeader />
       <main>{children}</main>
       <SiteFooter />
-      <ChatWidget />
+      {!isStaffArea && <ChatWidget />}
     </div>
   );
 }

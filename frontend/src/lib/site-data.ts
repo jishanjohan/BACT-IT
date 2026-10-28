@@ -433,6 +433,11 @@ export const offices = [
   { country: "Australia", address: "20 King Edward St, Rockdale, Sydney, Australia", phone: "+61 480 580 007", tel: "+61480580007" },
 ];
 
+export const whatsapp = {
+  display: "+8801990-937354",
+  href: "https://wa.me/8801990937354",
+};
+
 export const socialLinks = {
   facebook: "https://www.facebook.com/BactITofBangladesh",
   instagram: "https://www.instagram.com/bact_it",

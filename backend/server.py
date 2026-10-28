@@ -12,6 +12,8 @@ import uuid
 from datetime import datetime
 from routers.inquiries import router as inquiries_router
 from routers.chat import router as chat_router
+from routers.admin import router as admin_router
+from clerk_auth import clerk_router
 
 
 ROOT_DIR = Path(__file__).parent
@@ -36,6 +38,7 @@ app = FastAPI(lifespan=lifespan)
 api_router = APIRouter(prefix="/api")
 api_router.include_router(inquiries_router)
 api_router.include_router(chat_router)
+api_router.include_router(admin_router)
 
 
 # Define Models
@@ -80,4 +83,5 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Keep this as the final statement so all routes are registered before mounting.
+app.include_router(clerk_router)  # /api/clerk/config and /api/__clerk/*
 app.include_router(api_router)

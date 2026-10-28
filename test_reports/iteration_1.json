@@ -1,0 +1,58 @@
+{
+  "iteration": 1,
+  "summary": "Verified service detail back-button feature (back button only, no tabs/breadcrumb, returns to Home #services, sticky on scroll, mobile parity, normal nav still scrolls to top). All 6 acceptance criteria covered by 6 browser checks; no API-bearing criteria (pure static/UI content) so no backend test files needed.",
+  "passed": 6,
+  "failed": 0,
+  "bugs": [],
+  "action_items": [],
+  "retest_needed": false,
+  "checks": [
+    {
+      "criterion": "Service detail page shows a single clear back button",
+      "name": "service-detail-only-back-button",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "On /services/cybersecurity and /services/software-solutions, service-back-to-services-button and service-subnav are visible; .service-subnav-tabs count=0 and no [data-testid*=breadcrumb] elements present."
+    },
+    {
+      "criterion": "Back button returns to the services list on Home",
+      "name": "service-back-button-returns-home-services",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Clicking service-back-to-services-button from /services/cybersecurity navigates URL to '/#services' and home-services-section is in viewport. Re-ran against public preview URL build-preview-291--4971mohu.preview.emergentagent.com — also passed."
+    },
+    {
+      "criterion": "Round trip from Home",
+      "name": "home-service-card-roundtrip",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "From '/', clicked 1st link in home-services-grid -> detail page opens at scrollY<50 with back button visible -> back button -> URL '/#services', home-services-section in viewport -> repeated with 2nd card link -> same result."
+    },
+    {
+      "criterion": "Button stays reachable while scrolling",
+      "name": "service-back-button-sticky-on-scroll",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "On /services/cybersecurity, scrolled to 60% of page height; service-back-to-services-button still in viewport (sticky) and click still navigates to '/#services' with home-services-section visible."
+    },
+    {
+      "criterion": "Mobile works the same",
+      "name": "service-back-button-mobile",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "At 390x800 viewport, service-back-to-services-button visible on /services/cybersecurity; tapping it lands on '/#services' with home-services-section in viewport."
+    },
+    {
+      "criterion": "Normal navigation still scrolls to top",
+      "name": "header-nav-scrolls-to-top",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "From a scrolled /services/cybersecurity (scrollY>100), clicking nav-about-link navigates to /about with scrollY<20; from a scrolled /about, clicking nav-industries-link navigates to /industries with scrollY<20. (Note: getByRole('link',{name:'Industries'}) was ambiguous due to duplicate footer link with same text - resolved using data-testid selectors instead.)"
+    }
+  ],
+  "notes": [
+    "No login required for these pages per briefing; no auth-gated checks needed.",
+    "No API-bearing criteria in this matrix (all content is static site-data.ts) so no backend pytest files were created - all 6 criteria are purely UI/navigation behavior, fully covered by browser checks.",
+    "All checks follow fixture discipline implicitly: no data mutation, pure navigation/read checks against static content."
+  ]
+}

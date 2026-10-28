@@ -1,7 +1,8 @@
-import { ArrowLeft, ArrowUpRight, Check, Mail, SlidersHorizontal } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Check, Mail, Phone, SlidersHorizontal } from "lucide-react";
+import { SiWhatsapp } from "@icons-pack/react-simple-icons";
 import { Link, useParams } from "react-router-dom";
 import PageIntro from "@/components/PageIntro";
-import { contactDetails, services } from "@/lib/site-data";
+import { contactDetails, offices, services, whatsapp } from "@/lib/site-data";
 
 const infrastructureImage =
   "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1500&q=85";
@@ -16,8 +17,8 @@ export default function ServiceDetail() {
         <div className="page-container">
           <span className="eyebrow" data-testid="service-not-found-eyebrow">Service information</span>
           <h1 data-testid="service-not-found-title">We couldn’t find that service.</h1>
-          <Link to="/services" className="text-action" data-testid="service-not-found-link">
-            <ArrowLeft size={16} aria-hidden="true" /> Back to all services
+          <Link to="/#services" className="text-action" data-testid="service-not-found-link">
+            <ArrowLeft size={16} aria-hidden="true" /> Back to Services
           </Link>
         </div>
       </section>
@@ -29,6 +30,13 @@ export default function ServiceDetail() {
 
   return (
     <div data-testid={`service-detail-page-${service.slug}`}>
+      <nav className="service-subnav" aria-label="Services navigation" data-testid="service-subnav">
+        <div className="page-container service-subnav-inner">
+          <Link to="/#services" className="service-subnav-back" data-testid="service-back-to-services-button">
+            <ArrowLeft size={15} aria-hidden="true" /> Back to Services
+          </Link>
+        </div>
+      </nav>
       <PageIntro
         eyebrow="BACT IT services"
         title={service.title}
@@ -87,7 +95,52 @@ export default function ServiceDetail() {
               >
                 <Mail size={15} aria-hidden="true" /> {contactDetails.email}
               </a>
+              <div className="call-buttons" data-testid={`service-detail-call-buttons-${service.slug}`}>
+                {offices.map((office) => (
+                  <a
+                    key={office.country}
+                    href={`tel:${office.tel}`}
+                    className="call-button"
+                    title={office.phone}
+                    data-testid={`service-detail-call-${office.country.toLowerCase()}-${service.slug}`}
+                  >
+                    <Phone size={13} aria-hidden="true" /> Call {office.country}
+                  </a>
+                ))}
+                <a
+                  href={whatsapp.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="call-button call-button-whatsapp"
+                  data-testid={`service-detail-whatsapp-${service.slug}`}
+                >
+                  <SiWhatsapp size={13} aria-hidden="true" /> WhatsApp
+                </a>
+              </div>
             </div>
+          </div>
+        </div>
+      </section>
+      <section className="section-block other-services" data-testid="service-detail-other-services">
+        <div className="page-container">
+          <div className="other-services-head">
+            <h2 data-testid="other-services-title">Explore other services</h2>
+          </div>
+          <div className="other-services-grid">
+            {services
+              .filter((item) => item.slug !== service.slug)
+              .map((item) => (
+                <Link
+                  key={item.slug}
+                  to={`/services/${item.slug}`}
+                  className="other-service-card"
+                  data-testid={`other-service-link-${item.slug}`}
+                >
+                  <strong>{item.title}</strong>
+                  <span>{item.short}</span>
+                  <ArrowUpRight size={16} aria-hidden="true" />
+                </Link>
+              ))}
           </div>
         </div>
       </section>
