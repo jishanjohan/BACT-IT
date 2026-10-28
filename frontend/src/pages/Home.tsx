@@ -210,18 +210,6 @@ export default function Home() {
       </section>
 
       <Testimonials testId="home-testimonials" />
-
-      <section className="closing-cta" data-testid="home-closing-cta-section">
-        <div className="page-container closing-cta-inner">
-          <div>
-            <span className="eyebrow" data-testid="home-closing-eyebrow">Let’s build something smarter together</span>
-            <h2 data-testid="home-closing-title">Have a challenge in mind?</h2>
-          </div>
-          <Link to="/contact" className="button button-primary" data-testid="home-closing-contact-link">
-            Start a conversation <ArrowUpRight size={17} aria-hidden="true" />
-          </Link>
-        </div>
-      </section>
     </div>
   );
 }
