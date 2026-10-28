@@ -41,7 +41,7 @@ export default function TrainingTrackPage() {
       />
       <section className="section-block track-page-body" data-testid="track-page-body">
         <div className="page-container">
-          <TrainingTrackDetails track={track} testId="track-page" headingLevel="h2" />
+          <TrainingTrackDetails track={track} testId="track-page" headingLevel="h2" detailedCourses />
         </div>
       </section>
       <section className="section-block job-placement-section" data-testid="track-page-placement">

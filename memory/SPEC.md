@@ -148,3 +148,11 @@ syllabi, admissions details, or study-abroad guarantees. Flagship product conten
   the leadership list; his card shows a bio plus a link to it. His bio + message are a DRAFT written from existing
   company copy (the user skipped providing text), to be replaced with his own words.
 - Clients: the "Banking sector" tile is unchanged; real bank names have not been provided.
+
+## IT Training service page (/services/it-training)
+- Renders `components/TrainingCatalog.tsx` instead of generic cards: sticky jump chips, then each of the 9 tracks
+  stacked vertically (heading, why learn the track, every course via `CourseExplainer`, career paths, track page + enquiry).
+- Each `TrackCourse` now has `why`, `topics[]`, `audience` (31 courses). Programming gained C#; Database Administration
+  is now SQL & Database Fundamentals, Oracle Database Administration and SQL Server Administration.
+- Track pages (/courses/:slug) use the same vertical CourseExplainer (`detailedCourses`); the /courses accordion keeps compact cards.
+- SEO: it-training keywords list every major course; its Service JSON-LD carries an OfferCatalog of all courses.

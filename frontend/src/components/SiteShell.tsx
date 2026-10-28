@@ -194,16 +194,22 @@ function useScrollOnNavigate() {
     const id = hash.slice(1);
     let tries = 0;
     let frame = 0;
+    let settle = 0;
     const attempt = () => {
       const target = document.getElementById(id);
       if (target) {
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        // Jump instantly (long pages make smooth scrolling unreliable), then correct once more after layout settles.
+        target.scrollIntoView({ behavior: "instant", block: "start" });
+        settle = window.setTimeout(() => target.scrollIntoView({ behavior: "instant", block: "start" }), 350);
       } else if (tries++ < 30) {
         frame = requestAnimationFrame(attempt);
       }
     };
     frame = requestAnimationFrame(attempt);
-    return () => cancelAnimationFrame(frame);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.clearTimeout(settle);
+    };
   }, [pathname, hash]);
 }
 

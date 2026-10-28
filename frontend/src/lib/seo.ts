@@ -124,7 +124,7 @@ const serviceKeywords: Record<string, string[]> = {
   "ict-infrastructure": ["ICT infrastructure Bangladesh", "network solutions Dhaka", "data center Bangladesh", "structured cabling Dhaka", "CCTV installation Dhaka", "server and storage solutions Bangladesh"],
   cybersecurity: ["cybersecurity company Bangladesh", "cyber security services Dhaka", "penetration testing Bangladesh", "SOC services Bangladesh", "VAPT Bangladesh", "সাইবার সিকিউরিটি"],
   "ai-solutions": ["AI-powered business solutions", "RAG knowledge assistant", "AI agent development", "predictive analytics Bangladesh", "AI workflow automation", "AI solutions Bangladesh", "AI integration services", "chatbot development Bangladesh", "machine learning company Dhaka", "AI automation for business"],
-  "it-training": ["IT training in Bangladesh", "CCNA training Dhaka", "CEH course Bangladesh", "cloud certification training", "আইটি ট্রেনিং"],
+  "it-training": ["IT training in Bangladesh", "IT training center Dhaka", "CompTIA A+ course Dhaka", "CCNA training Dhaka", "CCNP course Bangladesh", "Linux course Dhaka", "CEH course Bangladesh", "SOC analyst training", "CISSP CISA CISM training", "Power BI course Bangladesh", "Python course Dhaka", "Java C# course Dhaka", "Oracle DBA training", "SQL Server course", "AWS Azure GCP training", "Microsoft Office course Dhaka", "আইটি ট্রেনিং"],
   "study-abroad": ["study abroad consultancy Bangladesh", "student visa consultant Dhaka", "study in Australia from Bangladesh", "study in USA from Bangladesh", "বিদেশে পড়াশোনা"],
   "digital-marketing": ["digital marketing agency Bangladesh", "SEO services Dhaka", "social media marketing Bangladesh", "website design Dhaka", "ডিজিটাল মার্কেটিং"],
 };
@@ -250,7 +250,30 @@ export function serviceJsonLd(pathname: string) {
   const slug = pathname.match(/^\/services\/([^/]+)\/?$/)?.[1];
   const service = slug ? services.find((s) => s.slug === slug) : undefined;
   if (!service) return null;
+  const catalog =
+    service.slug === "it-training"
+      ? {
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: "Professional IT training courses",
+            itemListElement: trainingTracks.flatMap((track) =>
+              track.courseList.map((course) => ({
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Course",
+                  name: `${course.name} Training`,
+                  description: course.description,
+                  timeRequired: `PT${course.hours}H`,
+                  educationalLevel: course.level,
+                  provider: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+                },
+              })),
+            ),
+          },
+        }
+      : {};
   return {
+    ...catalog,
     "@context": "https://schema.org",
     "@type": "Service",
     name: service.title,

@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import PageIntro from "@/components/PageIntro";
 import ResponsibleAi from "@/components/ResponsibleAi";
 import SolutionAccordion from "@/components/SolutionAccordion";
+import TrainingCatalog from "@/components/TrainingCatalog";
 import WhyChoose from "@/components/WhyChoose";
 import { solutionGroups, type SolutionGroupKey } from "@/lib/solutions-data";
 import { contactDetails, offices, services, whatsapp } from "@/lib/site-data";
@@ -63,18 +64,15 @@ export default function ServiceDetail() {
               </div>
               <SolutionAccordion group={solutionGroup} />
             </div>
+          ) : service.slug === "it-training" ? (
+            <TrainingCatalog />
           ) : (
             <>
             <div className="detail-head">
               <span className="eyebrow" data-testid={`service-detail-eyebrow-${service.slug}`}>What’s included</span>
               <h2 data-testid={`service-detail-heading-${service.slug}`}>
-                Explore what we offer in {service.title.toLowerCase()}.
+                Explore what we offer in {service.title}.
               </h2>
-              {service.slug === "it-training" && (
-                <Link to="/courses" className="text-action" data-testid="service-detail-full-courses-link">
-                  See full course details, benefits and career paths <ArrowUpRight size={16} aria-hidden="true" />
-                </Link>
-              )}
             </div>
             <div className="detail-cards" data-testid={`service-detail-list-${service.slug}`}>
               {service.items.map((item, index) => (

@@ -5193,3 +5193,254 @@ textarea:focus-visible {
     font-size: 15px;
   }
 }
+
+/* IT Training catalog (vertical course explanations) */
+.catalog-jump {
+  position: sticky;
+  z-index: 30;
+  top: 137px;
+  display: flex;
+  gap: 8px;
+  margin: 28px 0 0;
+  padding: 12px 0;
+  overflow-x: auto;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  scrollbar-width: none;
+}
+
+.catalog-jump::-webkit-scrollbar {
+  display: none;
+}
+
+.catalog-jump a {
+  flex: 0 0 auto;
+  padding: 7px 13px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: white;
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 600;
+  transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease;
+}
+
+.catalog-jump a:hover {
+  border-color: var(--orange);
+  background: #fff2e8;
+  color: #9a3412;
+}
+
+.catalog-tracks {
+  display: grid;
+  gap: 28px;
+  margin-top: 18px;
+}
+
+.catalog-track {
+  scroll-margin-top: 200px;
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(180deg, #fffaf5 0%, #ffffff 160px);
+}
+
+.catalog-track-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.catalog-track-head .training-track-icon {
+  background: #fff2e8;
+  color: #c44b00;
+}
+
+.catalog-track-head h3 {
+  margin: 4px 0 0;
+  color: var(--navy);
+  font-family: var(--font-display);
+  font-size: clamp(21px, 2.4vw, 27px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.catalog-track-why {
+  margin-top: 20px;
+  padding: 16px 20px;
+  border-left: 3px solid var(--orange);
+  border-radius: 0 12px 12px 0;
+  background: #f8fafc;
+}
+
+.catalog-track-why strong,
+.course-explainer-why strong,
+.course-explainer-topics strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--navy);
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.catalog-track-why p {
+  margin: 0;
+  color: #334155;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.catalog-course-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.course-explainer {
+  scroll-margin-top: 200px;
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--navy);
+  border-radius: 0 14px 14px 0;
+  background: white;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.course-explainer:hover {
+  border-left-color: var(--orange);
+  box-shadow: 0 14px 30px rgba(11, 35, 69, 0.06);
+}
+
+.course-explainer-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
+}
+
+.course-explainer-head h3,
+.course-explainer-head h4 {
+  margin: 0;
+  color: var(--navy);
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.course-explainer-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.course-explainer-desc {
+  margin: 10px 0 0;
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.course-explainer-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 18px;
+  margin-top: 14px;
+}
+
+.course-explainer-why p {
+  margin: 0;
+  color: #334155;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.course-explainer-topics ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.course-explainer-topics li {
+  display: flex;
+  gap: 8px;
+  color: #334155;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.course-explainer-topics li svg {
+  flex: 0 0 auto;
+  margin-top: 3px;
+  color: #c44b00;
+}
+
+.course-explainer-audience,
+.catalog-track-careers {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 14px 0 0;
+  color: #475569;
+  font-size: 13.5px;
+}
+
+.course-explainer-audience svg,
+.catalog-track-careers svg {
+  color: #c44b00;
+}
+
+.course-explainer-audience strong,
+.catalog-track-careers strong {
+  color: var(--navy);
+}
+
+.catalog-track-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.catalog-track-footer .catalog-track-careers {
+  flex: 1 1 420px;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .catalog-jump {
+    top: 127px;
+  }
+
+  .course-explainer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .catalog-track {
+    padding: 20px 16px;
+  }
+
+  .course-explainer {
+    padding: 18px 16px;
+  }
+
+  .catalog-track-head {
+    gap: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .course-explainer,
+  .catalog-jump a {
+    transition: none;
+  }
+}

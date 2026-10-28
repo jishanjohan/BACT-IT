@@ -1,0 +1,74 @@
+{
+  "iteration": 3,
+  "summary": "Verified the 8 acceptance criteria for the expanded IT Training catalog feature: /services/it-training now shows all 9 tracks and 31 courses stacked vertically via TrainingCatalog + CourseExplainer, new Programming (C, C++, Python, Java, C#) and Database Administration (SQL & Database Fundamentals, Oracle DBA, SQL Server Administration) courses are present with correct order/duration, jump-chip and deep-link hash navigation work, /courses/<slug> track pages render the same course-explainer detail and the /courses accordion still works, SEO tags (title/description/keywords/#ld-service JSON-LD with 31 hasOfferCatalog items) are set, and no regressions in back-navigation or other service pages. All content is static (site-data.ts) so no backend pytest files were needed; one check re-ran against the public preview URL.",
+  "passed": 8,
+  "failed": 0,
+  "bugs": [],
+  "action_items": [],
+  "retest_needed": false,
+  "checks": [
+    {
+      "criterion": "IT Training service page explains every track and course vertically",
+      "name": "it-training-catalog-vertical-tracks",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "/services/it-training rendered training-catalog with exactly 9 track title elements and 31 .course-explainer elements total; track-1-why contained 'Why learn'. Re-ran successfully against public preview URL build-preview-291--4971mohu.preview.emergentagent.com."
+    },
+    {
+      "criterion": "Each course has why/what/who/duration",
+      "name": "course-explainer-has-full-detail",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Networking track (track-1) course names in order: CompTIA A+, CCNA, CCNP. course-1 showed '<name> Training' heading, duration text containing 'hours', a level badge, non-empty description, 'Why learn' paragraph, a topics list with >=4 <li> items, and a \"Who it's for\" audience line."
+    },
+    {
+      "criterion": "New courses added",
+      "name": "new-courses-programming-and-database",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Programming track course names included C, C++, Python, Java and C# (C# duration showed '48 hours' and '6 weeks'); Database Administration track course names included 'SQL & Database Fundamentals', 'Oracle Database Administration' and 'SQL Server Administration'."
+    },
+    {
+      "criterion": "Jump navigation",
+      "name": "training-catalog-jump-navigation",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Clicking training-catalog-jump-8 scrolled training-catalog-track-8 into viewport. Directly opening /services/it-training#it-track-cloud-aws-azure-gcp-training landed with the #it-track-cloud-aws-azure-gcp-training section visible and in viewport (ratio>=0.1) without needing a click."
+    },
+    {
+      "criterion": "Track pages show the same detail",
+      "name": "track-pages-show-course-explainer-detail",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "/courses/database-administration-training rendered h1 matching 'Database...' with 3 .course-explainer elements, one named 'Oracle...'. /courses/programming-python-java-c-courses rendered h1 matching 'Programming...' with 5 .course-explainer elements. /courses accordion still worked: training-track-1-toggle visible by default, clicking training-track-3-toggle set aria-expanded=true."
+    },
+    {
+      "criterion": "SEO on the IT Training page",
+      "name": "it-training-page-seo-tags",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "document.title non-empty; meta[name=description] present; meta[name=keywords] contained 'ccna training dhaka' and 'oracle dba training' (case-insensitive); #ld-service JSON-LD parsed with hasOfferCatalog.itemListElement.length === 31."
+    },
+    {
+      "criterion": "No regressions",
+      "name": "no-regressions-back-nav-and-other-pages",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "service-back-to-services-button from /services/it-training navigated to '#services' with home-services-section in viewport. track-back-to-training-button from /courses/networking-ccna-ccnp-training navigated to '/courses' with training-tracks-section in viewport. /services/software-solutions and /services/ai-solutions both rendered a visible <h1>."
+    },
+    {
+      "criterion": "Mobile layout",
+      "name": "it-training-mobile-no-overflow",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "At 390x800, /services/it-training had document.documentElement.scrollWidth <= 395 (no horizontal overflow) and the first 3 .course-explainer cards shared the same x-position (single-column stack)."
+    }
+  ],
+  "notes": [
+    "No login required for these pages per briefing; no auth-gated checks needed.",
+    "All 8 criteria are UI/content/SEO/navigation behavior backed by static site-data.ts content; no new API-bearing criteria, so no new backend pytest files were created (confirmed backend suite still has 0 tests and app is reachable at :8001/:3000).",
+    "Matrix contained exactly 8 criteria; all 8 covered by 8 new browser checks, none skipped.",
+    "Prior iteration-2 checks (8-track era) were left untouched; new checks target the expanded 9-track/31-course IT Training catalog specifically.",
+    "All checks follow fixture discipline: pure read/navigation checks against static content, no data mutation."
+  ]
+}

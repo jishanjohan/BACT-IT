@@ -1,28 +1,15 @@
 import { useState } from "react";
-import {
-  ArrowUpRight,
-  BookOpen,
-  BriefcaseBusiness,
-  ChevronDown,
-  Cloud,
-  Code2,
-  Database,
-  FileSpreadsheet,
-  HardDrive,
-  Server,
-  ShieldCheck,
-  Wifi,
-} from "lucide-react";
+import { ArrowUpRight, BriefcaseBusiness, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageIntro from "@/components/PageIntro";
 import SectionHeading from "@/components/SectionHeading";
 import TrainingTrackDetails from "@/components/TrainingTrackDetails";
 import Testimonials from "@/components/Testimonials";
 import { jobPlacement, trainingTracks } from "@/lib/site-data";
+import { trackIcon } from "@/lib/track-icons";
 
 const trainingImage =
   "https://images.unsplash.com/photo-1781092176313-8b8b1e9927c7?auto=format&fit=crop&w=1500&q=85";
-const trackIcons = [Wifi, Server, ShieldCheck, BookOpen, Database, Code2, HardDrive, Cloud, FileSpreadsheet];
 
 export default function Courses() {
   const [openTracks, setOpenTracks] = useState<number[]>([0]);
@@ -51,7 +38,7 @@ export default function Courses() {
           />
           <div className="training-track-list" data-testid="training-track-list">
             {trainingTracks.map((track, index) => {
-              const Icon = trackIcons[index];
+              const Icon = trackIcon(track.slug);
               const n = index + 1;
               const isOpen = openTracks.includes(index);
               return (
