@@ -140,3 +140,11 @@ syllabi, admissions details, or study-abroad guarantees. Flagship product conten
 - Chat bot knowledge (backend/lib/bact_knowledge.py) lists all software categories, AI availability,
   responsible AI and the Why Choose points.
 - Visual edit: "VBA" renamed to "VBA Excel" across training content.
+
+## About page: founder message + leader photos
+- `Leader` has optional `photo` (path in frontend/public, e.g. /leadership/jishan.jpg) and `featured`.
+  `components/LeaderAvatar.tsx` shows the photo or falls back to initials. No photos supplied yet.
+- Toufiqur Rahaman Jishan (featured) gets the "Message from our Founder & CEO" section (#founder-message) above
+  the leadership list; his card shows a bio plus a link to it. His bio + message are a DRAFT written from existing
+  company copy (the user skipped providing text), to be replaced with his own words.
+- Clients: the "Banking sector" tile is unchanged; real bank names have not been provided.

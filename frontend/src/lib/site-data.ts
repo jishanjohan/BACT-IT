@@ -717,6 +717,10 @@ export interface Leader {
   bio: string[];
   message: string[];
   link?: { label: string; href: string };
+  // Optional headshot (e.g. "/leadership/jishan.jpg" in frontend/public); initials are shown until one is added.
+  photo?: string;
+  // Shown in the "Message from our Founder & CEO" feature instead of inside the leadership card.
+  featured?: boolean;
 }
 
 export const leadership: Leader[] = [
@@ -762,8 +766,15 @@ export const leadership: Leader[] = [
     name: "Toufiqur Rahaman Jishan",
     role: "Founder & CEO, BACT IT",
     initials: "TJ",
-    bio: [],
-    message: [],
+    featured: true,
+    bio: [
+      "Toufiqur Rahaman Jishan is the Founder and Chief Executive Officer of BACT IT. He leads the company’s overall vision and strategy across technology services, professional IT training and study abroad guidance, with a focus on connecting global technology standards with local talent and businesses in Bangladesh.",
+    ],
+    message: [
+      "When we founded BACT IT, Business Application & Communication Technology, our goal was simple: to be a technology partner that organizations can genuinely rely on, and to help people build the skills the digital economy demands.",
+      "Today we bring software, ICT infrastructure, cybersecurity, AI, professional IT training, study abroad guidance and digital marketing together under one roof. Whether we are building a system for a business, securing an organization’s network or training the next generation of IT professionals, we focus on practical, reliable solutions built around real needs.",
+      "Technology should connect, automate and secure, and it should create opportunity. With our team in Bangladesh, the USA and Australia, we are committed to bringing international standards to local talent and local businesses. Thank you for considering BACT IT as your technology partner. We look forward to growing with you.",
+    ],
     link: { label: "LinkedIn profile", href: "https://www.linkedin.com/in/md-toufiqur-rahaman-jishan-125794ab/" },
   },
 ];

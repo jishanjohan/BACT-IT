@@ -1,11 +1,14 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Quote } from "lucide-react";
 import { Link } from "react-router-dom";
+import LeaderAvatar from "@/components/LeaderAvatar";
 import PageIntro from "@/components/PageIntro";
 import SectionHeading from "@/components/SectionHeading";
 import { differentiators, leadership } from "@/lib/site-data";
 
 const teamImage =
   "https://images.unsplash.com/photo-1580894899378-92e56886cd4d?auto=format&fit=crop&w=1300&q=85";
+
+const founder = leadership.find((leader) => leader.featured);
 
 export default function About() {
   return (
@@ -61,6 +64,33 @@ export default function About() {
           </div>
         </div>
       </section>
+      {founder && (
+        <section className="section-block founder-message" id="founder-message" data-testid="about-founder-message-section">
+          <div className="page-container founder-message-grid">
+            <div className="founder-profile" data-testid="about-founder-profile">
+              <LeaderAvatar leader={founder} testId="about-founder-avatar" large />
+              <h3 data-testid="about-founder-name">{founder.name}</h3>
+              <p data-testid="about-founder-role">{founder.role}</p>
+              {founder.link && (
+                <a href={founder.link.href} target="_blank" rel="noreferrer" className="text-action" data-testid="about-founder-profile-link">
+                  {founder.link.label} <ArrowUpRight size={15} aria-hidden="true" />
+                </a>
+              )}
+            </div>
+            <div className="founder-copy">
+              <span className="eyebrow" data-testid="about-founder-eyebrow">Message from our Founder &amp; CEO</span>
+              <h2 data-testid="about-founder-title">Building a technology partner you can rely on.</h2>
+              <blockquote className="founder-quote" data-testid="about-founder-message">
+                <Quote size={34} aria-hidden="true" className="founder-quote-mark" />
+                {founder.message.map((paragraph, i) => (
+                  <p key={i} data-testid={`about-founder-message-${i + 1}`}>{paragraph}</p>
+                ))}
+                <cite data-testid="about-founder-signature">{founder.name}, Founder &amp; CEO</cite>
+              </blockquote>
+            </div>
+          </div>
+        </section>
+      )}
       <section className="section-block leadership-section" id="authority" data-testid="about-leadership-section">
         <div className="page-container">
           <SectionHeading
@@ -73,7 +103,7 @@ export default function About() {
             {leadership.map((leader, index) => (
               <article className="leader-card" key={leader.name} data-testid={`about-leader-${index + 1}`}>
                 <div className="leader-profile">
-                  <span className="leader-avatar" aria-hidden="true">{leader.initials}</span>
+                  <LeaderAvatar leader={leader} testId={`about-leader-${index + 1}-avatar`} />
                   <div>
                     <h3 data-testid={`about-leader-${index + 1}-name`}>{leader.name}</h3>
                     <p data-testid={`about-leader-${index + 1}-role`}>{leader.role}</p>
@@ -95,7 +125,12 @@ export default function About() {
                     {leader.bio.map((paragraph, i) => (
                       <p key={i} data-testid={`about-leader-${index + 1}-bio-${i + 1}`}>{paragraph}</p>
                     ))}
-                    {leader.message.length > 0 && (
+                    {leader.featured && (
+                      <a href="#founder-message" className="text-action" data-testid={`about-leader-${index + 1}-message-link`}>
+                        Read the message from our Founder &amp; CEO <ArrowUpRight size={15} aria-hidden="true" />
+                      </a>
+                    )}
+                    {!leader.featured && leader.message.length > 0 && (
                       <blockquote className="leader-message" data-testid={`about-leader-${index + 1}-message`}>
                         <span className="leader-message-label">Message</span>
                         {leader.message.map((paragraph, i) => (
