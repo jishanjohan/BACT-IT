@@ -44,9 +44,6 @@ export function SiteHeader() {
             </NavLink>
           ))}
         </nav>
-        <Link to="/contact" className="header-cta" data-testid="nav-contact-link">
-          Let’s talk <ArrowUpRight size={16} aria-hidden="true" />
-        </Link>
         <button
           className="mobile-menu-button"
           type="button"

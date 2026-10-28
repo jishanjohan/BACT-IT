@@ -181,6 +181,8 @@ export default function Home() {
         </div>
       </section>
 
+      <Testimonials testId="home-testimonials" />
+
       <section className="section-block finder-section" data-testid="home-finder-section">
         <div className="page-container finder-grid">
           <SectionHeading
@@ -192,8 +194,6 @@ export default function Home() {
           <ServiceFinder />
         </div>
       </section>
-
-      <Testimonials testId="home-testimonials" />
     </div>
   );
 }
