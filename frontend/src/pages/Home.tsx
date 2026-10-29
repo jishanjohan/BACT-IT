@@ -44,7 +44,7 @@ export default function Home() {
               YOUR TRUSTED TECHNOLOGY PARTNER
             </span>
             <p className="hero-fullname" data-testid="home-hero-fullname">
-              <strong>BACT IT</strong> — {companyFullName} · IT company in Dhaka, Bangladesh
+              <strong>BACT IT</strong> — {companyFullName} · IT company based in Dhaka (Bangladesh), Australia and the USA
             </p>
             <h1 data-testid="home-hero-title">
               Empowering the Future with <em>Cutting-edge IT Services</em>
