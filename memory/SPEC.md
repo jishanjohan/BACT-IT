@@ -162,3 +162,6 @@ syllabi, admissions details, or study-abroad guarantees. Flagship product conten
   reduced-motion users). Files: frontend/public/videos/hero.webm (VP9, ~1.1 MB), hero.mp4 (H.264 faststart, ~1.4 MB),
   hero-poster.jpg. Generated ONCE with fal.ai Veo 3.1 (text-to-video, no audio) via the Emergent Universal Key using the
   builder script scripts/generate_hero_video.py; not generated at runtime. All hero text unchanged.
+- Hero is now full-viewport: the video is the section background (aria-hidden, navy gradient overlay) with the
+  user's copy on top: h1 "Empowering the Future with Cutting-edge IT Services" + description (user's sentence, with the
+  leading "At" dropped for grammar). Old side image frame, "01 / 07" index and image label were removed.

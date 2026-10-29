@@ -20,10 +20,24 @@ export default function Home() {
   const reduceMotion = useReducedMotion();
   return (
     <div className="home-page" data-testid="home-page">
-      <section className="home-hero" data-testid="home-hero-section">
-        <div className="hero-orbit hero-orbit-one" aria-hidden="true" />
-        <div className="hero-orbit hero-orbit-two" aria-hidden="true" />
-        <div className="page-container hero-grid">
+      <section className="home-hero home-hero-video" data-testid="home-hero-section">
+        <video
+          className="hero-bg-video"
+          poster="/videos/hero-poster.jpg"
+          autoPlay={!reduceMotion}
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+          tabIndex={-1}
+          data-testid="home-hero-video"
+        >
+          <source src="/videos/hero.webm" type="video/webm" />
+          <source src="/videos/hero.mp4" type="video/mp4" />
+        </video>
+        <div className="hero-bg-overlay" aria-hidden="true" />
+        <div className="page-container hero-video-content">
           <div className="hero-copy">
             <span className="hero-kicker" data-testid="home-hero-kicker">
               <span className="status-dot" aria-hidden="true" />
@@ -33,41 +47,17 @@ export default function Home() {
               <strong>BACT IT</strong> — {companyFullName} · IT company in Dhaka, Bangladesh
             </p>
             <h1 data-testid="home-hero-title">
-              Empowering business through <em>technology.</em>
+              Empowering the Future with <em>Cutting-edge IT Services</em>
             </h1>
             <p className="hero-description" data-testid="home-hero-description">
-              Empowering Businesses Through Technology, Security &amp; AI. From Dhaka, New York and
-              Sydney, we deliver intelligent software, secure IT infrastructure, cybersecurity, AI
-              integration, professional IT training, study abroad guidance, and digital marketing
-              solutions to help businesses grow.
+              BACT IT is a trusted technology partner delivering innovative Software Development, AI and
+              Automation, IT Infrastructure, Hardware Solutions, Cybersecurity Solutions, Cloud Services, System
+              Integration, and Professional IT Training.
             </p>
             <div className="hero-proofline" data-testid="home-hero-proofline">
               <span data-testid="home-hero-proof-icon"><ShieldCheck size={17} /></span>
               <p data-testid="home-hero-proof-copy">One connected partner for your technology needs</p>
             </div>
-          </div>
-          <div className="hero-visual" data-testid="home-hero-visual">
-            <div className="hero-image-frame" data-testid="home-hero-image-frame">
-              <video
-                className="hero-video"
-                poster="/videos/hero-poster.jpg"
-                autoPlay={!reduceMotion}
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                aria-label="Short video showing BACT IT services: data center networking, cybersecurity and IT training"
-                data-testid="home-hero-video"
-              >
-                <source src="/videos/hero.webm" type="video/webm" />
-                <source src="/videos/hero.mp4" type="video/mp4" />
-              </video>
-              <div className="hero-image-shade" aria-hidden="true" />
-              <div className="hero-image-label" data-testid="home-hero-image-label">
-                <span data-testid="home-hero-image-label-kicker">BACT IT</span>
-              </div>
-            </div>
-            <div className="hero-index" data-testid="home-hero-index">01 <span>/</span> 07</div>
           </div>
         </div>
         <a href="#services" className="hero-scroll" data-testid="home-scroll-services-link">

@@ -26,7 +26,7 @@ const pages: Record<string, PageSeo> = {
   "/": {
     title: "BACT IT | IT Company in Dhaka, Bangladesh — Software, Cybersecurity & AI",
     description:
-      "BACT IT is a leading IT company in Dhaka, Bangladesh with offices in New York and Sydney. Software development, ERP, ICT infrastructure, cybersecurity, AI solutions, IT training and study abroad guidance.",
+      "Empowering the future with cutting-edge IT services. BACT IT, an IT company in Dhaka, Bangladesh with offices in New York and Sydney, delivers software development, AI and automation, IT infrastructure, hardware, cybersecurity, cloud, system integration and professional IT training.",
     keywords: [
       ...brandKeywords,
       "best IT company in Bangladesh",
@@ -34,6 +34,9 @@ const pages: Record<string, PageSeo> = {
       "IT solutions Bangladesh",
       "cybersecurity company Bangladesh",
       "AI solutions Bangladesh",
+      "cutting-edge IT services",
+      "system integration Bangladesh",
+      "hardware solutions Bangladesh",
       "IT services New York",
       "IT services Sydney",
       "সফটওয়্যার কোম্পানি ঢাকা",
