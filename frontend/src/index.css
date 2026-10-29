@@ -5522,3 +5522,12 @@ textarea:focus-visible {
 .why-choose-card {
   align-content: start;
 }
+
+/* Home hero background video (replaces the still photo) */
+.hero-image-frame .hero-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}

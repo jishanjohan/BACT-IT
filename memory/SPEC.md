@@ -156,3 +156,9 @@ syllabi, admissions details, or study-abroad guarantees. Flagship product conten
 
 ## Removed
 - Portfolio page (/portfolio) removed on request: nav + footer links, route, page file, SEO entry and sitemap URL. /portfolio now falls through to no route.
+
+## Home hero video
+- The hero photo was replaced by a silent, looping 8s video (autoplay muted loop playsInline; poster frame shown to
+  reduced-motion users). Files: frontend/public/videos/hero.webm (VP9, ~1.1 MB), hero.mp4 (H.264 faststart, ~1.4 MB),
+  hero-poster.jpg. Generated ONCE with fal.ai Veo 3.1 (text-to-video, no audio) via the Emergent Universal Key using the
+  builder script scripts/generate_hero_video.py; not generated at runtime. All hero text unchanged.

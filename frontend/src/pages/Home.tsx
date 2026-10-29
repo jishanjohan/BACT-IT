@@ -1,4 +1,5 @@
 import { ArrowDownRight, ArrowUpRight, ShieldCheck } from "lucide-react";
+import { useReducedMotion } from "motion/react";
 import { Link } from "react-router-dom";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
@@ -14,10 +15,9 @@ import {
   services,
 } from "@/lib/site-data";
 
-const teamImage =
-  "https://images.unsplash.com/photo-1582005450386-52b25f82d9bb?auto=format&fit=crop&w=1400&q=85";
-
 export default function Home() {
+  // Visitors who prefer reduced motion see the still poster frame instead of the looping video.
+  const reduceMotion = useReducedMotion();
   return (
     <div className="home-page" data-testid="home-page">
       <section className="home-hero" data-testid="home-hero-section">
@@ -48,11 +48,20 @@ export default function Home() {
           </div>
           <div className="hero-visual" data-testid="home-hero-visual">
             <div className="hero-image-frame" data-testid="home-hero-image-frame">
-              <img
-                src={teamImage}
-                alt="Colleagues collaborating around a laptop in a technology workspace"
-                data-testid="home-hero-image"
-              />
+              <video
+                className="hero-video"
+                poster="/videos/hero-poster.jpg"
+                autoPlay={!reduceMotion}
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label="Short video showing BACT IT services: data center networking, cybersecurity and IT training"
+                data-testid="home-hero-video"
+              >
+                <source src="/videos/hero.webm" type="video/webm" />
+                <source src="/videos/hero.mp4" type="video/mp4" />
+              </video>
               <div className="hero-image-shade" aria-hidden="true" />
               <div className="hero-image-label" data-testid="home-hero-image-label">
                 <span data-testid="home-hero-image-label-kicker">BACT IT</span>
