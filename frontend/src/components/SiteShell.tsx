@@ -2,9 +2,10 @@ import { useEffect, useState, type ReactNode } from "react";
 import ChatWidget from "@/components/ChatWidget";
 import RouteSeo from "@/components/RouteSeo";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { ArrowUpRight, Facebook, Instagram, Linkedin, Mail, MapPin, Menu, Phone, X } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Facebook, Instagram, Linkedin, Mail, MapPin, Menu, Phone, X } from "lucide-react";
 import { companyFullName, contactDetails, offices, services, socialLinks, whatsapp } from "@/lib/site-data";
 import { SiWhatsapp } from "@icons-pack/react-simple-icons";
+import { serviceMenu } from "@/lib/service-menu";
 
 const navigation = [
   { label: "About", to: "/about", id: "nav-about-link" },
@@ -17,6 +18,14 @@ const navigation = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [megaOpen, setMegaOpen] = useState(false);
+  const { pathname } = useLocation();
+
+  // Close both menus whenever the route changes.
+  useEffect(() => {
+    setOpen(false);
+    setMegaOpen(false);
+  }, [pathname]);
 
   return (
     <header className="site-header" data-testid="site-header">
@@ -33,16 +42,66 @@ export function SiteHeader() {
           </span>
         </Link>
         <nav className="desktop-nav" aria-label="Main navigation" data-testid="desktop-navigation">
-          {navigation.map((item) => (
-            <NavLink
-              key={item.to}
-              to={item.to}
-              className={({ isActive }) => `nav-link${isActive ? " active" : ""}`}
-              data-testid={item.id}
-            >
-              {item.label}
-            </NavLink>
-          ))}
+          {navigation.map((item) =>
+            item.to === "/services" ? (
+              <div
+                key={item.to}
+                className={`nav-dropdown${megaOpen ? " is-open" : ""}`}
+                onMouseEnter={() => setMegaOpen(true)}
+                onMouseLeave={() => setMegaOpen(false)}
+                onFocus={() => setMegaOpen(true)}
+                onBlur={(event) => {
+                  if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setMegaOpen(false);
+                }}
+                onKeyDown={(event) => event.key === "Escape" && setMegaOpen(false)}
+                data-testid="nav-services-dropdown"
+              >
+                <NavLink
+                  to={item.to}
+                  className={({ isActive }) => `nav-link${isActive || pathname.startsWith("/services/") ? " active" : ""}`}
+                  aria-haspopup="true"
+                  aria-expanded={megaOpen}
+                  data-testid={item.id}
+                >
+                  {item.label} <ChevronDown size={14} aria-hidden="true" className="nav-dropdown-chevron" />
+                </NavLink>
+                <div className="mega-menu" role="menu" data-testid="nav-services-mega-menu">
+                  <div className="mega-menu-grid">
+                    {serviceMenu.map((service) => (
+                      <div className={`mega-menu-col${service.children.length ? " has-children" : ""}`} key={service.slug}>
+                        <Link to={service.to} className="mega-menu-title" data-testid={`mega-menu-${service.slug}-link`}>
+                          {service.title}
+                        </Link>
+                        {service.children.length > 0 && (
+                          <ul>
+                            {service.children.map((child) => (
+                              <li key={child.to}>
+                                <Link to={child.to} data-testid={`mega-menu-item-${child.to.split("/").pop()}`}>
+                                  {child.title}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                  <Link to="/services" className="text-action mega-menu-all" data-testid="mega-menu-all-services-link">
+                    View all services <ArrowUpRight size={15} aria-hidden="true" />
+                  </Link>
+                </div>
+              </div>
+            ) : (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                className={({ isActive }) => `nav-link${isActive ? " active" : ""}`}
+                data-testid={item.id}
+              >
+                {item.label}
+              </NavLink>
+            ),
+          )}
         </nav>
         <button
           className="mobile-menu-button"
@@ -57,26 +116,57 @@ export function SiteHeader() {
       </div>
       {open && (
         <nav className="mobile-nav" aria-label="Mobile navigation" data-testid="mobile-navigation-panel">
-          {navigation.map((item) => (
-            <Link
-              key={item.to}
-              to={item.to}
-              onClick={() => setOpen(false)}
-              data-testid={`mobile-${item.id}`}
-            >
-              {item.label}
-            </Link>
-          ))}
-          {services.map((service) => (
-            <Link
-              key={service.slug}
-              to={`/services/${service.slug}`}
-              onClick={() => setOpen(false)}
-              data-testid={`mobile-service-${service.slug}-link`}
-            >
-              {service.title}
-            </Link>
-          ))}
+          {navigation.map((item) =>
+            item.to === "/services" ? (
+              <details className="mobile-group" key={item.to} data-testid="mobile-services-group">
+                <summary data-testid={`mobile-${item.id}`}>
+                  {item.label} <ChevronDown size={16} aria-hidden="true" />
+                </summary>
+                <div className="mobile-group-body">
+                  <Link to="/services" onClick={() => setOpen(false)} data-testid="mobile-all-services-link">
+                    All services
+                  </Link>
+                  {serviceMenu.map((service) =>
+                    service.children.length ? (
+                      <details className="mobile-subgroup" key={service.slug} data-testid={`mobile-service-${service.slug}-group`}>
+                        <summary data-testid={`mobile-service-${service.slug}-toggle`}>
+                          {service.title} <ChevronDown size={15} aria-hidden="true" />
+                        </summary>
+                        <div className="mobile-subgroup-body">
+                          <Link to={service.to} onClick={() => setOpen(false)} data-testid={`mobile-service-${service.slug}-link`}>
+                            {service.title} overview
+                          </Link>
+                          {service.children.map((child) => (
+                            <Link
+                              key={child.to}
+                              to={child.to}
+                              onClick={() => setOpen(false)}
+                              data-testid={`mobile-menu-item-${child.to.split("/").pop()}`}
+                            >
+                              {child.title}
+                            </Link>
+                          ))}
+                        </div>
+                      </details>
+                    ) : (
+                      <Link
+                        key={service.slug}
+                        to={service.to}
+                        onClick={() => setOpen(false)}
+                        data-testid={`mobile-service-${service.slug}-link`}
+                      >
+                        {service.title}
+                      </Link>
+                    ),
+                  )}
+                </div>
+              </details>
+            ) : (
+              <Link key={item.to} to={item.to} onClick={() => setOpen(false)} data-testid={`mobile-${item.id}`}>
+                {item.label}
+              </Link>
+            ),
+          )}
           <Link to="/contact" onClick={() => setOpen(false)} data-testid="mobile-contact-link">
             Contact
           </Link>

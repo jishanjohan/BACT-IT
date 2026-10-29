@@ -165,3 +165,10 @@ syllabi, admissions details, or study-abroad guarantees. Flagship product conten
 - Hero is now full-viewport: the video is the section background (aria-hidden, navy gradient overlay) with the
   user's copy on top: h1 "Empowering the Future with Cutting-edge IT Services" + description (user's sentence, with the
   leading "At" dropped for grammar). Old side image frame, "01 / 07" index and image label were removed.
+
+## Services menu (header)
+- `lib/service-menu.ts` builds every service + its children (software categories → /services/software-solutions/:slug,
+  AI features → /services/ai-solutions/:slug, IT training tracks → /courses/:slug); other services have no children.
+- Desktop: "Services" opens a hover/focus mega menu (`nav-services-mega-menu`, Esc closes, closes on route change).
+- Mobile (hamburger): "Services" is a <details> group with "All services", expandable sub-groups for the three services
+  with children, and direct links for the rest; the panel closes on navigation.
