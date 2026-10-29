@@ -770,6 +770,7 @@ export const leadership: Leader[] = [
     name: "Aminur Rahman",
     role: "Vice-Chairman & Country Head (USA)",
     initials: "AR",
+    photo: "/leadership/aminur-rahman.webp",
     bio: [
       "Aminur Rahman serves as the Co-Chairman and Country Head (USA) at BACT IT of Bangladesh. Currently based in the United States, he is a seasoned IT professional working with a renowned global tech company. With years of experience in the international technology landscape, he brings strategic insight, leadership, and global perspective to our team.",
       "Despite his professional commitments abroad, Mr. Rahman remains deeply committed to the development of Bangladesh’s tech talent. His involvement with BACT IT reflects his passion for bridging global expertise with local potential. Through his guidance, we continue to align our training standards with international benchmarks and expand our reach beyond borders.",
@@ -782,6 +783,7 @@ export const leadership: Leader[] = [
     name: "Jubayer Ahmed Hridoy",
     role: "Co-Founder, BACT IT",
     initials: "JH",
+    photo: "/leadership/jubayer-ahmed-hridoy.webp",
     bio: [
       "Jubayer Ahmed Hridoy, Co-Founder of BACT IT of Bangladesh, is a brilliant mind shaped by science, driven by purpose, and guided by vision. A meritorious student from a science background, Hridoy is currently pursuing his higher studies in IT Management at the University of Technology Sydney (UTS), Australia.",
       "Even while studying abroad, his heart remains connected to Bangladesh. As an emerging entrepreneur, he co-founded BACT IT with a mission to bridge the gap between global tech standards and local talent. His dedication, curiosity, and leadership continue to inspire our journey toward making world-class IT education accessible for all.",
@@ -795,6 +797,7 @@ export const leadership: Leader[] = [
     name: "Toufiqur Rahaman Jishan",
     role: "Founder & CEO, BACT IT",
     initials: "TJ",
+    photo: "/leadership/toufiqur-rahaman-jishan.webp",
     bio: [
       "Toufiqur Rahaman Jishan is the Founder and Chief Executive Officer of BACT IT. He leads the company’s overall vision and strategy across technology services, professional IT training and study abroad guidance, with a focus on connecting global technology standards with local talent and businesses in Bangladesh.",
     ],

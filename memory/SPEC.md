@@ -142,7 +142,7 @@ syllabi, admissions details, or study-abroad guarantees. Flagship product conten
 
 ## About page: founder message + leader photos
 - `Leader` has optional `photo` (path in frontend/public, e.g. /leadership/jishan.jpg) and `featured`.
-  `components/LeaderAvatar.tsx` shows the photo or falls back to initials. No photos supplied yet.
+  `components/LeaderAvatar.tsx` shows the photo or falls back to initials. Photos (480px square webp crops of user uploads) in frontend/public/leadership/ for Aminur Rahman, Jubayer Ahmed Hridoy and Toufiqur Rahaman Jishan; Chairman Zaynal Abedin still uses initials. Avatars are 128px (104px mobile), stacked above the name.
 - The separate founder feature section was removed (user: it repeated). Each leader card shows a short message, in order Chairman → Vice-Chairman → Co-Founder → Founder & CEO; all four messages were rewritten short and distinct on request (business, new generation, future technology).
 - Clients: the "Banking sector" tile is unchanged; real bank names have not been provided.
 

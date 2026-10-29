@@ -5790,3 +5790,29 @@ textarea:focus-visible {
   color: #c44b00;
   font-weight: 600;
 }
+
+/* Larger leader photos beside each message */
+.leader-profile {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.leader-profile .leader-avatar {
+  width: 128px;
+  height: 128px;
+  font-size: 34px;
+  box-shadow: 0 0 0 5px #fff2e8, 0 16px 32px rgba(11, 35, 69, 0.16);
+}
+
+.leader-profile .leader-photo {
+  border: 3px solid #ffffff;
+}
+
+@media (max-width: 760px) {
+  .leader-profile .leader-avatar {
+    width: 104px;
+    height: 104px;
+    font-size: 28px;
+  }
+}
