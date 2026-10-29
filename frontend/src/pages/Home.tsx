@@ -73,9 +73,9 @@ export default function Home() {
             <span className="eyebrow" data-testid="home-brand-intro-eyebrow">Who we are</span>
             <h2 data-testid="home-brand-intro-title">{companyFullName}</h2>
             <p data-testid="home-brand-intro-description">
-              BACT IT stands for Business Application &amp; Communication Technology — one technology
-              partner for software, infrastructure, cybersecurity, AI, training, study abroad guidance
-              and digital marketing.
+              BACT IT (Business Application &amp; Communication Technology) keeps its commitment to every
+              service we deliver, providing innovative technology solutions that enable organizations to
+              enhance efficiency, accelerate digital transformation, and achieve sustainable growth.
             </p>
           </div>
         </div>
