@@ -65,7 +65,6 @@ export default function Home() {
               <div className="hero-image-shade" aria-hidden="true" />
               <div className="hero-image-label" data-testid="home-hero-image-label">
                 <span data-testid="home-hero-image-label-kicker">BACT IT</span>
-                <strong data-testid="home-hero-image-label-copy">Technology that moves you forward.</strong>
               </div>
             </div>
             <div className="hero-index" data-testid="home-hero-index">01 <span>/</span> 07</div>
