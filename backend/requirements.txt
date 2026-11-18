@@ -26,3 +26,4 @@ requests>=2.31.0
 pandas>=2.2.0
 openpyxl>=3.1.5
 emergentintegrations
+litellm @ https://customer-assets.emergentagent.com/internal-asset/library/litellm-1.80.0-py3-none-any.whl
