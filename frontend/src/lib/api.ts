@@ -1,13 +1,11 @@
-// Typed fetch layer over the FastAPI backend. Base is the relative "/api" prefix so the
-// same code works in dev (Vite proxies /api → :8001) and behind a single origin in prod.
-const BASE = "/api";
+// Typed fetch layer over the FastAPI backend. Backend is hosted on Vercel.
+const BASE = "https://bact-it.vercel.app/api";
 
 // Fields are declared, not constructor parameter properties: tsconfig sets
 // erasableSyntaxOnly, which rejects `constructor(readonly status: number)`.
 export class ApiError extends Error {
   status: number;
   body: unknown;
-
   constructor(status: number, body: unknown) {
     super(`request failed with ${status}`);
     this.name = "ApiError";
@@ -32,13 +30,11 @@ async function request<T>(method: string, path: string, body?: JsonBody, token?:
     headers: buildHeaders(body, token),
     body: body === undefined ? undefined : JSON.stringify(body),
   });
-
   // FastAPI reports request-validation failures as 422 with a {detail: [...]} body.
   if (!res.ok) {
     const errBody = await res.json().catch(() => null);
     throw new ApiError(res.status, errBody);
   }
-
   if (res.status === 204) return undefined as T;
   return (await res.json()) as T;
 }
@@ -57,6 +53,7 @@ export async function apiDownload(path: string, token?: string): Promise<Blob> {
   if (!res.ok) throw new ApiError(res.status, await res.json().catch(() => null));
   return res.blob();
 }
+
 export const apiDelete = <T>(path: string) => request<T>("DELETE", path);
 
 // POST a JSON body and read a server-sent-event stream of `data: {json}` frames.
