@@ -1,4 +1,3 @@
-
 import json
 import logging
 import os
@@ -10,6 +9,7 @@ try:
 except ImportError:
     LlmChat = None
     UserMessage = None
+
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
 
@@ -36,7 +36,6 @@ def _sse(payload: dict) -> str:
 )
 async def create_chat_session(body: ChatSessionCreate):
     session_id = str(uuid.uuid4())
-
     await db.chat_sessions.insert_one({
         "id": session_id,
         "full_name": body.full_name,
@@ -46,7 +45,6 @@ async def create_chat_session(body: ChatSessionCreate):
         "purpose": body.purpose,
         "created_at": datetime.now(timezone.utc),
     })
-
     return ChatSessionCreated(session_id=session_id)
 
 
@@ -55,9 +53,7 @@ async def send_chat_message(
     session_id: str,
     body: ChatMessageCreate,
 ) -> StreamingResponse:
-
     session = await db.chat_sessions.find_one({"id": session_id})
-
     if not session:
         raise HTTPException(
             status_code=404,
@@ -95,6 +91,8 @@ async def send_chat_message(
 
     if LlmChat is None:
         raise HTTPException(status_code=503, detail="Chat is temporarily unavailable")
+
+    chat = LlmChat(
         api_key=os.environ["EMERGENT_LLM_KEY"],
         session_id=session_id,
         system_message=system_prompt,
@@ -106,7 +104,6 @@ async def send_chat_message(
             reply = await chat.send_message(
                 UserMessage(text=body.text)
             )
-
             reply = (reply or "").strip()
 
             if reply:
@@ -116,7 +113,6 @@ async def send_chat_message(
                     "content": reply,
                     "created_at": datetime.now(timezone.utc),
                 })
-
                 yield _sse({"delta": reply})
 
             yield _sse({"done": True})
@@ -126,7 +122,6 @@ async def send_chat_message(
                 "chat stream failed for session %s",
                 session_id,
             )
-
             yield _sse({
                 "error": "The assistant is unavailable right now."
             })
@@ -139,4 +134,3 @@ async def send_chat_message(
             "X-Accel-Buffering": "no",
         },
     )
-    
