@@ -5,7 +5,11 @@ import os
 import uuid
 from datetime import datetime, timezone
 
-from emergentintegrations.llm.chat import LlmChat, UserMessage
+try:
+    from emergentintegrations.llm.chat import LlmChat, UserMessage
+except ImportError:
+    LlmChat = None
+    UserMessage = None
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
 
@@ -89,6 +93,8 @@ async def send_chat_message(
         "created_at": datetime.now(timezone.utc),
     })
 
+        if LlmChat is None:
+        raise HTTPException(status_code=503, detail="Chat is temporarily unavailable")
     chat = LlmChat(
         api_key=os.environ["EMERGENT_LLM_KEY"],
         session_id=session_id,
