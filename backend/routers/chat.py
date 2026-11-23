@@ -93,9 +93,8 @@ async def send_chat_message(
         "created_at": datetime.now(timezone.utc),
     })
 
-        if LlmChat is None:
+    if LlmChat is None:
         raise HTTPException(status_code=503, detail="Chat is temporarily unavailable")
-    chat = LlmChat(
         api_key=os.environ["EMERGENT_LLM_KEY"],
         session_id=session_id,
         system_message=system_prompt,
