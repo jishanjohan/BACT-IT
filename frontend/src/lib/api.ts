@@ -88,3 +88,14 @@ export async function* apiStream<E>(path: string, body: JsonBody): AsyncGenerato
     }
   }
 }
+
+// Authenticated multipart upload (e.g. images) — browser sets the Content-Type boundary.
+export async function apiUpload<T>(method: string, path: string, form: FormData, token?: string): Promise<T> {
+  const res = await fetch(`${BASE}${path}`, {
+    method,
+    headers: token ? { Authorization: `Bearer ${token}` } : {},
+    body: form,
+  });
+  if (!res.ok) throw new ApiError(res.status, await res.json().catch(() => null));
+  return (await res.json()) as T;
+}

@@ -6,6 +6,7 @@ import { format } from "date-fns";
 import { Download, Inbox, Mail, MessageCircle, Phone } from "lucide-react";
 import { toast } from "sonner";
 import ClerkAuthProvider from "@/components/auth/ClerkAuthProvider";
+import ServiceContentEditor from "@/components/ServiceContentEditor";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
@@ -199,6 +200,7 @@ function InboxContent() {
             )}
           </>
         )}
+        {me.data?.is_admin && <ServiceContentEditor />}
       </div>
 
       <Sheet open={!!selected} onOpenChange={(open) => !open && setSelectedId(null)}>

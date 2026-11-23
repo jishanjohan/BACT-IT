@@ -1,8 +1,15 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import type { ServiceInfo } from "@/lib/site-data";
+import { useServiceOverrides } from "@/components/ServiceContentEditor";
 
 export default function ServiceCard({ service, testId }: { service: ServiceInfo; testId: string }) {
+  const overrides = useServiceOverrides();
+  const o = overrides.data?.find((x) => x.slug === service.slug);
+  const image = o?.image ?? service.image;
+  const title = o?.title ?? service.title;
+  const short = o?.short ?? service.short;
+
   return (
     <article className="service-card" data-testid={testId}>
       <Link
@@ -13,7 +20,7 @@ export default function ServiceCard({ service, testId }: { service: ServiceInfo;
         data-testid={`${testId}-image-link`}
       >
         <img
-          src={service.image}
+          src={image}
           alt={service.imageAlt}
           loading="lazy"
           decoding="async"
@@ -25,8 +32,8 @@ export default function ServiceCard({ service, testId }: { service: ServiceInfo;
           {service.slug.slice(0, 2).toUpperCase()}
         </span>
       </Link>
-      <h3 data-testid={`${testId}-title`}>{service.title}</h3>
-      <p data-testid={`${testId}-description`}>{service.short}</p>
+      <h3 data-testid={`${testId}-title`}>{title}</h3>
+      <p data-testid={`${testId}-description`}>{short}</p>
       <Link
         to={`/services/${service.slug}`}
         className="text-action"
