@@ -1,3 +1,4 @@
+
 import { useState, type FormEvent } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
@@ -16,25 +17,31 @@ const interests: ServiceInterest[] = [
 export default function ContactForm() {
   const [params] = useSearchParams();
   const requestedService = params.get("service");
-  const initialService = interests.find((item) => item === requestedService) ?? "General enquiry";
+  const initialService =
+    interests.find((item) => item === requestedService) ?? "General enquiry";
+
   const [service, setService] = useState<ServiceInterest>(initialService);
   const [submitted, setSubmitted] = useState(false);
   const [formKey, setFormKey] = useState(0);
 
   const mutation = useMutation({
-    mutationFn: (payload: InquiryCreate) => apiPost<InquiryCreated>("/inquiries", payload),
+    mutationFn: (payload: InquiryCreate) =>
+      apiPost<InquiryCreated>("/inquiries", payload),
     onSuccess: () => {
       setSubmitted(true);
       toast.success("Your enquiry has been received.");
     },
     onError: () => {
-      toast.error("We couldn’t send your enquiry. Please try again or email info@bactit.com.");
+      toast.error(
+        "We couldn’t send your enquiry. Please try again or email info@bactit.com."
+      );
     },
   });
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const values = new FormData(event.currentTarget);
+
     mutation.mutate({
       full_name: String(values.get("full_name") ?? ""),
       organization: String(values.get("organization") ?? ""),
@@ -79,7 +86,9 @@ export default function ContactForm() {
     >
       <div className="form-two-column" data-testid="contact-form-personal-details">
         <label className="field" data-testid="contact-form-name-field">
-          <span data-testid="contact-form-name-label">Full name <b>*</b></span>
+          <span data-testid="contact-form-name-label">
+            Full name <b style={{ color: "red" }}>*</b>
+          </span>
           <input
             name="full_name"
             autoComplete="name"
@@ -89,8 +98,11 @@ export default function ContactForm() {
             data-testid="contact-form-name-input"
           />
         </label>
+
         <label className="field" data-testid="contact-form-organization-field">
-          <span data-testid="contact-form-organization-label">Organization / company</span>
+          <span data-testid="contact-form-organization-label">
+            Organization / company
+          </span>
           <input
             name="organization"
             autoComplete="organization"
@@ -98,8 +110,11 @@ export default function ContactForm() {
             data-testid="contact-form-organization-input"
           />
         </label>
+
         <label className="field" data-testid="contact-form-email-field">
-          <span data-testid="contact-form-email-label">Email address <b>*</b></span>
+          <span data-testid="contact-form-email-label">
+            Email address <b style={{ color: "red" }}>*</b>
+          </span>
           <input
             name="email"
             type="email"
@@ -109,19 +124,24 @@ export default function ContactForm() {
             data-testid="contact-form-email-input"
           />
         </label>
+
         <label className="field" data-testid="contact-form-phone-field">
-          <span data-testid="contact-form-phone-label">Phone number</span>
+          <span data-testid="contact-form-phone-label">
+            Phone number <b style={{ color: "red" }}>*</b>
+          </span>
           <input
             name="phone"
             type="tel"
             autoComplete="tel"
+            required
             placeholder="Your phone number"
             data-testid="contact-form-phone-input"
           />
         </label>
       </div>
+
       <label className="field" data-testid="contact-form-service-field">
-        <span data-testid="contact-form-service-label">What can we help with? <b>*</b></span>
+        <span data-testid="contact-form-service-label">Service interested in</span>
         <select
           value={service}
           onChange={(event) => setService(event.target.value as ServiceInterest)}
@@ -138,9 +158,10 @@ export default function ContactForm() {
           ))}
         </select>
       </label>
+
       <label className="field" data-testid="contact-form-message-field">
         <span data-testid="contact-form-message-label">
-          Tell us a little about your requirements <b>*</b>
+          Tell us a little about your requirements <b style={{ color: "red" }}>*</b>
         </span>
         <textarea
           name="message"
@@ -151,6 +172,7 @@ export default function ContactForm() {
           data-testid="contact-form-message-textarea"
         />
       </label>
+
       <button
         className="button button-primary form-submit"
         type="submit"
@@ -160,6 +182,7 @@ export default function ContactForm() {
         {mutation.isPending ? "Sending…" : "Send enquiry"}
         <ArrowUpRight size={17} aria-hidden="true" />
       </button>
+
       <p className="form-privacy-note" data-testid="contact-form-privacy-note">
         Your information will only be used to respond to your enquiry.
       </p>

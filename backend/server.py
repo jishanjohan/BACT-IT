@@ -1,20 +1,27 @@
 import asyncio
-from contextlib import asynccontextmanager
-from fastapi import FastAPI, APIRouter
-from dotenv import load_dotenv
-from starlette.middleware.cors import CORSMiddleware
 import os
 import logging
 from pathlib import Path
-from pydantic import BaseModel, Field
+from contextlib import asynccontextmanager
 from typing import List
+
+from fastapi import FastAPI, APIRouter
+from dotenv import load_dotenv
+from starlette.middleware.cors import CORSMiddleware
+from pydantic import BaseModel, Field
+
+# Load environment variables from .env
+env_path = Path(__file__).resolve().parent / ".env"
+load_dotenv(dotenv_path=env_path, override=True)
+
 import uuid
 from datetime import datetime
+
 from routers.inquiries import router as inquiries_router
 from routers.chat import router as chat_router
 from routers.admin import router as admin_router
+from routers.content import router as content_router
 from clerk_auth import clerk_router
-
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -39,6 +46,7 @@ api_router = APIRouter(prefix="/api")
 api_router.include_router(inquiries_router)
 api_router.include_router(chat_router)
 api_router.include_router(admin_router)
+api_router.include_router(content_router)
 
 
 # Define Models
@@ -47,13 +55,16 @@ class StatusCheck(BaseModel):
     client_name: str
     timestamp: datetime = Field(default_factory=datetime.utcnow)
 
+
 class StatusCheckCreate(BaseModel):
     client_name: str
+
 
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
 async def root():
     return {"message": "Hello World"}
+
 
 @api_router.post("/status", response_model=StatusCheck)
 async def create_status_check(input: StatusCheckCreate):
@@ -62,10 +73,12 @@ async def create_status_check(input: StatusCheckCreate):
     _ = await db.status_checks.insert_one(status_obj.model_dump())
     return status_obj
 
+
 @api_router.get("/status", response_model=List[StatusCheck])
 async def get_status_checks():
     status_checks = await db.status_checks.find().to_list(1000)
     return [StatusCheck(**status_check) for status_check in status_checks]
+
 
 app.add_middleware(
     CORSMiddleware,

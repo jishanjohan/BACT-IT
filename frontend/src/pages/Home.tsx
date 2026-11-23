@@ -1,4 +1,4 @@
-import { ArrowDownRight, ArrowUpRight, ShieldCheck } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import { useReducedMotion } from "motion/react";
 import { Link } from "react-router-dom";
 import SectionHeading from "@/components/SectionHeading";
@@ -6,6 +6,7 @@ import ServiceCard from "@/components/ServiceCard";
 import ServiceFinder from "@/components/ServiceFinder";
 import Testimonials from "@/components/Testimonials";
 import WhyChoose from "@/components/WhyChoose";
+import SEO from "@/components/SEO";
 import {
   clients,
   companyFullName,
@@ -16,11 +17,18 @@ import {
 } from "@/lib/site-data";
 
 export default function Home() {
-  // Visitors who prefer reduced motion see the still poster frame instead of the looping video.
   const reduceMotion = useReducedMotion();
+
   return (
     <div className="home-page" data-testid="home-page">
+      <SEO
+        title="BACT IT | Software, Cyber Security, Training, Infrastructure Solutions"
+        description="BACT IT provides software development, cyber security, IT training and infrastructure solutions for businesses in Bangladesh, USA, Australia and worldwide. Get in touch today."
+        path="/"
+      />
+
       <section className="home-hero home-hero-video" data-testid="home-hero-section">
+        {/* Existing hero video — unchanged */}
         <video
           className="hero-bg-video"
           poster="/videos/hero-poster.jpg"
@@ -37,41 +45,50 @@ export default function Home() {
           <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
         <div className="hero-bg-overlay" aria-hidden="true" />
-        <div className="page-container hero-video-content">
-          <div className="hero-copy">
-            <span className="hero-kicker" data-testid="home-hero-kicker">
-              <span className="status-dot" aria-hidden="true" />
-              YOUR TRUSTED TECHNOLOGY PARTNER
-            </span>
-            <p className="hero-fullname" data-testid="home-hero-fullname">
-              <strong>BACT IT</strong> — {companyFullName} · IT company based in Dhaka (Bangladesh), Australia and the USA
+
+        <div
+          className="page-container hero-video-content"
+          style={{ display: "flex", justifyContent: "center", textAlign: "center" }}
+        >
+          <div
+            className="hero-copy"
+            style={{ width: "100%", maxWidth: "950px", marginInline: "auto", textAlign: "center" }}
+          >
+            <p className="hero-fullname" data-testid="home-hero-fullname" style={{ fontSize: "1rem" }}>
+              <strong style={{ fontSize: "1.35rem" }}>BACT IT</strong>
+              {" — "}
+              {companyFullName} · IT company based in Dhaka (Bangladesh), Australia and the USA
             </p>
             <h1 data-testid="home-hero-title">
-              Empowering the Future with <em>Cutting-edge IT Services</em>
+              Empowering the Future with{" "}
+              <em style={{ color: "#F58220", fontStyle: "normal" }}>Cutting-edge IT Services</em>
             </h1>
-            <p className="hero-description" data-testid="home-hero-description">
-              BACT IT is a trusted technology partner delivering innovative Software Development, AI and
-              Automation, IT Infrastructure, Hardware Solutions, Cybersecurity Solutions, Cloud Services, System
-              Integration, and Professional IT Training.
-            </p>
-            <div className="hero-proofline" data-testid="home-hero-proofline">
-              <span data-testid="home-hero-proof-icon"><ShieldCheck size={17} /></span>
-              <p data-testid="home-hero-proof-copy">One connected partner for your technology needs</p>
-            </div>
           </div>
         </div>
+
         <a href="#services" className="hero-scroll" data-testid="home-scroll-services-link">
           <span data-testid="home-scroll-services-copy">Scroll to explore</span>
           <ArrowDownRight size={17} aria-hidden="true" />
         </a>
       </section>
 
+      {/* Brand Introduction Section */}
       <section className="brand-intro" data-testid="home-brand-intro-section">
         <div className="page-container brand-intro-inner">
-          <img src="/logo-stacked.png" alt="Bact IT logo" className="brand-intro-logo" data-testid="home-brand-intro-logo" />
+          <img
+            src="/logo-stacked.png"
+            alt="Bact IT logo"
+            className="brand-intro-logo"
+            data-testid="home-brand-intro-logo"
+          />
           <div className="brand-intro-copy">
             <span className="eyebrow" data-testid="home-brand-intro-eyebrow">Who we are</span>
             <h2 data-testid="home-brand-intro-title">{companyFullName}</h2>
+            <p className="hero-description" data-testid="home-hero-description">
+              BACT IT is a trusted technology partner delivering innovative Software Development, AI and
+              Automation, IT Infrastructure, Hardware Solutions, Cybersecurity Solutions, Cloud Services,
+              System Integration, and Professional IT Training.
+            </p>
             <p data-testid="home-brand-intro-description">
               BACT IT (Business Application &amp; Communication Technology) keeps its commitment to every
               service we deliver, providing innovative technology solutions that enable organizations to
@@ -138,7 +155,9 @@ export default function Home() {
       <section className="home-flagship" data-testid="home-flagship-section">
         <div className="page-container home-flagship-grid">
           <div className="home-flagship-lead">
-            <span className="eyebrow eyebrow-light eyebrow-strong" data-testid="home-flagship-eyebrow">Our flagship product</span>
+            <span className="eyebrow eyebrow-light eyebrow-strong" data-testid="home-flagship-eyebrow">
+              Our flagship product
+            </span>
             <h2 data-testid="home-flagship-title">
               <em>{flagshipProduct.shortName}</em> {flagshipProduct.name}
             </h2>
@@ -150,8 +169,7 @@ export default function Home() {
           <ul className="home-flagship-list" data-testid="home-flagship-capabilities">
             {flagshipProduct.capabilities.map((item, index) => (
               <li key={item.title} data-testid={`home-flagship-capability-${index + 1}`}>
-                <span>0{index + 1}</span>
-                {item.title}
+                <span>0{index + 1}</span> {item.title}
               </li>
             ))}
           </ul>
@@ -178,17 +196,11 @@ export default function Home() {
       </section>
 
       <WhyChoose testId="home-why" />
-
       <Testimonials testId="home-testimonials" />
 
       <section className="section-block finder-section" data-testid="home-finder-section">
-        <div className="page-container finder-grid">
-          <SectionHeading
-            eyebrow="Service finder"
-            title="Not sure where to start?"
-            description="Answer two quick questions and we’ll point you to the right service, with an enquiry ready to go."
-            testId="home-finder-heading"
-          />
+        <div className="page-container">
+          <h2 className="finder-heading">Who are you looking for help as?</h2>
           <ServiceFinder />
         </div>
       </section>

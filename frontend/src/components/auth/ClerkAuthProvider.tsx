@@ -12,6 +12,9 @@ const appearance = {
   },
 };
 
+// Backend lives on Vercel, so the config is fetched from there.
+const CLERK_CONFIG_URL = "https://bact-it.vercel.app/api/clerk/config";
+
 // Starts Clerk from the backend's runtime config, so deploy's live keys need no rebuild.
 // Must render inside <BrowserRouter> so Clerk navigates without reloading.
 export default function ClerkAuthProvider({ children }: { children: ReactNode }) {
@@ -24,7 +27,7 @@ export default function ClerkAuthProvider({ children }: { children: ReactNode })
     let cancelled = false;
     const load = async (attempt = 0) => {
       try {
-        const cfg = await (await fetch("/api/clerk/config")).json();
+        const cfg = await (await fetch(CLERK_CONFIG_URL)).json();
         if (cfg.enabled) {
           if (!cancelled) setConfig(cfg);
           return;
@@ -52,6 +55,7 @@ export default function ClerkAuthProvider({ children }: { children: ReactNode })
       </p>
     );
   if (!config) return <div className="auth-loading" data-testid="auth-loading" />;
+
   return (
     <ClerkProvider
       publishableKey={config.publishable_key}
