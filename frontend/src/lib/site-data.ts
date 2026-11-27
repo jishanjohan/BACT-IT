@@ -759,7 +759,8 @@ export interface Leader {
 export const leadership: Leader[] = [
   {
     name: "Zaynal Abedin",
-    role: "Chairman, Bact IT",
+    photo: "/leadership/zaynal-abedin.jpeg",
+    role: "Chairman, BACT IT",
     initials: "ZA",
     bio: [],
     message: [
@@ -795,11 +796,11 @@ export const leadership: Leader[] = [
   },
   {
     name: "Toufiqur Rahaman Jishan",
-    role: "Founder & CEO, BACT IT",
+    role: "CEO, BACT IT",
     initials: "TJ",
     photo: "/leadership/toufiqur-rahaman-jishan.webp",
     bio: [
-      "Toufiqur Rahaman Jishan is the Founder and Chief Executive Officer of BACT IT. He leads the company’s overall vision and strategy across technology services, professional IT training and study abroad guidance, with a focus on connecting global technology standards with local talent and businesses in Bangladesh.",
+      "Toufiqur Rahaman Jishan is the Chief Executive Officer of BACT IT. He leads the company’s overall vision and strategy across technology services, professional IT training and study abroad guidance, with a focus on connecting global technology standards with local talent and businesses in Bangladesh.",
     ],
     message: [
       "We built BACT IT to be a practical technology partner for business, delivering software, security and AI that solve real problems. Every solution we create and every learner we train is a step towards a smarter, future-ready Bangladesh.",

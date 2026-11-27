@@ -1,41 +1,27 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import LeaderAvatar from "@/components/LeaderAvatar";
-import PageIntro from "@/components/PageIntro";
 import SectionHeading from "@/components/SectionHeading";
 import { differentiators, leadership } from "@/lib/site-data";
-
-const teamImage =
-  "https://images.unsplash.com/photo-1580894899378-92e56886cd4d?auto=format&fit=crop&w=1300&q=85";
 
 export default function About() {
   return (
     <div data-testid="about-page">
-      <PageIntro
-        eyebrow="About BACT IT"
-        title="Technology that connects, automates and secures your business."
-        description="We bring together technology services, learning and guidance to help organizations move forward with clarity."
-        testId="about-page-intro"
-        image={teamImage}
-        imageAlt="Technology colleagues discussing a project together"
-        actionLabel="Explore our services"
-        actionTo="/services"
-      />
       <section className="section-block about-story" data-testid="about-story-section">
         <div className="page-container about-story-grid">
           <div className="about-story-aside">
-            <span className="eyebrow" data-testid="about-story-eyebrow">One connected partner</span>
+            <span className="eyebrow" data-testid="about-story-eyebrow">About BACT IT</span>
             <p data-testid="about-story-aside-copy">Business Application &amp; Communication Technology</p>
           </div>
           <div className="about-story-copy">
-            <h2 data-testid="about-story-title">Technology with purpose, built around your needs.</h2>
+            <h1 data-testid="about-story-title">Technology with purpose, built around your needs.</h1>
             <p data-testid="about-story-paragraph-one">
-              BACT IT delivers software, secure IT infrastructure, cybersecurity, AI integration,
-              professional IT training, study abroad guidance, and digital marketing solutions.
+              BACT IT delivers software, secure IT infrastructure, cybersecurity, AI integration, professional IT
+              training, study abroad guidance, and digital marketing solutions.
             </p>
             <p data-testid="about-story-paragraph-two">
-              Our integrated approach brings these capabilities together, with solutions shaped
-              around each organization and designed to evolve as needs change.
+              Our integrated approach brings these capabilities together, with solutions shaped around each
+              organization and designed to evolve as needs change.
             </p>
             <Link to="/contact" className="text-action" data-testid="about-contact-link">
               Tell us what you need <ArrowUpRight size={16} aria-hidden="true" />
@@ -43,6 +29,7 @@ export default function About() {
           </div>
         </div>
       </section>
+
       <section className="section-block about-principles" data-testid="about-principles-section">
         <div className="page-container">
           <SectionHeading
@@ -62,6 +49,7 @@ export default function About() {
           </div>
         </div>
       </section>
+
       <section className="section-block leadership-section" id="authority" data-testid="about-leadership-section">
         <div className="page-container">
           <SectionHeading
@@ -102,7 +90,7 @@ export default function About() {
                         {leader.message.map((paragraph, i) => (
                           <p key={i}>{paragraph}</p>
                         ))}
-                        <cite>— {leader.name}</cite>
+                        — {leader.name}
                       </blockquote>
                     )}
                   </div>

@@ -5816,3 +5816,100 @@ textarea:focus-visible {
     font-size: 28px;
   }
 }
+/* Small dropdowns (About, Flagship Product, IT Training) */
+.mobile-group-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.6;
+  padding-top: 0.75rem;
+}
+
+.mega-menu {
+  background: #ffffff;
+}
+
+.nav-dropdown:has(.nav-small-menu) {
+  position: relative;
+}
+.nav-small-menu {
+  width: max-content;
+  min-width: 220px;
+  padding: 14px 18px 16px;
+  left: 0;
+  transform: translate(0, -6px);
+}
+.nav-dropdown.is-open .nav-small-menu {
+  transform: translate(0, 0);
+}
+.nav-small-menu .mega-menu-grid {
+  grid-template-columns: 1fr;
+  grid-template-rows: none;
+  row-gap: 6px;
+}
+.nav-small-menu .mega-menu-col {
+  grid-column: auto;
+  grid-row: auto;
+}
+
+/* Services mega menu (keeps the current approved look) */
+.services-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) minmax(0, 0.85fr);
+  grid-template-rows: auto auto auto 1fr;
+  align-items: start;
+  row-gap: 10px;
+  column-gap: 25px;
+}
+.services-grid .mega-menu-col:not(.has-children) {
+  grid-column: 3;
+}
+.mega-menu:not(.nav-small-menu) {
+  width: min(960px, calc(100% - 48px));
+}
+.nav-small-menu .mega-menu-col:not(.has-children) .mega-menu-title {
+  padding: 6px 0;
+  background: none;
+  border-radius: 0;
+}
+/* Menu hover: lift, highlight and smooth wave-like motion */
+.mega-menu-col li a,
+.nav-small-menu .mega-menu-title {
+  border-radius: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-left: -8px;
+  transition:
+    transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 220ms ease,
+    box-shadow 220ms ease,
+    color 150ms ease;
+}
+
+.mega-menu-col li a:hover,
+.nav-small-menu .mega-menu-title:hover {
+  background-color: #fff4ec;
+  color: #c44b00;
+  transform: translateX(6px) scale(1.04);
+  box-shadow: 0 6px 16px rgba(11, 35, 69, 0.12);
+}
+
+/* Side cards in the Services menu lift up too */
+.services-grid .mega-menu-col:not(.has-children) .mega-menu-title {
+  transition: transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 220ms ease;
+}
+.services-grid .mega-menu-col:not(.has-children) .mega-menu-title:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(11, 35, 69, 0.14);
+}
+/* Small dropdowns: keep headings aligned, no hover effect on non-link headings */
+.nav-small-menu .mega-menu-title {
+  padding-left: 0;
+  padding-right: 0;
+}
+.nav-small-menu span.mega-menu-title:hover {
+  transform: none;
+  box-shadow: none;
+  background: none;
+}
