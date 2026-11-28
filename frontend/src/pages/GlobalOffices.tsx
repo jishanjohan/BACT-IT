@@ -8,6 +8,9 @@ import { SiWhatsapp } from "@icons-pack/react-simple-icons";
 const officeImage =
   "https://images.unsplash.com/photo-1580894899378-92e56886cd4d?auto=format&fit=crop&w=1300&q=85";
 
+type ServiceItem = { name: string; to?: string };
+type ServiceGroup = { title: string; to?: string; items: ServiceItem[] };
+
 type CountryContent = {
   slug: string;
   countryNames: string[];
@@ -19,10 +22,84 @@ type CountryContent = {
   imageAlt: string;
   storyTitle: string;
   storyParagraphs: string[];
-  services: { title: string; description: string }[];
   reasons: { title: string; description: string }[];
-  faqs: { question: string; answer: string }[];
 };
+
+const sw = "/services/software-solutions";
+const ai = "/services/ai-solutions";
+const cyber = "/services/cybersecurity";
+
+const serviceGroups: ServiceGroup[] = [
+  {
+    title: "Custom Software with AI Features",
+    to: sw,
+    items: [
+      { name: "ERP Solutions", to: `${sw}/erp-software` },
+      { name: "CRM Solutions", to: `${sw}/crm-software` },
+      { name: "HRM & HRIS Solutions", to: `${sw}/hrm-hris-software` },
+      { name: "Inventory & Warehouse Management", to: `${sw}/inventory-warehouse-management-software` },
+      { name: "E-commerce Solutions", to: `${sw}/ecommerce-website-development` },
+      { name: "POS & Accounting Software", to: `${sw}/pos-accounting-software` },
+      { name: "School & Learning Management Systems", to: `${sw}/school-management-lms-software` },
+      { name: "Learning Management Software (LMS)", to: `${sw}/learning-management-system-lms` },
+      { name: "Hospital Management Systems", to: `${sw}/hospital-management-software` },
+      { name: "Custom Software Development", to: `${sw}/custom-software-development` },
+      { name: "Business Intelligence & Data Analytics", to: `${sw}/business-intelligence-data-analytics` },
+    ],
+  },
+  {
+    title: "AI Solutions",
+    to: ai,
+    items: [
+      { name: "AI Engineering", to: ai },
+      { name: "AI Automation", to: `${ai}/ai-workflow-automation` },
+      { name: "AI Agent Development", to: `${ai}/ai-agents-development` },
+      { name: "AI Chatbots & Virtual Assistants", to: `${ai}/ai-chatbot-development` },
+      { name: "AI Workflow Integration", to: `${ai}/ai-erp-crm-hrm-integration` },
+      { name: "Predictive Analytics & Forecasting", to: `${ai}/predictive-analytics-forecasting` },
+      { name: "AI-Powered Business Search", to: `${ai}/ai-business-search` },
+      { name: "Intelligent Document Processing", to: `${ai}/intelligent-document-processing` },
+      { name: "AI Reporting & Summarization", to: `${ai}/ai-reporting-summarization` },
+      { name: "AI Business Insights", to: `${ai}/ai-business-insights` },
+      { name: "Knowledge Assistants with RAG", to: `${ai}/rag-knowledge-assistant` },
+      { name: "AI-Powered Customer Support", to: `${ai}/ai-customer-support` },
+      { name: "Data Analytics & Visualization", to: `${ai}/ai-data-analytics-visualization` },
+    ],
+  },
+  {
+    title: "Digital Solutions",
+    items: [
+      { name: "Website Design & Development" },
+      { name: "Website Maintenance & Management" },
+      { name: "Social Platform Management" },
+      { name: "Digital Content & Campaign Management" },
+      { name: "Search Engine Optimization (SEO, AEO & GEO)" },
+    ],
+  },
+  {
+    title: "Cyber Security Solutions",
+    to: cyber,
+    items: [
+      { name: "Vulnerability Assessment & Penetration Testing (VAPT)", to: cyber },
+      { name: "Network Traffic Monitoring", to: cyber },
+    ],
+  },
+  {
+    title: "IT Training",
+    to: "/courses",
+    items: [
+      { name: "Networking", to: "/courses/networking-ccna-ccnp-training" },
+      { name: "Server Administration", to: "/courses/server-administration-windows-linux-training" },
+      { name: "Cybersecurity", to: "/courses/cybersecurity-ceh-chfi-soc-training" },
+      { name: "Advanced Certifications", to: "/courses/cissp-cisa-cism-lead-auditor-training" },
+      { name: "Data Analytics", to: "/courses/data-analytics-power-bi-excel-training" },
+      { name: "Programming", to: "/courses/programming-python-java-c-courses" },
+      { name: "Database Administration", to: "/courses/database-administration-training" },
+      { name: "Cloud", to: "/courses/cloud-aws-azure-gcp-training" },
+      { name: "Microsoft Office", to: "/courses/microsoft-office-training" },
+    ],
+  },
+];
 
 const australia: CountryContent = {
   slug: "australia",
@@ -32,36 +109,13 @@ const australia: CountryContent = {
   eyebrow: "BACT IT Australia",
   title: "Software, Web Design & Development, IT Training and Cyber Security Solutions Company in Australia",
   description:
-    "Web design, custom software, cyber security, IT infrastructure and IT training for Australian businesses, from our office in Sydney.",
-  imageAlt: "BACT IT team planning a web design and IT services project for an Australian business",
+    "Custom software, AI solutions, digital solutions, cyber security and IT training for Australian businesses, from our office in Sydney.",
+  imageAlt: "BACT IT team planning a software and IT services project for an Australian business",
   storyTitle: "A Sydney-Based Partner With a Global Development Team",
   storyParagraphs: [
-    "BACT IT (Business Application & Communication Technology) is a web design company and global IT solutions provider helping businesses across Australia build modern websites, custom software and secure IT systems.",
+    "BACT IT (Business Application & Communication Technology) is a custom software development company and cutting-edge IT solutions and services provider, helping businesses across Australia build modern websites, custom software and secure IT systems, as well as providing cyber security solutions.",
     "Our office in Sydney gives you a local point of contact, while our engineering team in Dhaka, Bangladesh, gives you the capacity to deliver faster and at a competitive cost.",
-  ],
-  services: [
-    {
-      title: "Website Design and Development",
-      description:
-        "Fast, mobile-friendly and SEO-ready websites for small businesses, startups and enterprises across Sydney, Melbourne, Brisbane and the rest of Australia.",
-    },
-    {
-      title: "Custom Software and AI Solutions",
-      description:
-        "Business applications, AI agents, workflow automation and predictive analytics built around the way your team works.",
-    },
-    {
-      title: "Cyber Security Solutions",
-      description: "Security assessments, vulnerability testing and protection to keep your business and customer data safe.",
-    },
-    {
-      title: "IT Infrastructure Solutions",
-      description: "Server, network and cloud setup and support for growing Australian businesses.",
-    },
-    {
-      title: "IT Training in Australia",
-      description: "Practical training in server administration, cyber security and modern IT skills for teams and individuals.",
-    },
+    "We work with businesses in Sydney, Melbourne, Brisbane, Perth, Adelaide and across Australia, from local retailers and clinics to schools, logistics firms and growing startups. Our team understands Australian business needs, including data privacy, secure systems and reliable support across Australian time zones.",
   ],
   reasons: [
     { title: "A Local Office in Sydney", description: "A point of contact in Australia for meetings, planning and support." },
@@ -73,26 +127,7 @@ const australia: CountryContent = {
       title: "Progress Outside Your Business Hours",
       description: "The time difference between Australia and Bangladesh means work can continue while your office is closed.",
     },
-    { title: "One Partner for Everything", description: "Website, software, security, infrastructure and training from a single team." },
-  ],
-  faqs: [
-    {
-      question: "Does BACT IT have an office in Australia?",
-      answer: "Yes. BACT IT has an office in Sydney, Australia, supported by its headquarters and engineering team in Dhaka, Bangladesh.",
-    },
-    {
-      question: "What IT services does BACT IT offer in Australia?",
-      answer:
-        "BACT IT offers website design and development, custom software and AI solutions, cyber security, IT infrastructure and IT training for Australian businesses.",
-    },
-    {
-      question: "Does BACT IT work with small businesses in Australia?",
-      answer: "Yes. BACT IT works with small businesses, startups and larger organisations across Australia.",
-    },
-    {
-      question: "Can we meet BACT IT in person in Australia?",
-      answer: "Yes. Meetings can be arranged through the Sydney office, and BACT IT also works fully online.",
-    },
+    { title: "One Partner for Everything", description: "Software, AI, digital solutions, security and training from a single team." },
   ],
 };
 
@@ -104,70 +139,25 @@ const usa: CountryContent = {
   eyebrow: "BACT IT USA",
   title: "Software, Web Design & Development, IT Training and Cyber Security Solutions Company in the USA",
   description:
-    "Custom software, AI solutions, web design and cyber security for US companies, from our office in New York with an offshore engineering team in Dhaka.",
-  imageAlt: "BACT IT team building custom software and web design projects for US companies",
-  storyTitle: "Offshore Value With Onshore Communication",
+    "Custom software, AI solutions, digital solutions, cyber security and IT training for US companies, from our office in New York.",
+  imageAlt: "BACT IT team building custom software and AI projects for US companies",
+  storyTitle: "A New York-Based Partner With a Global Development Team",
   storyParagraphs: [
-    "BACT IT (Business Application & Communication Technology) is a custom software development and web design company delivering some of the best IT services in the USA for startups and growing businesses.",
-    "Our New York office keeps you close to your project, while our offshore engineering team in Dhaka, Bangladesh, gives you the capacity to build faster and at a lower cost.",
-  ],
-  services: [
-    {
-      title: "AI Agents and Automation",
-      description: "AI agents, workflow automation and predictive analytics that cut manual work and help teams make faster decisions.",
-    },
-    {
-      title: "Custom Software Development",
-      description: "Web applications, internal tools, dashboards and enterprise software built to fit your processes.",
-    },
-    {
-      title: "Website Design and Development",
-      description: "High-performance, conversion-focused websites built for search visibility from day one.",
-    },
-    {
-      title: "Cyber Security Services",
-      description:
-        "Vulnerability assessment and penetration testing (VAPT), security reviews and hardening for your applications and infrastructure.",
-    },
-    {
-      title: "IT Infrastructure and Training",
-      description: "Server, network and cloud support, plus hands-on technical training for your staff.",
-    },
+    "BACT IT (Business Application & Communication Technology) is a custom software development company and cutting-edge IT solutions and services provider, helping businesses across the USA build modern websites, custom software and secure IT systems, as well as providing cyber security solutions.",
+    "Our office in New York gives you a local point of contact, while our engineering team in Dhaka, Bangladesh, gives you the capacity to deliver faster and at a competitive cost.",
+    "From New York to California, Texas, Florida and across the United States, we help startups, small businesses and enterprises turn ideas into working software. US companies choose us for offshore development pricing combined with clear communication, regular progress updates and meetings scheduled around US business hours.",
   ],
   reasons: [
+    { title: "An Office in New York", description: "A point of contact in the USA for meetings, planning and support." },
     {
-      title: "An Office in New York",
-      description: "A presence in the United States, combined with the cost advantages of offshore software development.",
+      title: "Cost-Effective Delivery",
+      description: "Our development team in Dhaka lets us offer competitive pricing without cutting corners on quality.",
     },
     {
       title: "Round-the-Clock Progress",
       description: "Because Dhaka is on the other side of the world, development can move forward overnight.",
     },
-    {
-      title: "Full-Stack Capability",
-      description: "Strategy, design, development, security and support from one team, so you do not need several vendors.",
-    },
-    { title: "Transparent Process", description: "Clear estimates, regular demos and direct access to the people building your product." },
-  ],
-  faqs: [
-    {
-      question: "Does BACT IT have an office in the USA?",
-      answer: "Yes. BACT IT has an office in New York, USA, supported by its headquarters and engineering team in Dhaka, Bangladesh.",
-    },
-    {
-      question: "What services does BACT IT offer to US companies?",
-      answer:
-        "BACT IT offers custom software development, AI agents and automation, website design and development, cyber security and IT infrastructure services to US companies.",
-    },
-    {
-      question: "Is BACT IT an offshore software development company?",
-      answer:
-        "Yes. BACT IT combines an office in New York with an offshore engineering team in Dhaka, giving US companies offshore pricing with onshore communication.",
-    },
-    {
-      question: "How does BACT IT communicate with US clients?",
-      answer: "Through scheduled video calls, email, WhatsApp and your preferred project tools, with meetings planned around US business hours.",
-    },
+    { title: "One Partner for Everything", description: "Software, AI, digital solutions, security and training from a single team." },
   ],
 };
 
@@ -177,33 +167,20 @@ function findOffice(content: CountryContent) {
 
 function CountryPage({ content }: { content: CountryContent }) {
   const office = findOffice(content);
-  const pageUrl = `https://www.bactit.com/${content.slug}`;
 
-  const structuredData = [
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      name: "BACT IT",
-      alternateName: "Business Application & Communication Technology",
-      url: "https://www.bactit.com",
-      logo: "https://www.bactit.com/logo-horizontal.png",
-      email: contactDetails.email,
-      areaServed: content.countryLabel,
-      ...(office && {
-        address: { "@type": "PostalAddress", streetAddress: office.address, addressCountry: content.countryLabel },
-      }),
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      url: pageUrl,
-      mainEntity: content.faqs.map((faq) => ({
-        "@type": "Question",
-        name: faq.question,
-        acceptedAnswer: { "@type": "Answer", text: faq.answer },
-      })),
-    },
-  ];
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "BACT IT",
+    alternateName: "Business Application & Communication Technology",
+    url: "https://www.bactit.com",
+    logo: "https://www.bactit.com/logo-horizontal.png",
+    email: contactDetails.email,
+    areaServed: content.countryLabel,
+    ...(office && {
+      address: { "@type": "PostalAddress", streetAddress: office.address, addressCountry: content.countryLabel },
+    }),
+  };
 
   return (
     <div data-testid={`${content.slug}-page`}>
@@ -243,15 +220,27 @@ function CountryPage({ content }: { content: CountryContent }) {
           <SectionHeading
             eyebrow="Our Services"
             title={`IT Services for Businesses in ${content.countryLabel}`}
-            description="One connected partner for software, websites, security, infrastructure and training."
+            description="One connected partner for software, AI, digital solutions, security and training."
             testId={`${content.slug}-services-heading`}
           />
           <div className="principles-grid">
-            {content.services.map((item, index) => (
-              <article key={item.title} className="principle-card">
+            {serviceGroups.map((group, index) => (
+              <article key={group.title} className="principle-card">
                 <span>0{index + 1}</span>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
+                <h3>{group.to ? <Link to={group.to}>{group.title}</Link> : group.title}</h3>
+                <ul className="country-service-list">
+                  {group.items.map((item) => (
+                    <li key={item.name}>
+                      {item.to ? (
+                        <Link to={item.to} className="country-service-item">
+                          {item.name}
+                        </Link>
+                      ) : (
+                        <span className="country-service-item">{item.name}</span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
               </article>
             ))}
           </div>
@@ -273,25 +262,6 @@ function CountryPage({ content }: { content: CountryContent }) {
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
               </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-block about-story" data-testid={`${content.slug}-faq-section`}>
-        <div className="page-container">
-          <SectionHeading
-            eyebrow="FAQ"
-            title="Frequently Asked Questions"
-            description={`Answers to common questions about working with BACT IT in ${content.countryLabel}.`}
-            testId={`${content.slug}-faq-heading`}
-          />
-          <div className="about-story-copy">
-            {content.faqs.map((faq) => (
-              <div key={faq.question}>
-                <h3>{faq.question}</h3>
-                <p>{faq.answer}</p>
-              </div>
             ))}
           </div>
         </div>

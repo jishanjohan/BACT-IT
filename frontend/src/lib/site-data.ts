@@ -758,8 +758,8 @@ export interface Leader {
 
 export const leadership: Leader[] = [
   {
-    name: "Zaynal Abedin",
-    photo: "/leadership/zaynal-abedin.jpeg",
+    name: "Md. Zainal Abedin",
+    photo: "/leadership/md-zainal-abedin.jpeg",
     role: "Chairman, BACT IT",
     initials: "ZA",
     bio: [],
@@ -795,7 +795,7 @@ export const leadership: Leader[] = [
     link: { label: "Facebook profile", href: "https://www.facebook.com/jubayer.ahmed.hridoy.22397" },
   },
   {
-    name: "Toufiqur Rahaman Jishan",
+    name: "MD Toufiqur Rahaman Jishan",
     role: "CEO, BACT IT",
     initials: "TJ",
     photo: "/leadership/toufiqur-rahaman-jishan.webp",
